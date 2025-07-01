@@ -5,6 +5,12 @@ body {
   font-weight:400;
 }
 
+.infobox {
+    background-color: #e3e6e7;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
 /* Style for a button with class "stylish-blue-button" */
 .stylish-blue-button {
   background-color: #327b9d; /* A nice shade of blue */
@@ -77,7 +83,7 @@ bemph {
 }
 
 a {
-  color:#333;
+  color:#327b9d;
   text-decoration:none;
 }
 
@@ -160,7 +166,7 @@ img {
 }
 
 .header {
-    padding: 40px 20px 40px 20px;
+    padding: 20px 20px 20px 20px;
     top: 0;
     left: 0;
     right: 0;
