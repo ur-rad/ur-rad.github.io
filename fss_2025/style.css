@@ -7,7 +7,7 @@ body {
 
 /* Style for a button with class "stylish-blue-button" */
 .stylish-blue-button {
-  background-color: #007bff; /* A nice shade of blue */
+  background-color: #327b9d; /* A nice shade of blue */
   color: white; /* White text for contrast */
   padding: 10px 20px; /*  Adjust padding for size */
   border: none; /* Remove default button border */
@@ -16,7 +16,7 @@ body {
 }
 
 .stylish-blue-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #387398; /* Darker blue on hover */
 }
 
 .subheader {
@@ -161,7 +161,6 @@ img {
 
 .header {
     padding: 40px 20px 40px 20px;
-    margin: 0;
     top: 0;
     left: 0;
     right: 0;
@@ -172,6 +171,7 @@ img {
     -webkit-font-smoothing: antialiased;
     display: flex;
     box-sizing: border-box;
+    margin:0 auto;
 }
 
 .banner-left {
