@@ -1,17 +1,32 @@
 body {
   background-color: #fff;
-  padding:50px;
   font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color:#595959;
   font-weight:400;
 }
 
-#subheader {
-    width: 600px;
+/* Style for a button with class "stylish-blue-button" */
+.stylish-blue-button {
+  background-color: #007bff; /* A nice shade of blue */
+  color: white; /* White text for contrast */
+  padding: 10px 20px; /*  Adjust padding for size */
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.stylish-blue-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.subheader {
+    width:800px;
+    margin:0 auto;
+    align-items: center;
     text-align: center;
 }
 
-h1, h3, h4, h5, h6 {
+h1, h3, h4 {
   margin:0 0 20px;
 }
 
@@ -24,7 +39,7 @@ h2 {
   font-weight: 500;
 }
 
-h3, h4, h5, h6 {
+h3, h4 {
   font-weight: 500;
 }
 
@@ -38,6 +53,11 @@ h3 {
   margin:0 0 20px;
 }
 
+h4 {
+  font-size: 18px;
+  margin:0 0 10px;
+}
+
 p, ul, ol, table, pre, dl {
   margin:0 0 20px;
 }
@@ -46,9 +66,13 @@ h1, h2, h3 {
   line-height:1.1;
 }
 
+b {
+    font-weight: 500;
+}
+
 * {-webkit-font-smoothing: antialiased;}
 bemph {
-  font-weight: bold;
+  font-weight: 500;
   font-style: italic;
 }
 
@@ -87,7 +111,7 @@ a:hover small {
 .wrapper {
   width:900px;
   margin:0 auto;
-  margin-top: 150px;
+  margin-top: 80px;
 }
 
 blockquote {
@@ -146,13 +170,26 @@ img {
     color: black;
     z-index: 99;
     -webkit-font-smoothing: antialiased;
-    min-height: 100px;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.banner-left {
+    text-align: left;
+    width: 50%;
+}
+
+.banner-right {
+    text-align: right;
+    align-content: right;
+    justify-content: flex-end;
+    width: 50%;
 }
 
 header {
-  width:200px;
+  width:260px;
   float:right;
-  text-align:right;
+  text-align:left;
   -webkit-font-smoothing:subpixel-antialiased;
 }
 
@@ -216,7 +253,7 @@ header ul a strong {
 }
 
 section {
-  width:640px;
+  width:600px;
   float:left;
   padding-bottom:50px;
   scroll-padding-top: 150px;
