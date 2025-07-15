@@ -1,12 +1,13 @@
 body {
   background-color: #fff;
   font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  color:#595959;
+  color:#000;
   font-weight:400;
 }
 
 .infobox {
-    background-color: #e3e6e7;
+    background-color: #eee;
+    border-radius: 4px;
     padding: 10px;
     margin-bottom: 20px;
 }
@@ -38,6 +39,7 @@ h1, h3, h4 {
 
 h1 {
   font-size:48px;
+  margin: 0 0 8px;
   font-weight: 500;
 }
 
@@ -55,13 +57,13 @@ h2 {
 
 h3 {
   margin:0 0 0px;
-  font-size:22px;
+  font-size:18px;
   margin:0 0 20px;
 }
 
 h4 {
-  font-size: 18px;
-  margin:0 0 10px;
+  font-size: 16px;
+  margin:0 0 0px;
 }
 
 p, ul, ol, table, pre, dl {
