@@ -201,8 +201,8 @@
 
     /*** PRIMARY COLORS (Base, background, accents, text) ***/
     /* Base theme color hue */
-    --hue: 200deg; /* Common base color hue for theme elements */
-    --saturation: 10%; /* Common base saturation for theme elements, 0% - no color tint */
+    --hue: 220deg; /* Common base color hue for theme elements */
+    --saturation: 8%; /* Common base saturation for theme elements, 0% - no color tint */
 
     /* Background */
     --bg-hue: var(--hue); /* Background color hue */
@@ -212,9 +212,9 @@
     --bg-brightness: 96%; /* Background brightness, 100% - absolutely white */
 
     /* Accents */
-    --theme-accent-base: var(--bg-hue) 53% 27%; /* Primary accent color */
-    --theme-accent-one: var(--bg-hue) 53% 27%; /* First additional accent color */
-    --theme-accent-two: 351deg 66% 48%; /* Second additional accent color */
+    --theme-accent-base: 220deg 15% 25%; /* Primary accent color - dark grey */
+    --theme-accent-one: 262deg 83% 58%; /* First additional accent color - purple-500 */
+    --theme-accent-two: 173deg 80% 40%; /* Second additional accent color - teal-500 */
 
     /* Alternative */ /* --theme-accent-two: 344deg 63% 45%; */
 
@@ -225,17 +225,17 @@
     --fg-saturation: var(
       --saturation
     ); /* Common saturation for calculating color gradations with tint, 0% - no tint */
-    --fg-brightness: 9%; /* Brightness for calculating color gradations with tint, 0% - starting from absolutely black */
+    --fg-brightness: 15%; /* Brightness for calculating color gradations with tint, 0% - starting from absolutely black */
     --theme-text: var(
       --theme-color-500
     ); /* Text color-brightness already adapted to background color */
 
     /*** SECONDARY COLORS (External links, neutral accent, quotes) ***/
-    --theme-link: var(--hue) 97% 31%; /* External links color */
+    --theme-link: 173deg 80% 40%; /* External links color - teal */
     --theme-accent: var(
       --theme-color-600
     ); /* Neutral accent, calculated below based on --theme-fg */
-    --theme-quote: var(--theme-text); /* Quotes color */
+    --theme-quote: 220deg 12% 45%; /* Quotes color - medium grey */
 
     /*** ADDITIONAL COLORS ***/
     --theme-lightest: var(--theme-color-350);
@@ -271,22 +271,22 @@
 
     /*** PRIMARY COLORS (Base, background, accents, text) ***/
     /* Base theme color hue */
-    --hue: 200deg; /* Common base color hue for theme elements */
-    --saturation: 53%; /* Common base saturation for theme elements, 0% - no color tint */
+    --hue: 220deg; /* Common base color hue for theme elements */
+    --saturation: 8%; /* Common base saturation for theme elements, 0% - no color tint */
 
     /* Background */
     --bg-hue: var(--hue); /* Background color hue */
     --bg-saturation: var(
       --saturation
     ); /* Background hue saturation and some other elements, 0% - no tint */
-    --bg-brightness: 15%; /* Background brightness, 0% - black */
+    --bg-brightness: 12%; /* Background brightness, 0% - black */
     /* Alternative 204deg 51% 14% */
     /* Alternative 210deg 25% 15% */
 
     /* Accents */
-    --theme-accent-base: var(--hue) 10% 85%;
-    --theme-accent-one: 50deg 49% 80%; /* First additional accent color */
-    --theme-accent-two: 50deg 72% 63%; /* 50deg 72% 63% */ /* Second additional accent color (was 45deg 80% 50%) */
+    --theme-accent-base: 220deg 12% 88%; /* Primary accent color - light grey */
+    --theme-accent-one: 262deg 83% 70%; /* First additional accent color - lighter purple */
+    --theme-accent-two: 173deg 75% 55%; /* Second additional accent color - lighter teal */
     /* --theme-accent-two: 0deg 75% 89%; */
     /* --theme-accent-base: var(--hue) 97% 71%; */
 
@@ -297,17 +297,17 @@
     --fg-saturation: var(
       --saturation
     ); /* Common saturation for calculating color gradations with tint, 0% - no tint */
-    --fg-brightness: 98%; /* Brightness for calculating color gradations with tint, 100% - starting from absolutely white */
+    --fg-brightness: 92%; /* Brightness for calculating color gradations with tint, 100% - starting from absolutely white */
     --theme-text: var(
       --theme-color-500
     ); /* Text color-brightness adapted to background color */
 
     /*** SECONDARY COLORS (External links, neutral accent, quotes) ***/
-    --theme-link: var(--hue) 61% 71%; /* External links color */
+    --theme-link: 173deg 75% 55%; /* External links color - teal */
     --theme-accent: var(
       --theme-color-600
     ); /* Neutral accent relative to text */
-    --theme-quote: var(--theme-text); /* Quotes color */
+    --theme-quote: 220deg 8% 70%; /* Quotes color - light grey for dark mode */
 
     /*** ADDITIONAL COLORS ***/
     --theme-lightest: var(--theme-color-350);
