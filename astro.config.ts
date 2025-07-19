@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
+// import tailwind from "@astrojs/tailwind"; // Removed for Tailwind v4
 import icon from "astro-icon";
 import robotsTxt from "astro-robots-txt";
 import webmanifest from "astro-webmanifest";
@@ -23,6 +23,8 @@ import {
   transformerNotationDiff,
 } from "@shikijs/transformers";
 
+import tailwindcss from "@tailwindcss/vite";
+
 // https://astro.build/config
 export default defineConfig({
   image: {
@@ -30,10 +32,7 @@ export default defineConfig({
   },
   integrations: [
     icon(),
-    tailwind({
-      applyBaseStyles: false,
-      nesting: true,
-    }),
+    // Tailwind v4 is handled via Vite plugin below
     sitemap(),
     mdx(),
     robotsTxt(),
@@ -123,7 +122,7 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },
-    plugins: [rawFonts([".ttf", ".woff"])],
+    plugins: [rawFonts([".ttf", ".woff"]), tailwindcss()],
   },
   env: {
     schema: {
