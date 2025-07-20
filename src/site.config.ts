@@ -13,7 +13,8 @@ export const siteConfig: SiteConfig = {
     },
   },
   // Used as the default description meta property and webmanifest description
-  description: "AAAI Fall Symposium 2025",
+  description:
+    "The 3rd AAAI Fall Symposium on Unifying Representations for Robot Application Development",
   // HTML lang property, found in src/layouts/Base.astro L:18 & astro.config.ts L:48
   lang: "en-GB",
   // Meta property, found in src/components/BaseHead.astro L:42
@@ -29,15 +30,19 @@ export const menuLinks: { path: string; title: string }[] = [
     title: "Home",
   },
   {
-    path: "/about/",
-    title: "About",
+    path: "/call-for-papers/",
+    title: "Call for Papers",
   },
   {
-    path: "/posts/",
-    title: "Blog",
+    path: "/speakers/",
+    title: "Speakers",
   },
   {
-    path: "/notes/",
-    title: "Notes",
+    path: "/program/",
+    title: "Program",
+  },
+  {
+    path: "/organizers/",
+    title: "Organizers",
   },
 ];

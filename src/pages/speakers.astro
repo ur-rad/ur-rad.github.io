@@ -1,0 +1,69 @@
+---
+import PageLayout from "@/layouts/Base.astro";
+
+const meta = {
+  description:
+    "Keynote Speakers - UR-RAD 2025 AAAI Fall Symposium on Unifying Representations for Robot Application Development",
+  title: "Keynote Speakers",
+};
+---
+
+<PageLayout meta={meta}>
+  <h1 class="title mb-6">Keynote Speakers</h1>
+  <div class="prose prose-citrus max-w-none px-4">
+    <p class="text-lg mb-8">
+      We are excited to announce our keynote speakers for UR-RAD 2025. Details
+      will be updated as speakers are confirmed.
+    </p>
+
+    <div class="grid gap-4 sm:gap-8 grid-cols-1 lg:grid-cols-2">
+      <!-- Speaker entries will be added here as they are confirmed -->
+      <div class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg">
+        <h3 class="text-lg sm:text-xl font-semibold mb-2">
+          Speakers to be announced
+        </h3>
+        <p class="text-sm sm:text-base text-accent-two">
+          Stay tuned for updates!
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <h2>Previous UR-RAD Speakers</h2>
+      <p class="mb-4">
+        Our previous symposiums have featured distinguished speakers from the
+        robotics and AI communities:
+      </p>
+
+      <h3 class="text-base sm:text-lg font-semibold mt-6 mb-3">
+        UR-RAD 2024 Speakers
+      </h3>
+      <ul class="list-disc list-inside space-y-1">
+        <li>Cynthia Matuszek, University of Maryland, Baltimore County</li>
+        <li>Siddharth Srivastava, Arizona State University</li>
+        <li>Jamie Macbeth, Smith College</li>
+        <li>Brittany Johnson-Matthews, George Mason University</li>
+      </ul>
+
+      <h3 class="text-base sm:text-lg font-semibold mt-6 mb-3">
+        UR-RAD 2023 Speakers
+      </h3>
+      <ul class="list-disc list-inside space-y-1">
+        <li>Dana Nau</li>
+        <li>Matthias Scheutz</li>
+        <li>Stefanie Tellex</li>
+        <li>Chien-Ming Huang</li>
+      </ul>
+    </div>
+
+    <div class="mt-8 p-3 sm:p-4 bg-accent-base/5 rounded-lg">
+      <p class="text-center text-sm sm:text-base">
+        <strong>Interested in speaking at UR-RAD 2025?</strong><br />
+        Contact us at <a
+          href="mailto:urrad.symposium@gmail.com"
+          class="citrus-link">urrad.symposium@gmail.com</a
+        >
+      </p>
+    </div>
+  </div>
+</PageLayout>

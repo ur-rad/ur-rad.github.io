@@ -6,7 +6,7 @@
       "properties": {
         "title": {
           "type": "string",
-          "maxLength": 60
+          "maxLength": 200
         },
         "description": {
           "type": "string"

@@ -1,23 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-import SocialList from "@/components/SocialList.astro";
-import PostPreview from "@/components/blog/PostPreview.astro";
-import Note from "@/components/note/Note.astro";
-import { getAllPosts } from "@/data/post";
 import PageLayout from "@/layouts/Base.astro";
-import { collectionDateSort } from "@/utils/date";
-
-// Posts
-const MAX_POSTS = 10;
-const allPosts = await getAllPosts();
-const allPostsByDate = allPosts
-  .sort(collectionDateSort)
-  .slice(0, MAX_POSTS) as CollectionEntry<"post">[];
-
-// Notes
-const MAX_NOTES = 2;
-const allNotes = await getCollection("note");
-const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 ---
 
 <PageLayout meta={{ title: "Home" }}>
@@ -44,79 +26,122 @@ const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
     </div>
   </div>
   <section
-    class="max-w-xl mx-auto relative flex items-center justify-center h-screen -mt-24"
+    class="max-w-4xl mx-auto px-4 relative flex items-center justify-center min-h-screen mt-0 md:-mt-24"
   >
     <div class="w-full text-center">
       <span
-        class="title text-3xl bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent"
+        class="title text-3xl sm:text-4xl bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent"
       >
-        Introducing Astro Citrus!
+        UR-RAD 2025
       </span>
-      <p class="mt-4 mb-4 text-lg font-medium">
-        Hi, I’m an Astro theme for building websites or blogs. To customize, add
-        posts, or make it yours, click the GitHub icon below to visit my repo.
+      <h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mt-4 mb-2 px-2">
+        The 3rd AAAI Fall Symposium on Unifying Representations for Robot
+        Application Development
+      </h2>
+      <p class="text-base sm:text-lg mb-2 px-2">
+        Westin Arlington Gateway, Arlington, VA, USA
       </p>
-      <div class="flex justify-center mb-4">
-        <SocialList />
-      </div>
-      <div class="flex justify-center space-x-4 mt-4">
-        <a
-          href="/posts/"
-          class="relative flex items-center justify-center h-8 px-4 rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two"
-        >
-          <span class="text-bg font-semibold"> Read Blog </span>
-        </a>
+      <p class="text-base sm:text-lg mb-6 px-2">November 6-8, 2025</p>
 
+      <div class="max-w-3xl mx-auto text-left mb-8 px-4">
+        <h3 class="text-lg sm:text-xl font-semibold mb-4 text-center">
+          About UR-RAD
+        </h3>
+        <div class="prose prose-citrus max-w-none text-left sm:text-justify">
+          <p>
+            Behind any robot task or interaction is a representation that should
+            (a) enable sufficient contextualization; (b) support any existing
+            predefined, learned, and/or reusable skills onboard the robot; (c)
+            be verifiable at design time and behave consistently at run-time;
+            and (d) can be tested, executed, and modified for reuse on a variety
+            of different robot morphologies. Capturing the end user's desired
+            task or interaction as a computational artifact (i.e., a
+            representation) has long played a pivotal role in robotics.
+          </p>
+          <br />
+          <p>
+            Many robotic subfields have traditionally employed a variety of
+            different representational techniques, often borrowing from
+            artificial intelligence (AI), to achieve their respective
+            objectives. Examples include variants of LTL, logic, automated
+            planning languages, languages for Belief-Desire-Intention, custom
+            variations of these, and many more than we can list. The problem is
+            that there is a lack of awareness of these representations in the
+            research community, or how these representations can/should be
+            applied.
+          </p>
+          <br />
+          <p>
+            Last year, UR-RAD focused on representation trends in robotics and
+            best practices for adopting existing and new representations. This
+            year, based on community feedback, we are planning on elevating the
+            interaction between junior and senior members of the community.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col sm:flex-row justify-center gap-4 sm:space-x-4 mt-8 px-4"
+      >
         <a
-          href="/notes/wake-up/"
-          class="relative flex items-center justify-center h-8 px-4 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest"
+          href="/call-for-papers/"
+          class="relative flex items-center justify-center h-10 px-4 sm:px-6 rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two"
+        >
+          <span class="text-bg font-semibold">Call for Papers</span>
+        </a>
+        <a
+          href="/speakers/"
+          class="relative flex items-center justify-center h-10 px-4 sm:px-6 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest"
         >
           <span
             class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two"
           >
-            Wake up
+            Speakers
           </span>
         </a>
+      </div>
+
+      <div class="mt-8 px-4">
+        <p class="text-sm text-accent-two text-center">
+          Contact us: <a
+            href="mailto:urrad.symposium@gmail.com"
+            class="citrus-link">urrad.symposium@gmail.com</a
+          >
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- Posts Section -->
-  <section aria-label="Blog post list" class="'mt-[-100vh] pt-[100vh]'">
-    <h2 class="title mb-6 text-xl text-accent-two">
-      <a href="/posts/">Posts</a>
+  <!-- Topics of Interest Section -->
+  <section aria-label="Topics of interest" class="mt-[-100vh] pt-[100vh] px-4">
+    <h2 class="title mb-6 text-lg sm:text-xl text-accent-two">
+      Topics of Interest
     </h2>
-    <ul class="space-y-4 md:space-y-2" role="list">
-      {
-        allPostsByDate.map((p) => (
-          <li class="gap-2 sm:grid-cols-[auto_1fr]">
-            <PostPreview post={p} />
-          </li>
-        ))
-      }
-    </ul>
+    <div class="prose prose-citrus max-w-none">
+      <ul
+        class="list-disc list-inside space-y-2 sm:grid sm:grid-cols-1 md:grid-cols-2 gap-x-4 lg:gap-x-8"
+      >
+        <li>Representational trends</li>
+        <li>Representations for robot learning</li>
+        <li>AI planning for robotics</li>
+        <li>Formal methods in robotics</li>
+        <li>Natural language as a representation</li>
+        <li>Novel representations & novel representation uses</li>
+        <li>Representations for user interfaces</li>
+        <li>Robot end-user development</li>
+        <li>Robot programming interfaces & paradigms</li>
+        <li>Robot runtime/control environments</li>
+        <li>Opportunities for standardization</li>
+        <li>Frameworks (<em>e.g.</em>, ROS or middleware)</li>
+        <li>Open-source & collaboration initiatives</li>
+        <li>Identifying representation requirements</li>
+      </ul>
+    </div>
   </section>
+</PageLayout>
 
-  <!-- Notes Section -->
-  {
-    latestNotes.length > 0 && (
-      <section class="mt-12">
-        <h2 class="title mb-6 text-accent-two">
-          <a href="/notes/">Notes</a>
-        </h2>
-        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
-          {latestNotes.map((note) => (
-            <div>
-              <Note note={note} as="h4" isPreview />
-            </div>
-          ))}
-        </div>
-      </section>
-    )
-  }
-
-  <!-- Debug -->
-  <!--
+<!-- Debug -->
+<!--
 	<div class="flex justify-between flex-wrap gap-y-1.5 mt-6 text-sm font-medium">
 		<div class="text-center content-center h-10 w-10 bg-color-50"><span class="text-text">50</span></div>
 		<div class="text-center content-center h-10 w-10 bg-color-75"><span class="text-text">75</span></div>
@@ -148,4 +173,3 @@ const latestNotes = allNotes.sort(collectionDateSort).slice(0, MAX_NOTES);
 		<div class="text-center content-center h-10 w-10 bg-color-900"><span class="text-bg">900</span></div>
 	</div>
 	-->
-</PageLayout>

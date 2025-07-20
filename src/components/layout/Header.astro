@@ -7,7 +7,7 @@ import { Icon } from "astro-icon/components";
 
 <header
   id="main-header"
-  class="fixed px-4 md:px-0 left-0 z-20 flex items-center md:relative top-0 h-16 w-full bg-surface md:bg-transparent overflow-hidden"
+  class="fixed px-2 sm:px-4 md:px-0 left-0 z-20 flex items-center md:relative top-0 h-16 w-full bg-surface md:bg-transparent overflow-hidden"
 >
   <!-- Background
 			TODO: This approach is not optimal and requires improvements.
@@ -51,7 +51,7 @@ import { Icon } from "astro-icon/components";
   </div>
 
   <div class="w-full justify-between sm:flex-col">
-    <div class="flex items-center gap-x-2">
+    <div class="flex items-center gap-x-1 sm:gap-x-2">
       <a
         aria-label={siteConfig.title}
         aria-current={Astro.url.pathname === "/" ? "page" : false}
@@ -75,14 +75,14 @@ import { Icon } from "astro-icon/components";
         </div>
 
         <strong
-          class="'max-[320px]:hidden' bg-clip-text text-transparent bg-gradient-to-r from-accent-one to-accent-two hidden xs:block z-10 mb-0.5 ms-2 text-2xl group-hover:text-accent-one"
+          class="'max-[320px]:hidden' bg-clip-text text-transparent bg-gradient-to-r from-accent-one to-accent-two hidden md:block z-10 mb-0.5 ms-2 text-lg lg:text-2xl group-hover:text-accent-one"
         >
           {siteConfig.title}
         </strong>
       </a>
       <nav
         aria-label="Main menu"
-        class="top-20 text-sm mx-auto ml-auto hidden flex-col items-end justify-center gap-x-4 rounded-md bg-bg font-medium text-accent-two shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:flex-row sm:items-center sm:rounded-none sm:bg-transparent sm:shadow-none sm:backdrop-blur-none md:flex"
+        class="top-20 text-xs sm:text-sm mx-auto ml-auto hidden flex-col items-end justify-center gap-x-2 sm:gap-x-3 md:gap-x-4 rounded-md bg-bg font-medium text-accent-two shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:flex-row sm:items-center sm:rounded-none sm:bg-transparent sm:shadow-none sm:backdrop-blur-none md:flex"
         id="main-navigation-menu"
       >
         <!--
@@ -114,7 +114,7 @@ import { Icon } from "astro-icon/components";
           menuLinks.map((link) => (
             <a
               aria-current={Astro.url.pathname === link.path ? "page" : false}
-              class="underline-offset-2 hover:text-accent-base aria-[current=page]:text-foreground aria-[current=page]:font-semibold"
+              class="px-1 sm:px-2 py-1 rounded underline-offset-2 hover:text-accent-base aria-[current=page]:text-foreground aria-[current=page]:font-semibold whitespace-nowrap text-xs sm:text-sm leading-tight"
               data-astro-prefetch
               href={link.path}
             >
@@ -265,7 +265,7 @@ import { Icon } from "astro-icon/components";
 
     <nav
       aria-label="Mobile navigation menu"
-      class="text-lg absolute inset-0 flex flex-col items-center justify-center gap-y-4 text-center font-medium text-accent-two z-10"
+      class="text-base sm:text-lg absolute inset-0 flex flex-col items-center justify-center gap-y-3 sm:gap-y-4 text-center font-medium text-accent-two z-10 px-4"
       id="nav-menu-mobile"
     >
       <!-- Menu -->
@@ -273,7 +273,7 @@ import { Icon } from "astro-icon/components";
         menuLinks.map((link) => (
           <a
             aria-current={Astro.url.pathname === link.path ? "page" : false}
-            class="underline-offset-2 hover:text-accent-base aria-[current=page]:text-foreground aria-[current=page]:font-semibold"
+            class="px-4 py-2 rounded-lg underline-offset-2 hover:text-accent-base hover:bg-accent-base/10 aria-[current=page]:text-foreground aria-[current=page]:font-semibold transition-colors"
             data-astro-prefetch
             href={link.path}
           >
