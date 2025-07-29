@@ -1,179 +1,130 @@
-<div align="center">
-  <img alt="Astro Citrus logo" src="https://github.com/ArtemKutsan/astro-citrus/blob/main/src/assets/images/logo.svg" width="70" />
-</div>
-<h1 align="center">
-  Astro Citrus
-</h1>
+# UR-RAD Symposium Website
 
-Astro Citrus is a simple opinionated starter built with the Astro framework. Use it to create an easy-to-use blog or website.
+This repository contains the website for the UR-RAD (Unifying Representations for Robot Application Development) symposium series, built with [Astro](https://astro.build/) and deployed on GitHub Pages.
 
-## Table Of Contents
+## About UR-RAD
 
-1. [Key Features](#key-features)
-2. [Demo](#demo)
-3. [Quick start](#quick-start)
-4. [Preview](#preview)
-5. [Commands](#commands)
-6. [Configure](#configure)
-7. [Updating](#updating)
-8. [Adding posts and notes](#adding-posts-and-notes)
-   - [Post Frontmatter](#post-frontmatter)
-   - [Note Frontmatter](#note-frontmatter)
-   - [Frontmatter Snippet](#frontmatter-snippet)
-9. [Pagefind search](#pagefind-search)
-10. [Analytics](#analytics)
-11. [Deploy](#deploy)
-12. [Acknowledgment](#acknowledgment)
+UR-RAD is an annual symposium held as part of the AAAI Fall Symposium Series, focused on unifying representations for robot application development. The symposium brings together researchers from robotics, AI, and related fields to discuss representational techniques and their applications in robotics.
 
-## Key Features
+## Current Site
 
-- Astro v5 Fast 🚀
-- TailwindCSS Utility classes
-- Accessible, semantic HTML markup
-- Responsive & SEO-friendly
-- Dark / Light mode, using Tailwind and CSS variables
-- MD & [MDX](https://docs.astro.build/en/guides/markdown-content/#mdx-only-features) posts & notes
-  - Includes [Admonitions](http://astrocitrus.artemkutsan.pp.ua/posts/markdown-elements/admonistions/)
-- [Satori](https://github.com/vercel/satori) for creating open graph png images
-- [Automatic RSS feed](https://docs.astro.build/en/guides/rss)
-- [Webmentions](https://webmention.io/)
-- Auto-generated:
-  - [sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
-  - [robots.txt](https://github.com/alextim/astro-lib/blob/main/packages/astro-robots-txt/README.md)
-  - [web app manifest](https://github.com/alextim/astro-lib/blob/main/packages/astro-webmanifest/README.md)
-- [Pagefind](https://pagefind.app/) static search library integration
-- [Astro Icon](https://github.com/natemoo-re/astro-icon) svg icon component
-- [Rehype Pretty Code](https://rehype-pretty.pages.dev/) code blocks and syntax highlighter
+The current live site hosts **UR-RAD 2025**, the 3rd iteration of the symposium:
+- **Date**: November 6-8, 2025
+- **Location**: Westin Arlington Gateway, Arlington, VA, USA
+- **Website**: [ur-rad.github.io](https://ur-rad.github.io)
 
-## Demo
+## Quick Start
 
-Check out the [Demo](https://astrocitrus.netlify.app/)
+### Prerequisites
+- Node.js 18+ 
+- npm, pnpm, or yarn
 
-## Quick start
-
-[Create a new repo](https://github.com/artemkutsan/astro-citrus/generate) from this template.
+### Installation & Development
 
 ```bash
-# npm 7+
-npm create astro@latest -- --template artemkutsan/astro-citrus
+# Clone the repository
+git clone https://github.com/ur-rad/ur-rad.github.io.git
+cd ur-rad.github.io
 
-# pnpm
-pnpm dlx create-astro --template artemkutsan/astro-citrus
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/artemkutsan/astro-citrus) [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fartemkutsan%2Fastro-citrus&project-name=astro-citrus)
-
-## Preview
-
-| ![Light Theme 01](https://github.com/ArtemKutsan/astro-citrus/blob/main/public/images/screenshot01.png?raw=true) | ![Light Theme 02](https://github.com/ArtemKutsan/astro-citrus/blob/main/public/images/screenshot02.png?raw=true) |
-|-------------|-------------|
-| ![Dark Theme 03](https://github.com/ArtemKutsan/astro-citrus/blob/main/public/images/screenshot03.png?raw=true) | ![Light Theme 04](https://github.com/ArtemKutsan/astro-citrus/blob/main/public/images/screenshot04.png?raw=true) |
-| ![Light Theme 05](https://github.com/ArtemKutsan/astro-citrus/blob/main/public/images/screenshot05.png?raw=true) | ![Light Theme 06](https://github.com/ArtemKutsan/astro-citrus/blob/main/public/images/screenshot06.png?raw=true) |
-| ![Dark Theme 07](https://github.com/ArtemKutsan/astro-citrus/blob/main/public/images/screenshot07.png?raw=true) | ![Dark Theme 08](https://github.com/ArtemKutsan/astro-citrus/blob/main/public/images/screenshot08.png?raw=true) |
+The site will be available at `http://localhost:4321`
 
 ## Commands
 
-Replace pnpm with your choice of npm / yarn
-
 | Command          | Action                                                         |
 | :--------------- | :------------------------------------------------------------- |
-| `pnpm install`   | Installs dependencies                                          |
-| `pnpm dev`       | Starts local dev server at `localhost:3000`                    |
-| `pnpm build`     | Build your production site to `./dist/`                        |
-| `pnpm postbuild` | Pagefind script to build the static search of your blog posts  |
-| `pnpm preview`   | Preview your build locally, before deploying                   |
-| `pnpm sync`      | Generate types based on your config in `src/content/config.ts` |
+| `npm install`    | Installs dependencies                                          |
+| `npm run dev`    | Starts local dev server at `localhost:4321`                   |
+| `npm run build`  | Build your production site to `./dist/`                       |
+| `npm run preview`| Preview your build locally, before deploying                  |
+| `npm run sync`   | Generate types based on your config in `src/content/config.ts`|
 
-## Configure
+## Site Configuration
 
-- Edit the config file `src/site.config.ts` for basic site meta data
-- Update file `astro.config.ts`
-  - **Important**: the site property with your own domain.
-  - [astro-webmanifest options](https://github.com/alextim/astro-lib/blob/main/packages/astro-webmanifest/README.md)
-- Replace & update files within the `/public` folder:
-  - icon.svg - used as the source to create favicons & manifest icons
-  - social-card.png - used as the default og:image
-- Modify file `src/styles/global.css` with your own light and dark styles.
-  - You can also modify the theme(s) for markdown code blocks generated by [Rehype Pretty Code](https://rehype-pretty.pages.dev/). Astro Citrus has both a dark (rose-pine) and light (rose-pine-dawn) theme, which can be found in `src/site.config.ts`. You can find more theme(s) and options [here](https://shiki.matsu.io/).
-- Edit social links in `src/components/SocialList.astro` to add/replace your media profile. Icons can be found @ [icones.js.org](https://icones.js.org/), per [Astro Icon's instructions](https://www.astroicon.dev/guides/customization/#find-an-icon-set).
-- Create/edit posts & notes for your blog within `src/content/post/` & `src/content/note/` with .md/mdx file(s). See [below](#adding-posts-and-notes) for more details.
-  - Read [this post](http://astrocitrus.artemkutsan.pp.ua/posts/webmentions/) for adding webmentions to your site.
-- OG Image:
-  - If you would like to change the style of the generated image the Satori library creates, open up `src/pages/og-image/[slug].png.ts` to the markup function where you can edit the html/tailwind-classes as necessary. You can use this [playground](https://og-playground.vercel.app/) to aid your design.
-  - You can also create your own og images and skip satori generating it for you by adding an ogImage property in the frontmatter with a link to the asset, an example can be found in `src/content/post/social-image.md`. More info on frontmatter can be found [here](#frontmatter)
-- Optional:
-  - Fonts: This theme sets the body element to the font family `font-mono`, located in the global css file `src/styles/global.css`. You can change fonts by removing the variant `font-mono`, after which TailwindCSS will default to the `font-sans` [font family stack](https://tailwindcss.com/docs/font-family).
+- **Main config**: `src/site.config.ts` - Site metadata, navigation, and basic settings
+- **Astro config**: `astro.config.ts` - Build settings, integrations, and deployment config
+- **Styling**: `src/styles/global.css` - Global styles and CSS variables
+- **Content**: Page content is in `src/pages/` with components in `src/components/`
 
-## Updating
+## Key Features
 
-If you've forked the template, you can [sync the fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) with your own project, remembering to **not** click Discard Changes as you will lose your own.
+- 🚀 **Astro v5** - Fast, modern static site generation
+- 🎨 **Tailwind CSS** - Utility-first styling with custom design system
+- 📱 **Responsive Design** - Mobile-first approach with accessibility in mind
+- 🌓 **Dark/Light Mode** - Automatic theme switching
+- 📄 **SEO Optimized** - Meta tags, sitemap, and social sharing
+- 📊 **Performance Focused** - Optimized builds and fast loading
 
-If you have a template repository, you can add this template as a remote, as discussed [here](https://stackoverflow.com/questions/56577184/github-pull-changes-from-a-template-repository).
+## Current Architecture
 
-## Adding posts and notes
+The site is currently built as a single conference website for UR-RAD 2025, with:
+- Static pages for main content (Home, Call for Papers, Speakers, etc.)
+- Component-based architecture for reusable UI elements
+- Asset management for images and media
+- GitHub Pages deployment
 
-This theme utilises [Content Collections](https://docs.astro.build/en/guides/content-collections/) to organise local Markdown and MDX files, as well as type-checking frontmatter with a schema -> `src/content/config.ts`.
+## Future Multi-Conference Architecture
 
-Adding a post/note is as simple as adding your .md(x) files to the `src/content/post` and/or `src/content/note` folder, the filename of which will be used as the slug/url. The posts included with this template are there as an example of how to structure your frontmatter. Additionally, the [Astro docs](https://docs.astro.build/en/guides/markdown-content/) has a detailed section on markdown pages.
+This repository is being designed to support multiple conference years and venues. See `CONFERENCE_ARCHITECTURE.md` for detailed plans on scaling to support:
+- Multiple conference years (e.g., `/fss_2025`, `/icra_2026`)
+- Shared components and layouts
+- Conference-specific content and theming
+- Central hub for all UR-RAD events
 
-### Post Frontmatter
+## Deployment
 
-| Property (\* required) | Description |
-|------------------------|-------------|
-| **title \***          | Self-explanatory. Used as the text link to the post, the h1 on the post's page, and the page's title property. Has a max length of 60 chars, set in `src/content/config.ts`. |
-| **description \***    | Similar to above, used as the SEO description property. Has a min length of 50 and a max length of 160 chars, set in the post schema. |
-| **publishDate \***    | Again, pretty simple. To change the date format/locale, currently **en-GB**, update the date option in `src/site.config.ts`. Note you can also pass additional options to the `<FormattedDate>` component if required. |
-| **updatedDate**       | This is an optional date representing when a post has been updated, in the same format as the `publishDate`. |
-| **seriesId**          | An optional property that groups posts into a series. Posts with the same `seriesId` are considered part of the same series and can be displayed together in order. This allows for better organization of related content. |
-| **orderInSeries**     | A numeric value defining the position of a post within a series. Lower values indicate earlier posts in the series, while higher values appear later. Used for sorting and navigation between posts within the same series. |
-| **tags**             | Tags are optional with any created post. Any new tag(s) will be shown in `yourdomain.com/posts` & `yourdomain.com/tags`, and generate the page(s) `yourdomain.com/tags/[yourTag]`. |
-| **coverImage**       | This is an optional object that will add a cover image to the top of a post. Include both `src`: "_path-to-image_" and `alt`: "_image alt_". You can view an example in `src/content/post/cover-image.md`. |
-| **ogImage**          | This is an optional property. An OG Image will be generated automatically for every post where this property **isn't** provided. If you would like to create your own for a specific post, include this property and a link to your image, the theme will then skip automatically generating one. |
-| **draft**            | This is an optional property as it is set to `false` by default in the schema. By setting it to `true`, the post will be filtered out of the production build in a number of places, including `getAllPosts()` calls, OG images, RSS feeds, and generated page[s]. You can view an example in `src/content/post/draft-post.md`. |
+The site is automatically deployed to GitHub Pages when changes are pushed to the main branch. The deployment process:
 
+1. GitHub Actions builds the site using `npm run build`
+2. Generated files in `./dist/` are deployed to the `gh-pages` branch
+3. GitHub Pages serves the site from `gh-pages` branch
 
-### Note Frontmatter
+## Content Management
 
-| Property (\* required) | Description                                        |
-| ---------------------- | -------------------------------------------------- |
-| title \*               | string, max length 60 chars.                       |
-| description            | to be used for the head meta description property. |
-| publishDate \*         | ISO 8601 format with offsets allowed.              |
+### Adding New Pages
+Create new `.astro` files in `src/pages/` directory. Pages automatically become routes based on file structure.
 
-### Frontmatter snippet
+### Updating Site Information
+- **Conference details**: Update `src/site.config.ts`
+- **Navigation**: Modify `menuLinks` in `src/site.config.ts`
+- **Speakers**: Add images to `src/assets/images/speakers/` and update component
+- **Organizers**: Add images to `src/assets/images/organizers/` and update component
 
-Astro Citrus includes a helpful VSCode snippet which creates a frontmatter 'stub' for posts and note's, found here -> `.vscode/post.code-snippets`. Start typing the word `frontmatter` on your newly created .md(x) file to trigger it. Visual Studio Code snippets appear in IntelliSense via (⌃Space) on mac, (Ctrl+Space) on windows.
+### Styling
+- **Global styles**: `src/styles/global.css`
+- **Component styles**: Use Tailwind classes in `.astro` files
+- **Theme colors**: Defined in CSS variables in global styles
 
-## Pagefind search
+## Contributing
 
-This integration brings a static search feature for searching blog posts and notes. In its current form, pagefind only works once the site has been built. This theme adds a postbuild script that should be run after Astro has built the site. You can preview locally by running both build && postbuild.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Commit your changes (`git commit -m 'Add amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
 
-Search results only includes pages from posts and notes. If you would like to include other/all your pages, remove/re-locate the attribute `data-pagefind-body` to the article tag found in `src/layouts/BlogPost.astro` and `src/components/note/Note.astro`.
+## Previous Conferences
 
-It also allows you to filter posts by tags added in the frontmatter of blog posts. If you would rather remove this, remove the data attribute `data-pagefind-filter="tag"` from the link in `src/components/blog/Masthead.astro`.
+- **UR-RAD 2024**: [View archived site](https://sites.google.com/view/aaai-ur-rad-24-symposium)
+- **UR-RAD 2023**: [View archived site](https://sites.google.com/view/aaai-ur-rad-23-symposium)
 
-If you would rather not include this integration, simply remove the component `src/components/Search.astro`, and uninstall both `@pagefind/default-ui` & `pagefind` from package.json. You will also need to remove the postbuild script from here as well.
+## Contact
 
-You can reduce the initial css payload of your css, as demonstrated [here](https://github.com/artemkutsan/astro-citrus/pull/145#issue-1943779868), by lazy loading the web components styles.
-
-## Analytics
-
-You may want to track the number of visitors you receive to your blog/website in order to understand trends and popular posts/pages you've created. There are a number of providers out there one could use, including web hosts such as [vercel](https://vercel.com/analytics), [netlify](https://www.netlify.com/products/analytics/), and [cloudflare](https://www.cloudflare.com/web-analytics/).
-
-This theme/template doesn't include a specific solution due to there being a number of use cases and/or options which some people may or may not use.
-
-You may be asked to included a snippet inside the **HEAD** tag of your website when setting it up, which can be found in `src/layouts/Base.astro`. Alternatively, you can add the snippet in `src/components/BaseHead.astro`.
-
-## Deploy
-
-[Astro docs](https://docs.astro.build/en/guides/deploy/) has a great section and breakdown of how to deploy your own Astro site on various platforms and their idiosyncrasies.
-
-By default the site will be built (see [Commands](#commands) section above) to a `/dist` directory.
-
-## Acknowledgment
-
-**This theme was inspired by [Astro Theme Cactus](https://github.com/chrismwilliams/astro-theme-cactus) by [Chriss Williams](https://github.com/chrismwilliams). Huge thanks to Chriss for his amazing work and inspiration!** 🚀👏
+For questions about the website or technical issues:
+- **Email**: [urrad.symposium@gmail.com](mailto:urrad.symposium@gmail.com)
+- **Issues**: [GitHub Issues](https://github.com/ur-rad/ur-rad.github.io/issues)
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+**Note**: This site is based on the [Astro Citrus](https://github.com/artemkutsan/astro-citrus) template by [Artem Kutsan](https://github.com/artemkutsan). Thank you for the excellent foundation!
