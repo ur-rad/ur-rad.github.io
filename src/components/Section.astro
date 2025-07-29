@@ -1,0 +1,38 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+
+  className?: string;
+  id?: string;
+  "aria-label"?: string;
+}
+
+const {
+  title,
+  subtitle,
+
+  className = "",
+  id,
+  "aria-label": ariaLabel,
+} = Astro.props;
+---
+
+<div
+  class={`py-12 sm:py-16 ${className}`}
+  id={id}
+  aria-label={ariaLabel || title}
+>
+  {
+    title && (
+      <div class="text-center mb-6 sm:mb-8">
+        <h2 class="title mb-4 text-lg sm:text-xl text-accent-two">{title}</h2>
+        {subtitle && (
+          <p class="text-base sm:text-lg text-accent-two">{subtitle}</p>
+        )}
+      </div>
+    )
+  }
+
+  <slot />
+</div>

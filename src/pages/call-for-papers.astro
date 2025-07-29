@@ -1,5 +1,7 @@
 ---
 import PageLayout from "@/layouts/Base.astro";
+import Section from "@/components/Section.astro";
+import ContactCard from "@/components/ContactCard.astro";
 
 const meta = {
   description:
@@ -9,139 +11,299 @@ const meta = {
 ---
 
 <PageLayout meta={meta}>
-  <h1 class="title mb-6">Call for Papers</h1>
-  <div class="prose prose-citrus max-w-none px-4">
-    <p class="text-lg mb-6">
-      We invite submissions for the 3rd AAAI Fall Symposium on Unifying
-      Representations for Robot Application Development.
-    </p>
+  <h1 class="title">Call for Papers</h1>
 
-    <h2>Topics of Interest</h2>
-    <p>Topics of interest include:</p>
-    <ul
-      class="list-disc list-inside space-y-2 sm:grid sm:grid-cols-1 md:grid-cols-2 gap-x-4 lg:gap-x-8"
-    >
-      <li>Representational trends</li>
-      <li>Representations for robot learning</li>
-      <li>AI planning for robotics</li>
-      <li>Formal methods in robotics</li>
-      <li>Natural language as a representation</li>
-      <li>Novel representations & novel representation uses</li>
-      <li>Representations for user interfaces</li>
-      <li>Robot end-user development</li>
-      <li>Robot programming interfaces & paradigms</li>
-      <li>Robot runtime/control environments</li>
-      <li>Opportunities for standardization</li>
-      <li>Frameworks (<em>e.g.</em>, ROS or middleware)</li>
-      <li>Open-source & collaboration initiatives</li>
-      <li>Identifying representation requirements</li>
-    </ul>
+  <Section>
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <p class="text-lg mb-6">
+          We invite submissions for the 3rd AAAI Fall Symposium on Unifying
+          Representations for Robot Application Development.
+        </p>
 
-    <h2>Submission Types</h2>
-    <p>
-      We invite the following contributions, formatted using the <a
-        href="https://aaai.org/authorkit25/"
-        class="citrus-link">AAAI-25 author kit</a
-      >:
-    </p>
-    <ul class="list-disc list-inside space-y-2">
-      <li>
-        <strong>Full Papers (4-8 pages, archival OR non-archival):</strong> for novel
-        research, artifact submissions, or strong works in progress.
-      </li>
-      <li>
-        <strong>Short Papers (2-4 pages, archival OR non-archival):</strong> for
-        positions, smaller artifacts, and early work in progress.
-      </li>
-      <li>
-        <strong>Abstracts (1 page, non-archival only):</strong> for sharing ideas.
-      </li>
-    </ul>
-
-    <h2>Submission Process</h2>
-    <p>There are two submission rounds:</p>
-
-    <div class="p-3 sm:p-4 bg-accent-base/5 rounded-lg mb-4">
-      <h3 class="text-base sm:text-lg font-semibold mb-2">
-        Round 1 (Preferred)
-      </h3>
-      <ul class="list-disc list-inside">
-        <li><strong>Submission Deadline:</strong> August 7, 2025</li>
-        <li><strong>Camera Ready:</strong> August 29, 2025</li>
-      </ul>
-      <p class="mt-2 text-xs sm:text-sm">
-        Authors who want to be archived in the AAAI proceedings <strong
-          >must</strong
-        > submit their papers in the preferred round. Non-archival submissions are
-        also heavily encouraged to submit during this round. Preferred submissions
-        will be given preference for inclusion in the symposium in the event that
-        a large number of paper submissions are received. If deemed necessary during
-        the review phase, preferred submissions will also have an opportunity to
-        revise their work based on reviewer feedback.
-      </p>
+        <div
+          class="text-center mb-8 p-4 sm:p-6 bg-gradient-to-r from-accent-one/10 to-accent-two/10 rounded-lg border border-accent-one/20"
+        >
+          <h2 class="text-xl sm:text-2xl font-semibold mb-4">
+            Ready to Submit?
+          </h2>
+          <a
+            href="https://easychair.org/my/conference?conf=fss25"
+            class="inline-flex items-center justify-center h-12 px-6 sm:px-8 text-lg font-semibold rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-surface"
+          >
+            Submit Your Paper
+          </a>
+          <p class="text-sm text-accent-two mt-3">
+            Submissions open now • Preferred deadline: August 7, 2025
+          </p>
+        </div>
+      </div>
     </div>
+  </Section>
 
-    <div class="p-3 sm:p-4 bg-special-lighter rounded-lg mb-6">
-      <h3 class="text-base sm:text-lg font-semibold mb-2">Round 2 (Late)</h3>
-      <ul class="list-disc list-inside">
-        <li><strong>Short Abstract:</strong> August 7, 2025</li>
-        <li><strong>Submission:</strong> August 22, 2025</li>
-        <li><strong>Camera Ready:</strong> September 5, 2025</li>
-      </ul>
+  <Section
+    title="Topics of Interest"
+    subtitle="Research areas we welcome for submission"
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <ul
+          class="list-disc list-inside space-y-2 sm:grid sm:grid-cols-1 md:grid-cols-2 gap-x-4 lg:gap-x-8"
+        >
+          <li>Representational trends</li>
+          <li>Representations for robot learning</li>
+          <li>AI planning for robotics</li>
+          <li>Formal methods in robotics</li>
+          <li>Natural language as a representation</li>
+          <li>Novel representations & novel representation uses</li>
+          <li>Representations for user interfaces</li>
+          <li>Robot end-user development</li>
+          <li>Robot programming interfaces & paradigms</li>
+          <li>Robot runtime/control environments</li>
+          <li>Opportunities for standardization</li>
+          <li>Frameworks (<em>e.g.</em>, ROS or middleware)</li>
+          <li>Open-source & collaboration initiatives</li>
+          <li>Identifying representation requirements</li>
+        </ul>
+      </div>
     </div>
+  </Section>
 
-    <p class="mb-4">
-      Submit your paper <a
-        href="https://easychair.org/my/conference?conf=fss25"
-        class="citrus-link">here</a
-      >.
-    </p>
+  <Section
+    title="Submission Types"
+    subtitle="Choose the format that best fits your contribution"
+  >
+    <div class="max-w-6xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4 mb-8">
+        <p class="text-center">
+          We invite the following contributions, formatted using the <a
+            href="https://aaai.org/authorkit25/"
+            class="citrus-link">AAAI-25 author kit</a
+          >:
+        </p>
+      </div>
 
-    <h2>Intent to Submit</h2>
-    <div class="mb-4 text-sm sm:text-base">
-      <p class="mb-2">
-        If you intend to submit a paper, please email us at <a
-          href="mailto:urrad.symposium@gmail.com"
-          class="citrus-link">urrad.symposium@gmail.com</a
-        >.
-      </p>
-      <p class="mb-2">
-        Use the subject line: <strong>"[UR-RAD] Intent to Submit"</strong>
-      </p>
-      <p class="mb-2">Include in the body:</p>
-      <ul class="list-disc list-inside ml-4 mb-2">
-        <li>A tentative title</li>
-        <li>A tentative author list</li>
-        <li>Tentative keywords</li>
-      </ul>
-      <p class="text-xs sm:text-sm text-accent-two">
-        This step is optional, but will aid in our planning for reviewers. Note
-        that at least one author from each paper will be expected to review 2-3
-        UR-RAD papers themselves.
-      </p>
+      <!-- Submission Type Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+        <!-- Full Papers Card -->
+        <div
+          class="bg-accent-base/5 rounded-lg p-6 border border-accent-one/20 hover:border-accent-one/40 transition-colors"
+        >
+          <div class="text-center mb-4">
+            <h3 class="text-xl font-semibold text-accent-one mb-2">
+              Full Papers
+            </h3>
+            <div class="text-sm text-accent-two font-medium">4-8 pages</div>
+            <div class="text-xs text-accent-two mt-1">
+              archival OR non-archival
+            </div>
+          </div>
+          <div class="text-center">
+            <p class="text-sm">
+              For novel research, artifact submissions, or strong works in
+              progress.
+            </p>
+          </div>
+        </div>
+
+        <!-- Short Papers Card -->
+        <div
+          class="bg-accent-base/5 rounded-lg p-6 border border-accent-two/20 hover:border-accent-two/40 transition-colors"
+        >
+          <div class="text-center mb-4">
+            <h3 class="text-xl font-semibold text-accent-two mb-2">
+              Short Papers
+            </h3>
+            <div class="text-sm text-accent-two font-medium">2-4 pages</div>
+            <div class="text-xs text-accent-two mt-1">
+              archival OR non-archival
+            </div>
+          </div>
+          <div class="text-center">
+            <p class="text-sm">
+              For positions, smaller artifacts, and early work in progress.
+            </p>
+          </div>
+        </div>
+
+        <!-- Abstracts Card -->
+        <div
+          class="bg-accent-base/5 rounded-lg p-6 border border-gray-300/20 hover:border-gray-400/40 transition-colors"
+        >
+          <div class="text-center mb-4">
+            <h3 class="text-xl font-semibold text-gray-500 mb-2">Abstracts</h3>
+            <div class="text-sm text-gray-500 font-medium">1 page</div>
+            <div class="text-xs text-gray-500 mt-1">non-archival only</div>
+          </div>
+          <div class="text-center">
+            <p class="text-sm">For sharing ideas.</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </Section>
 
-    <h2>Review Process</h2>
-    <p class="mb-4">
-      We follow a double-anonymous review process (i.e. authors are unaware of
-      reviewers' identity and reviewers are unaware of the authors' identity
-      during the review process).
-    </p>
+  <Section
+    title="Important Dates & Timeline"
+    subtitle="Key deadlines and submission process"
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <!-- Timeline -->
+        <div class="relative mb-8">
+          <!-- Continuous timeline line -->
+          <div
+            class="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-special/30 via-accent-two/30 to-accent-one/30"
+          >
+          </div>
 
-    <h2>Important Dates Summary</h2>
-    <ul class="list-disc list-inside">
-      <li><strong>Symposium Date:</strong> November 6-8, 2025</li>
-      <li>
-        <strong>Location:</strong> Westin Arlington Gateway, Arlington, VA, USA
-      </li>
-    </ul>
+          <div class="space-y-6">
+            <!-- Timeline Item Component - Intent to Submit -->
+            <div class="relative pl-12">
+              <div
+                class="absolute left-3 top-0 w-6 h-6 bg-special rounded-full border-4 border-surface z-10"
+              >
+              </div>
+              <div class="p-4 bg-special-lighter rounded-lg">
+                <h3 class="text-lg font-semibold mb-2">
+                  Before Submission (Optional)
+                </h3>
+                <p class="mb-2">
+                  Help us plan for reviewers by emailing <a
+                    href="mailto:urrad.symposium@gmail.com"
+                    class="citrus-link">urrad.symposium@gmail.com</a
+                  > with:
+                </p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                  <li>Subject: <strong>"[UR-RAD] Intent to Submit"</strong></li>
+                  <li>Tentative title, author list, and keywords</li>
+                </ul>
+                <p class="text-xs sm:text-sm text-accent-two">
+                  Note: At least one author from each paper will be expected to
+                  review 2-3 other UR-RAD papers.
+                </p>
+              </div>
+            </div>
 
-    <h2>Contact</h2>
-    <p>
-      Get in touch with us: <a
-        href="mailto:urrad.symposium@gmail.com"
-        class="citrus-link">urrad.symposium@gmail.com</a
-      >
-    </p>
-  </div>
+            <!-- Timeline Item Component - August 7 -->
+            <div class="relative pl-12">
+              <div
+                class="absolute left-3 top-0 w-6 h-6 bg-accent-one rounded-full border-4 border-surface z-10"
+              >
+              </div>
+              <div class="p-4 bg-accent-base/5 rounded-lg">
+                <h3 class="text-lg font-semibold mb-2 text-accent-one">
+                  August 7, 2025
+                </h3>
+                <ul class="list-disc list-inside space-y-1">
+                  <li>
+                    <strong>Round 1 (Preferred) Submissions Due</strong> - For archival
+                    and non-archival papers
+                  </li>
+                  <li>
+                    <strong>Round 2 Short Abstracts Due</strong> - Required for late
+                    submissions
+                  </li>
+                </ul>
+                <div class="mt-3 p-3 bg-accent-one/10 rounded text-sm">
+                  <strong>💡 Tip:</strong> Authors seeking archival publication in
+                  AAAI proceedings <strong>must</strong> submit in Round 1. Round
+                  1 submissions receive preference for inclusion and may have revision
+                  opportunities.
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Item Component - August 22 -->
+            <div class="relative pl-12">
+              <div
+                class="absolute left-3 top-0 w-6 h-6 bg-accent-two rounded-full border-4 border-surface z-10"
+              >
+              </div>
+              <div class="p-4 bg-special-lighter rounded-lg">
+                <h3 class="text-lg font-semibold mb-2 text-accent-two">
+                  August 22, 2025
+                </h3>
+                <ul class="list-disc list-inside">
+                  <li>
+                    <strong>Round 2 (Late) Full Submissions Due</strong> - Non-archival
+                    only
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Timeline Item Component - August 29 -->
+            <div class="relative pl-12">
+              <div
+                class="absolute left-3 top-0 w-6 h-6 bg-accent-one rounded-full border-4 border-surface z-10"
+              >
+              </div>
+              <div class="p-4 bg-accent-base/5 rounded-lg">
+                <h3 class="text-lg font-semibold mb-2 text-accent-one">
+                  August 29, 2025
+                </h3>
+                <ul class="list-disc list-inside">
+                  <li><strong>Round 1 Camera Ready Due</strong></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Timeline Item Component - September 5 -->
+            <div class="relative pl-12">
+              <div
+                class="absolute left-3 top-0 w-6 h-6 bg-accent-two rounded-full border-4 border-surface z-10"
+              >
+              </div>
+              <div class="p-4 bg-special-lighter rounded-lg">
+                <h3 class="text-lg font-semibold mb-2 text-accent-two">
+                  September 5, 2025
+                </h3>
+                <ul class="list-disc list-inside">
+                  <li><strong>Round 2 Camera Ready Due</strong></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Timeline Item Component - November (Final) -->
+            <div class="relative pl-12">
+              <div
+                class="absolute left-3 top-0 w-6 h-6 bg-gradient-to-r from-accent-one to-accent-two rounded-full border-4 border-surface z-10"
+              >
+              </div>
+              <div
+                class="p-4 bg-gradient-to-r from-accent-one/10 to-accent-two/10 rounded-lg border border-accent-one/20"
+              >
+                <h3 class="text-lg font-semibold mb-2">November 6-8, 2025</h3>
+                <ul class="list-disc list-inside">
+                  <li><strong>UR-RAD 2025 Symposium</strong></li>
+                  <li>
+                    <strong>Location:</strong> Westin Arlington Gateway, Arlington,
+                    VA, USA
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mb-8 p-4 bg-accent-base/5 rounded-lg">
+          <a
+            href="https://easychair.org/my/conference?conf=fss25"
+            class="inline-flex items-center justify-center h-10 px-6 font-semibold rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-surface"
+          >
+            Submit Your Paper
+          </a>
+        </div>
+
+        <h3>Review Process</h3>
+        <p class="mb-4">
+          We follow a double-anonymous review process where both authors and
+          reviewers remain anonymous during the review phase.
+        </p>
+
+        <ContactCard />
+      </div>
+    </div>
+  </Section>
 </PageLayout>
