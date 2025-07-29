@@ -1,5 +1,16 @@
 ---
 import PageLayout from "@/layouts/Base.astro";
+import OrganizerCard from "@/components/OrganizerCard.astro";
+
+// Import organizer photos
+import ruchenWenPhoto from "@/assets/images/organizers/ruchen-wen.jpg";
+import davidPorfirioPhoto from "@/assets/images/organizers/david-porfirio.jpg";
+import saadEbeleidyPhoto from "@/assets/images/organizers/saad-elbeleidy.jpg";
+import lauraHiattPhoto from "@/assets/images/organizers/laura-hiatt.jpg";
+import rossMeadPhoto from "@/assets/images/organizers/ross-mead.jpg";
+import andrewSchoenPhoto from "@/assets/images/organizers/andrew-schoen.jpg";
+import willieWilsonPhoto from "@/assets/images/organizers/willie-wilson.jpg";
+import lauraStegnerPhoto from "@/assets/images/organizers/laura-stegner.jpg";
 
 const meta = {
   description:
@@ -21,46 +32,46 @@ const meta = {
     <div
       class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8"
     >
-      <div class="p-3 sm:p-4 border border-special-lighter rounded-lg">
-        <h3 class="text-base sm:text-lg font-semibold mb-1">Ruchen Wen</h3>
-        <p class="text-xs sm:text-sm text-accent-two">Colgate University</p>
-      </div>
-      <div class="p-3 sm:p-4 border border-special-lighter rounded-lg">
-        <h3 class="text-base sm:text-lg font-semibold mb-1">David Porfirio</h3>
-        <p class="text-xs sm:text-sm text-accent-two">
-          Naval Research Laboratory
-        </p>
-      </div>
-      <div class="p-3 sm:p-4 border border-special-lighter rounded-lg">
-        <h3 class="text-base sm:text-lg font-semibold mb-1">Saad Elbeleidy</h3>
-        <p class="text-xs sm:text-sm text-accent-two">Peerbots</p>
-      </div>
-      <div class="p-3 sm:p-4 border border-special-lighter rounded-lg">
-        <h3 class="text-base sm:text-lg font-semibold mb-1">Laura M. Hiatt</h3>
-        <p class="text-xs sm:text-sm text-accent-two">
-          Naval Research Laboratory
-        </p>
-      </div>
-      <div class="p-3 sm:p-4 border border-special-lighter rounded-lg">
-        <h3 class="text-base sm:text-lg font-semibold mb-1">Ross Mead</h3>
-        <p class="text-xs sm:text-sm text-accent-two">Semio</p>
-      </div>
-      <div class="p-3 sm:p-4 border border-special-lighter rounded-lg">
-        <h3 class="text-base sm:text-lg font-semibold mb-1">Andrew Schoen</h3>
-        <p class="text-xs sm:text-sm text-accent-two">Semio</p>
-      </div>
-      <div class="p-3 sm:p-4 border border-special-lighter rounded-lg">
-        <h3 class="text-base sm:text-lg font-semibold mb-1">Willie Wilson</h3>
-        <p class="text-xs sm:text-sm text-accent-two">
-          Franklin & Marshall College
-        </p>
-      </div>
-      <div class="p-3 sm:p-4 border border-special-lighter rounded-lg">
-        <h3 class="text-base sm:text-lg font-semibold mb-1">Laura Stegner</h3>
-        <p class="text-xs sm:text-sm text-accent-two">
-          George Washington University
-        </p>
-      </div>
+      <OrganizerCard
+        photo={ruchenWenPhoto}
+        name="Ruchen Wen"
+        affiliation="Colgate University"
+      />
+      <OrganizerCard
+        photo={davidPorfirioPhoto}
+        name="David Porfirio"
+        affiliation="George Mason University"
+      />
+      <OrganizerCard
+        photo={saadEbeleidyPhoto}
+        name="Saad Elbeleidy"
+        affiliation="Peerbots"
+      />
+      <OrganizerCard
+        photo={lauraHiattPhoto}
+        name="Laura M. Hiatt"
+        affiliation="Naval Research Laboratory"
+      />
+      <OrganizerCard
+        photo={rossMeadPhoto}
+        name="Ross Mead"
+        affiliation="Semio"
+      />
+      <OrganizerCard
+        photo={andrewSchoenPhoto}
+        name="Andrew Schoen"
+        affiliation="Semio"
+      />
+      <OrganizerCard
+        photo={willieWilsonPhoto}
+        name="Willie Wilson"
+        affiliation="Franklin & Marshall College"
+      />
+      <OrganizerCard
+        photo={lauraStegnerPhoto}
+        name="Laura Stegner"
+        affiliation="George Washington University"
+      />
     </div>
 
     <h2>Previous Organizing Committees</h2>
@@ -69,7 +80,7 @@ const meta = {
       who share a vision for advancing robot application development.
     </p>
 
-    <div class="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2">
+    <div class="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 mb-8">
       <div class="p-3 sm:p-4 border border-special-lighter rounded-lg">
         <h3 class="text-base sm:text-lg font-semibold mb-3">UR-RAD 2024</h3>
         <p class="text-xs sm:text-sm text-accent-two">
@@ -85,35 +96,6 @@ const meta = {
           VA, USA
         </p>
       </div>
-    </div>
-
-    <h2>Steering Committee</h2>
-    <p class="mb-4">
-      The UR-RAD symposium series is guided by a steering committee of experts
-      in robotics, AI, and related fields who provide strategic direction and
-      ensure continuity across symposium editions.
-    </p>
-
-    <div class="p-3 sm:p-4 bg-special-lighter rounded-lg mb-8">
-      <h3 class="text-base sm:text-lg font-semibold mb-3">Prior Events</h3>
-      <p class="text-xs sm:text-sm mb-2">
-        This is the 3rd iteration of UR-RAD at the AAAI Fall Symposium Series.
-        Prior iterations of UR-RAD can be found below:
-      </p>
-      <ul class="list-disc list-inside text-xs sm:text-sm">
-        <li>
-          <a
-            href="https://sites.google.com/view/aaai-ur-rad-24-symposium"
-            class="citrus-link">UR-RAD 2024</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://sites.google.com/view/aaai-ur-rad-23-symposium"
-            class="citrus-link">UR-RAD 2023</a
-          >
-        </li>
-      </ul>
     </div>
 
     <h2>Get Involved</h2>

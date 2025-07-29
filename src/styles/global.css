@@ -91,7 +91,7 @@
 /* Custom component classes */
 @layer components {
   .citrus-link {
-    @apply no-underline;
+    @apply no-underline text-link;
 
     &:hover {
       @apply underline underline-offset-2;

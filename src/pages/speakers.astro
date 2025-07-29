@@ -1,5 +1,11 @@
 ---
 import PageLayout from "@/layouts/Base.astro";
+import SpeakerCard from "@/components/SpeakerCard.astro";
+
+// Import speaker photos
+import cindyBethelPhoto from "@/assets/images/speakers/cindy-bethel.jpg";
+import jeremyMarvelPhoto from "@/assets/images/speakers/jeremy-marvel.jpg";
+import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
 
 const meta = {
   description:
@@ -16,14 +22,35 @@ const meta = {
       will be updated as speakers are confirmed.
     </p>
 
-    <div class="grid gap-4 sm:gap-8 grid-cols-1 lg:grid-cols-2">
-      <!-- Speaker entries will be added here as they are confirmed -->
-      <div class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg">
+    <div
+      class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8"
+    >
+      <SpeakerCard
+        photo={cindyBethelPhoto}
+        name="Cindy Bethel"
+        title="Program Director"
+        affiliation="National Science Foundation & Mississippi State University"
+      />
+      <SpeakerCard
+        photo={jeremyMarvelPhoto}
+        name="Jeremy Marvel"
+        title="Computer Scientist"
+        affiliation="National Institute of Standards and Technology"
+      />
+      <SpeakerCard
+        photo={zhiTanPhoto}
+        name="Zhi Tan"
+        title="Assistant Professor"
+        affiliation="Northeastern University, Khoury College of Computer Sciences"
+      />
+      <div
+        class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg flex flex-col justify-center"
+      >
         <h3 class="text-lg sm:text-xl font-semibold mb-2">
-          Speakers to be announced
+          Additional Speaker
         </h3>
         <p class="text-sm sm:text-base text-accent-two">
-          Stay tuned for updates!
+          To be announced soon!
         </p>
       </div>
     </div>
