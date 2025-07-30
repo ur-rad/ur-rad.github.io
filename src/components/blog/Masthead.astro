@@ -71,6 +71,49 @@ const postSeries = content.data.seriesId
 	</h1>
 </div>
 
+{/* Authors */}
+<div class="mx-2 mt-4 mb-2">
+	{
+		content.data.authors?.length ? (
+			<div class="flex flex-wrap items-center gap-2">
+				<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-5 w-5 text-accent-base" focusable="false" name="hugeicons:user-multiple" />
+				<div class="flex flex-wrap gap-x-2 gap-y-1 text-sm">
+					{content.data.authors.map((author, index) => (
+						<span class="text-text">
+							{author.name}
+							{author.affiliationIndices?.length > 0 && (
+								<sup class="text-xs text-accent-base">
+									{author.affiliationIndices.join('')}
+								</sup>
+							)}
+							{index < content.data.authors.length - 1 && <span class="text-lighter">,</span>}
+						</span>
+					))}
+				</div>
+			</div>
+		) : (
+			<div class="flex items-center gap-2">
+				<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-5 w-5 text-lightest" focusable="false" name="hugeicons:user-multiple" />
+				<span class="text-sm text-lightest">No authors listed</span>
+			</div>
+		)
+	}
+
+	{/* Affiliations */}
+	{
+		content.data.affiliations?.length ? (
+			<div class="mt-2 text-sm text-lighter">
+				{content.data.affiliations.map((affiliation, index) => (
+					<div class="flex items-start gap-1">
+						<sup class="text-xs text-accent-base mt-0.5">{index}</sup>
+						<span>{affiliation}</span>
+					</div>
+				))}
+			</div>
+		) : null
+	}
+</div>
+
 <div class="flex flex-wrap items-center text-lighter text-sm mt-[1.0625rem] mx-2 mb-2">
 	<span class="flex items-center h-[1.75rem]">
 		<Icon aria-hidden="true" class="flex items-center h-4 w-4 me-1" focusable="false" name="hugeicons:calendar-03" />
