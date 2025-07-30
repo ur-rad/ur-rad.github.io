@@ -35,11 +35,17 @@ jobs:
         if: github.event.action != 'closed'
         run: npm install
 
+      - name: Debug PR Preview Path
+        if: github.event.action != 'closed'
+        run: echo "PR_PREVIEW_PATH will be set to:/pr-preview/pr-${{ github.event.number }}/"
+
       - name: Build site
         if: github.event.action != 'closed'
         env:
           PR_PREVIEW_PATH: /pr-preview/pr-${{ github.event.number }}/
-        run: npm run build
+        run: |
+          echo "Building with PR_PREVIEW_PATH: $PR_PREVIEW_PATH"
+          npm run build
 
       - name: Deploy PR Preview
         uses: rossjrw/pr-preview-action@v1
