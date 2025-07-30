@@ -117,6 +117,9 @@ export default defineConfig({
   site: "https://ur-rad.github.io/",
   // Add dynamic base path for PR previews
   base: process.env.PR_PREVIEW_PATH || "/",
+  redirects: {
+    "/fss_2025/": "/",
+  },
   vite: {
     build: {
       sourcemap: true, // Source maps generation
