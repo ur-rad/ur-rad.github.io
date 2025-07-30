@@ -8,7 +8,7 @@ authors:
     affiliationIndices: [0]
 affiliations:
  - "Johns Hopkins University"
-tags: []
+tags: ["large-language-models", "robot-programming", "code-generation", "prompt-engineering", "chatgpt", "machine-learning", "end-user-development", "error-analysis"]
 publishDate: "2023-10-26T14:00:00Z"
 draft: false
 pdfUrl: "https://drive.google.com/file/d/11jpPuz_d4JdqNHEFkN3z1--b3JuL-5M7/view"

@@ -11,7 +11,7 @@ authors:
 affiliations:
   - "Saint Vincent College"
   - "Grove City College"
-tags: []
+tags: ["multi-agent-systems", "real-time-systems", "latency", "distributed-systems", "communication-delays", "pomdp", "autonomous-systems", "coordination", "video-games", "self-driving-vehicles"]
 publishDate: "2023-10-25T11:00:00Z"
 draft: false
 pdfUrl: "https://drive.google.com/file/d/1MZVsWrepiq9b8RScGHK-6y3UycSnx5Jy/view"

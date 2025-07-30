@@ -13,7 +13,7 @@ authors:
 affiliations:
   - "University of Wisconsin–Madison"
   - "U.S. Naval Research Laboratory"
-tags: []
+tags: ["end-user-development", "caregiving", "service-robots", "assisted-living", "human-robot-interaction", "privacy", "autonomous-systems", "multi-stakeholder", "trigger-action-programming"]
 publishDate: "2023-10-25T16:00:00Z"
 draft: false
 pdfUrl: "https://drive.google.com/file/d/1CTx3HAOKUHn3wIZh21rVkoFrAfcxUPCP/view"
