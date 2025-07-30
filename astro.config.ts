@@ -115,6 +115,8 @@ export default defineConfig({
   prefetch: true,
   // ! Please remember to replace the following site property with your own domain
   site: "https://ur-rad.github.io/",
+  // Add dynamic base path for PR previews
+  base: process.env.PR_PREVIEW_PATH || "/",
   vite: {
     build: {
       sourcemap: true, // Source maps generation
