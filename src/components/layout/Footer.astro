@@ -1,5 +1,6 @@
 ---
 import { menuLinks, siteConfig } from "@/site.config";
+import { url } from "@/utils/url";
 
 const year = new Date().getFullYear();
 
@@ -25,7 +26,7 @@ const shortMenuLinks = menuLinks.map((link) => ({
       shortMenuLinks.map((link) => (
         <a
           class="underline-offset-2 hover:text-accent hover:underline text-xs sm:text-sm whitespace-nowrap"
-          href={link.path}
+          href={url(link.path)}
         >
           {link.title}
         </a>

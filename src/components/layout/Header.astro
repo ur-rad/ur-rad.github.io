@@ -3,6 +3,7 @@ import Search from "@/components/Search.astro";
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import { siteConfig, menuLinks } from "@/site.config";
 import { Icon } from "astro-icon/components";
+import { homeUrl, url } from "@/utils/url";
 ---
 
 <header
@@ -56,7 +57,7 @@ import { Icon } from "astro-icon/components";
         aria-label={siteConfig.title}
         aria-current={Astro.url.pathname === "/" ? "page" : false}
         class="group flex h-8 items-center hover:filter-none sm:relative"
-        href="/"
+        href={homeUrl()}
       >
         <!-- Logo -->
         <!--
@@ -70,7 +71,7 @@ import { Icon } from "astro-icon/components";
           <svg
             class="inline-block size-8 fill-current text-accent-base dark:text-accent-two drop-shadow-[0px_2.5px_2.5px_rgba(0,0,0,0.15)]"
           >
-            <use href="/brand.svg#urrad"></use>
+            <use href={url("brand.svg#urrad")}></use>
           </svg>
         </div>
 
@@ -116,7 +117,7 @@ import { Icon } from "astro-icon/components";
               aria-current={Astro.url.pathname === link.path ? "page" : false}
               class="px-1 sm:px-2 py-1 rounded underline-offset-2 hover:text-accent-base aria-[current=page]:text-foreground aria-[current=page]:font-semibold whitespace-nowrap text-xs sm:text-sm leading-tight"
               data-astro-prefetch
-              href={link.path}
+              href={url(link.path)}
             >
               {link.title}
             </a>
@@ -275,7 +276,7 @@ import { Icon } from "astro-icon/components";
             aria-current={Astro.url.pathname === link.path ? "page" : false}
             class="px-4 py-2 rounded-lg underline-offset-2 hover:text-accent-base hover:bg-accent-base/10 aria-[current=page]:text-foreground aria-[current=page]:font-semibold transition-colors"
             data-astro-prefetch
-            href={link.path}
+            href={url(link.path)}
           >
             {link.title}
           </a>

@@ -3,6 +3,7 @@ import PageLayout from "@/layouts/Base.astro";
 import SpeakerCard from "@/components/SpeakerCard.astro";
 import Section from "@/components/Section.astro";
 import ContactCard from "@/components/ContactCard.astro";
+import { url } from "@/utils/url";
 
 // Import speaker photos
 import cindyBethelPhoto from "@/assets/images/speakers/cindy-bethel.jpg";
@@ -92,13 +93,13 @@ import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
         class="flex flex-col sm:flex-row justify-center gap-4 sm:space-x-4 mt-8 px-4"
       >
         <a
-          href="/call-for-papers/"
+          href={url("call-for-papers/")}
           class="relative flex items-center justify-center h-10 px-4 sm:px-6 rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two"
         >
           <span class="text-bg font-semibold">Call for Papers</span>
         </a>
         <a
-          href="/speakers/"
+          href={url("speakers/")}
           class="relative flex items-center justify-center h-10 px-4 sm:px-6 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest"
         >
           <span
@@ -147,7 +148,7 @@ import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
 
       <div class="text-center">
         <a
-          href="/speakers/"
+          href={url("speakers/")}
           class="inline-flex items-center justify-center h-10 px-6 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest transition-all"
         >
           <span
@@ -206,7 +207,7 @@ import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
             Submit Your Paper
           </a>
           <a
-            href="/call-for-papers/"
+            href={url("call-for-papers/")}
             class="inline-flex items-center justify-center h-12 px-6 sm:px-8 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest transition-all"
           >
             <span
