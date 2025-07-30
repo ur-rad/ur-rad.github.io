@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <title>UR-RAD 2025</title>
+        <link rel="stylesheet" href="style.css">
+        <!--link rel="stylesheet" href="css/pygment_trac.css"-->
+        <meta name="viewport" content="width=device-width">
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script>
+            function toSchedule() {
+                document.getElementById("home_content").style.display="none";
+                document.getElementById("schedule_content").style.display="block";
+            }
+            function toHome() {
+                document.getElementById("schedule_content").style.display="none";
+                document.getElementById("home_content").style.display="block";
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="banner-left">
+                <h2>UR-RAD Symposium</h2>
+                <h4>Unifying Representations for Robot Application Development</h4>
+            </div>
+            <div class="banner-right">
+                <button class="stylish-blue-button" onclick="toHome()">Home</button>
+                <button class="stylish-blue-button" onclick="toSchedule()">Schedule</button>
+                <a href="https://aaai.org/conference/fall-symposia/fss25/"><button class="stylish-blue-button" >AAAI Website</button></a>
+            </div>
+        </div>
+        <hr/>
+        <div class="subheader">
+            <h1><b>UR-RAD</b>2025</h1>
+            <h4>The 3rd AAAI Fall Symposium on Unifying Representations for Robot Application Development</h4>
+            <h4>November 6-8, 2025 | Westin Gateway Hotel | Arlington, VA, USA</h4>
+        </div>
+        <div class="wrapper">
+            <header>
+                <div class="infobox">
+                    <h3>IMPORTANT DATES</3>
+                    <h4>Paper Submission</h4>
+                    <p>There are two submission rounds.</p>
+                    <p><b>Round 1, <i>preferred</i></b>:</br>
+                    <i>Submission:</i> Aug. 7, 2025</br>
+                    <i>Camera Ready:</i> Aug. 29, 2025
+                    </p>
+
+                    <p>Authors who want to be archived in the AAAI proceedings <bemph>must</bemph> submit their papers in the preferred round. Non-archival submissions are also heavily encouraged to submit during this round.</p>
+                    <p>Preferred submissions will be given preference for inclusion in the symposium in the event that a large number of paper submissions are received. If deemed necessary during the review phase, preferred submissions will also have an opportunity to revise their work based on reviewer feedback.</p>
+
+                    <p style="margin-bottom: 0px;"><b>Round 2, <i>late</i></b>:</br>
+                    <i>Short Abstract:</i> Aug. 7, 2025</br>
+                    <i>Submission:</i> Aug. 22, 2025</br>
+                    <i>Camera Ready:</i> Sept. 5, 2025
+                    </p></br>
+
+                    <p>Submit your paper <a href="https://easychair.org/my/conference?conf=fss25">here</a>.</p>
+                </div>
+
+                <div class="infobox">
+                    <h3>REGISTRATION</h3>
+                    <p style="margin-bottom: 0px;">See the <a href="https://aaai.org/conference/fall-symposia/fss25/">AAAI Fall Symposium Series website</a> for registration dates and details.</p>
+                </div>
+
+                <div class="infobox">
+                    <h3>DATE AND LOCATION</h3>
+                    <p style="margin-bottom: 0px;">November 6-8, 2025</br>Westin Arlington Gateway</br>Arlington, VA, USA</p>
+                </div>
+
+            </header>
+            <section id="home_content">
+                <div class="row">
+                    <div class="column_right">
+                        <text id="about">
+                            <h3>ABOUT THE SYMPOSIUM</h3>
+                            <p>Behind any robot task or interaction is a representation that should (a) enable sufficient contextualization; (b) support any existing predefined, learned, and/or reusable skills onboard the robot; (c) be verifiable at design time and behave consistently at run-time; and (d) can be tested, executed, and modified for reuse on a variety of different robot morphologies. Capturing the end user’s desired task or interaction as a computational artifact (i.e., a representation) has long played a pivotal role in robotics.</p>
+
+                            <p>Many robotic subfields have traditionally employed a variety of different representational techniques, often borrowing from artificial intelligence (AI), to achieve their respective objectives. Examples include variants of LTL, logic, automated planning languages, languages for Belief-Desire-Intention, custom variations of these, and many more than we can list. The problem is that there is a lack of awareness of these representations in the research community, or how these representations can/should be applied.</p>
+
+                            <p>Last year, UR-RAD focused on representation trends in robotics and best practices for adopting existing and new representations. This year, based on community feedback, we are planning on elevating the interaction between junior and senior members of the community.</p>
+                        </text>
+
+                        <text id="cfp">
+                            <h3>CALL FOR PAPERS</h3>
+                            <p>Topics of interest include:</p>
+                            <ul>
+                                <li>Representational trends</li>
+                                <li>Representations for robot learning</li>
+                                <li>AI planning for robotics</li>
+                                <li>Formal methods in robotics</li>
+                                <li>Natural language as a representation</li>
+                                <li>Novel representations & novel representation uses</li>
+                                <li>Representations for user interfaces</li>
+                                <li>Robot end-user development</li>
+                                <li>Robot programming interfaces & paradigms</li>
+                                <li>Robot runtime/control environments</li>
+                                <li>Opportunities for standardization</li>
+                                <li>Frameworks (<i>e.g.</i>, ROS or middleware)</li>
+                                <li>Open-source & collaboration initiatives</li>
+                                <li>Identifying representation requirements</li>
+                            </ul>
+                            <p>We invite the following contributions, formatted using the <a href="https://aaai.org/authorkit25/">AAAI-25 author kit</a>:</p>
+
+                            <ul>
+                                <li><b>Full Papers (4-8 pages, archival OR non-archival):</b> for novel research, artifact submissions, or strong works in progress.</li>
+                                <li><b>Short Papers (2-4 pages, archival OR non-archival):</b> for positions, smaller artifacts, and early work in progress.</li>
+                                <li><b>Abstracts (1 page, non-archival only):</b> for sharing ideas.</li>
+                            </ul>
+
+                            <p>If you intend to submit a paper, please email us at <a href="mailto:urrad.symposium@gmail.com">urrad.symposium@gmail.com</a>. Use the subject line, “[UR-RAD] Intent to Submit”, and include the following in the body of the message: (1) a tentative title, (2) a tentative author list, and (3) tentative keywords. This step is optional, but will aid in our planning for reviewers. Note that at least one author from each paper will be expected to review 2-3 UR-RAD papers themselves.</p>
+
+                        </text>
+
+                        <text id="schedule">
+                            <h3>SCHEDULE</h3>
+                            <p>Coming soon.</p>
+                        </text>
+
+                        <text id="speakers">
+                            <h3>SPEAKERS</h3>
+                            <p>Coming soon.</p>
+                        </text>
+
+                        <text id="organizers">
+                            <h3>ORGANIZERS</h3>
+                            <p>Ruchen Wen (Colgate University)</br>
+                                David Porfirio (Naval Research Laboratory)</br>
+                                Saad Elbeleidy (Peerbots)</br>
+                                Laura M. Hiatt (Naval Research Laboratory)</br>
+                                Ross Mead (Semio)</br>
+                                Andrew Schoen (Semio)</br>
+                                Willie Wilson (Franklin & Marshall College)</br>
+                                Laura Stegner (George Washington University)</p>
+                        </text>
+
+                        <text id="priorevents">
+                            <h3>PRIOR EVENTS</h3>
+                            <p>This is the 3rd iteration of UR-RAD at the AAAI Fall Symposium Series. Prior iterations of UR-RAD can be found below.</br></br>
+                            <a href="https://sites.google.com/view/aaai-ur-rad-24-symposium">UR-RAD 2024</a><br/>
+                            <a href="https://sites.google.com/view/aaai-ur-rad-23-symposium">UR-RAD 2023</a></p>
+                        </text>
+
+                        <text id="contact">
+                            <h3>CONTACT</h3>
+                            <p>For any questions, please email <a href="mailto:urrad.symposium@gmail.com">urrad.symposium@gmail.com</a>.</p>
+                        </text>
+                    </div>
+                </div>
+            </section>
+            <section id="schedule_content" style="display: none;">
+                <div class="row">
+                    <div class="column_left">
+                        <h3>Schedule</h3>
+                        <p>To be added soon.</p>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <p style="font-size: 10px;">This page is modified version of <a href="https://github.com/GochoMugo/minimal-jekyll/tree/gh-pages">minimal-jekyll</a> (<a href="https://choosealicense.com/licenses/mit/">MIT licence</a>).</p>
+            </section>
+            <footer>
+            </footer>
+        </div>
+    </body>
+</html>
