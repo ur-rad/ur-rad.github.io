@@ -83,7 +83,7 @@ const postSeries = content.data.seriesId
 							{author.name}
 							{author.affiliationIndices?.length > 0 && (
 								<sup class="text-xs text-accent-base">
-									{author.affiliationIndices.join('')}
+									{author.affiliationIndices.map(i => i + 1).join('')}
 								</sup>
 							)}
 							{index < content.data.authors.length - 1 && <span class="text-lighter">,</span>}
@@ -105,7 +105,7 @@ const postSeries = content.data.seriesId
 			<div class="mt-2 text-sm text-lighter">
 				{content.data.affiliations.map((affiliation, index) => (
 					<div class="flex items-start gap-1">
-						<sup class="text-xs text-accent-base mt-0.5">{index}</sup>
+						<sup class="text-xs text-accent-base mt-0.5">{index + 1}</sup>
 						<span>{affiliation}</span>
 					</div>
 				))}
@@ -125,6 +125,22 @@ const postSeries = content.data.seriesId
 		{/* @ts-ignore:next-line. TODO: add reading time to collection schema? */}
 		{content.rendered?.metadata?.frontmatter?.readingTime ? `${content.rendered.metadata.frontmatter.readingTime}` : "Less than one minute read"}
 	</span>
+	{
+		content.data.pdfUrl && (
+			<Separator type="dot" />
+			<span class="flex items-center h-[1.75rem]">
+				<Icon aria-hidden="true" class="items-center inline-block h-4 w-4 me-1" focusable="false" name="solar:download-bold" />
+				<a
+					href={content.data.pdfUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-accent-base hover:text-accent-two transition-colors"
+				>
+					PDF
+				</a>
+			</span>
+		)
+	}
 	{
 		content.data.updatedDate && (
 			<Separator type="dot" />
@@ -151,12 +167,29 @@ const postSeries = content.data.seriesId
 	)
 }
 
-<p
-	class="prose max-w-none text-text mx-2"
-	data-pagefind-body
->
-	{content.data.description}
-</p>
+{/* Abstract */}
+{
+	content.data.abstract && (
+		<div class="mx-2 mt-4 mb-4">
+			<h2 class="text-lg font-semibold text-accent-base mb-3">Abstract</h2>
+			<p class="prose max-w-none text-text" data-pagefind-body>
+				{content.data.abstract}
+			</p>
+		</div>
+	)
+}
+
+{/* Description (fallback if no abstract) */}
+{
+	!content.data.abstract && content.data.description && (
+		<p
+			class="prose max-w-none text-text mx-2 mt-4"
+			data-pagefind-body
+		>
+			{content.data.description}
+		</p>
+	)
+}
 
 <div class="mt-4 flex flex-wrap items-center gap-2 mx-1">
 	{/* Tags */}

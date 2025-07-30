@@ -8,31 +8,43 @@
           "type": "string",
           "maxLength": 200
         },
-        "description": {
+        "abstract": {
           "type": "string"
         },
-        "coverImage": {
-          "type": "object",
-          "properties": {
-            "alt": {
-              "type": "string"
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "affiliationIndices": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
             },
-            "src": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "alt",
-            "src"
-          ],
-          "additionalProperties": false
+            "required": [
+              "name",
+              "affiliationIndices"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "affiliations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pdfUrl": {
+          "type": "string"
         },
         "draft": {
           "type": "boolean",
           "default": false
-        },
-        "ogImage": {
-          "type": "string"
         },
         "tags": {
           "type": "array",
@@ -64,6 +76,28 @@
             }
           ]
         },
+        "description": {
+          "type": "string"
+        },
+        "coverImage": {
+          "type": "object",
+          "properties": {
+            "alt": {
+              "type": "string"
+            },
+            "src": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "alt",
+            "src"
+          ],
+          "additionalProperties": false
+        },
+        "ogImage": {
+          "type": "string"
+        },
         "updatedDate": {
           "type": "string"
         },
@@ -79,7 +113,9 @@
       },
       "required": [
         "title",
-        "description",
+        "abstract",
+        "authors",
+        "affiliations",
         "publishDate"
       ],
       "additionalProperties": false
