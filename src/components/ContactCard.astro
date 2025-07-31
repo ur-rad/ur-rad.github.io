@@ -12,14 +12,18 @@ const {
 } = Astro.props;
 ---
 
-<div class:list={["p-3 sm:p-4 bg-accent-base/5 rounded-lg", className]}>
-  <div class="text-center">
+<div class={`p-3 sm:p-4 bg-accent-base/5 rounded-lg ${className || ""}`}>
+  <div class="text-center mb-3">
     <p>
       <strong>{message}</strong>
       <br />
-      Contact us at <a href={`mailto:${email}`} class="citrus-link">
+      Contact us at
+      <a href={`mailto:${email}`} class="citrus-link">
         {email}
       </a>
     </p>
+  </div>
+  <div>
+    <slot />
   </div>
 </div>

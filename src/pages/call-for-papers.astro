@@ -37,6 +37,19 @@ const meta = {
             Submissions open now • Preferred deadline: August 7, 2025
           </p>
         </div>
+
+        <div
+          class="p-4 bg-accent-base/5 rounded-lg border border-accent-one/20 mb-6"
+        >
+          <h3 class="text-lg font-semibold mb-2 text-accent-one">
+            Review Process
+          </h3>
+          <p class="mb-0">
+            We follow a double-anonymous review process where both authors and
+            reviewers remain anonymous during the review phase. Please anonymize
+            your work before submitting!
+          </p>
+        </div>
       </div>
     </div>
   </Section>
@@ -289,24 +302,45 @@ const meta = {
             </div>
           </div>
         </div>
-
-        <div class="text-center mb-8 p-4 bg-accent-base/5 rounded-lg">
-          <a
-            href="https://easychair.org/my/conference?conf=fss25"
-            class="inline-flex items-center justify-center h-10 px-6 font-semibold rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-surface"
-          >
-            Submit Your Paper
-          </a>
-        </div>
-
-        <h3>Review Process</h3>
-        <p class="mb-4">
-          We follow a double-anonymous review process where both authors and
-          reviewers remain anonymous during the review phase.
-        </p>
-
-        <ContactCard />
       </div>
     </div>
   </Section>
+
+  <Section
+    id="partnership-support"
+    title="Partnership & Participation Support"
+    subtitle="Sponsored support available for qualifying submissions"
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <div
+          class="p-4 sm:p-6 bg-gradient-to-r from-accent-two/10 to-accent-one/10 rounded-lg border border-special/20 text-center"
+        >
+          <p class="text-lg mb-4">
+            UR-RAD 2025 is partnering with the <strong>Quori Community</strong> to
+            provide participation support for qualifying submissions! Select contributors
+            with Quori-relevant research may be eligible for sponsored support to
+            attend the symposium in-person.
+          </p>
+          <a
+            href="/partners/"
+            class="inline-flex items-center justify-center h-10 px-6 font-semibold rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-two to-accent-one text-surface"
+          >
+            Learn More About Partnership Support
+          </a>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <div class="text-center mb-8 p-4 bg-accent-base/5 rounded-lg">
+    <a
+      href="https://easychair.org/my/conference?conf=fss25"
+      class="inline-flex items-center justify-center h-10 px-6 font-semibold rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-surface"
+    >
+      Submit Your Paper
+    </a>
+  </div>
+
+  <ContactCard />
 </PageLayout>
