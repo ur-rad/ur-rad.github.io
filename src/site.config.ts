@@ -34,19 +34,15 @@ export const menuLinks: { path: string; title: string }[] = [
     title: "Call for Papers",
   },
   {
-    path: "/speakers/",
-    title: "Speakers",
-  },
-  {
-    path: "/program/",
-    title: "Program",
-  },
-  {
-    path: "/organizers/",
-    title: "Organizers",
+    path: "/people/",
+    title: "People",
   },
   {
     path: "/partners/",
     title: "Partners",
+  },
+  {
+    path: "/program/",
+    title: "Program",
   },
 ];

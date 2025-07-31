@@ -15,7 +15,7 @@ import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
   <!-- Hero section -->
   <!-- Background blur -->
   <div
-    class="absolute top-0 left-1/2 lg:top-[-15%] -ml-[50vw] min-h-screen w-screen pointer-events-none blur-3xl opacity-50 overflow-x-hidden"
+    class="absolute top-0 left-1/2 md:top-[-15%] -ml-[50vw] min-h-screen w-screen pointer-events-none blur-3xl opacity-50 overflow-x-hidden"
   >
     <div
       class="absolute top-[10%] right-[-40%] w-[65%] h-full bg-gradient-to-b from-purple-300 via-blue-300 to-transparent rounded-full opacity-30 dark:opacity-10"
@@ -99,13 +99,13 @@ import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
           <span class="text-bg font-semibold">Call for Papers</span>
         </a>
         <a
-          href={url("speakers/")}
+          href={url("people/")}
           class="relative flex items-center justify-center h-10 px-4 sm:px-6 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest"
         >
           <span
             class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two"
           >
-            Speakers
+            People
           </span>
         </a>
       </div>
@@ -149,13 +149,13 @@ import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
 
       <div class="text-center">
         <a
-          href={url("speakers/")}
+          href={url("people/")}
           class="inline-flex items-center justify-center h-10 px-6 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest transition-all"
         >
           <span
             class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two"
           >
-            View All Speakers
+            View All People
           </span>
         </a>
       </div>
@@ -250,6 +250,58 @@ import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
           <li>Open-source & collaboration initiatives</li>
           <li>Identifying representation requirements</li>
         </ul>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Previous Symposia Section -->
+  <Section
+    id="previous-symposia"
+    title="Previous Symposia"
+    subtitle="Explore past UR-RAD symposiums and their contributions to the robotics community"
+    aria-label="Previous symposia"
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+        <!-- UR-RAD 2024 Card -->
+        <a
+          href="https://sites.google.com/view/aaai-ur-rad-24-symposium"
+          class="bg-accent-base/5 rounded-lg p-6 border border-accent-one/20 hover:border-accent-one/40 transition-colors hover:bg-accent-base/10 block"
+        >
+          <div class="text-center mb-4">
+            <h3 class="text-xl font-semibold text-accent-one mb-2">
+              UR-RAD 2024
+            </h3>
+            <div class="text-sm text-accent-two font-medium">2nd Symposium</div>
+          </div>
+          <div class="text-center">
+            <p class="text-sm">
+              Organized as part of the AAAI Fall Symposium series at Westin
+              Arlington Gateway, Arlington, VA, USA
+            </p>
+          </div>
+        </a>
+
+        <!-- UR-RAD 2023 Card -->
+        <a
+          href="https://sites.google.com/view/aaai-ur-rad-23-symposium"
+          class="bg-accent-base/5 rounded-lg p-6 border border-accent-two/20 hover:border-accent-two/40 transition-colors hover:bg-accent-base/10 block"
+        >
+          <div class="text-center mb-4">
+            <h3 class="text-xl font-semibold text-accent-two mb-2">
+              UR-RAD 2023
+            </h3>
+            <div class="text-sm text-accent-two font-medium">
+              Inaugural Symposium
+            </div>
+          </div>
+          <div class="text-center">
+            <p class="text-sm">
+              The inaugural symposium held at Westin Arlington Gateway,
+              Arlington, VA, USA
+            </p>
+          </div>
+        </a>
       </div>
     </div>
   </Section>
