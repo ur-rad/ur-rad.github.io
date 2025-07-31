@@ -3,6 +3,7 @@ import PageLayout from "@/layouts/Base.astro";
 import Section from "@/components/Section.astro";
 import { url } from "@/utils/url";
 import ContactCard from "@/components/ContactCard.astro";
+import quoriImage from "@/assets/images/partners/quori.png";
 
 const meta = {
   description:
@@ -26,11 +27,15 @@ const meta = {
     </p>
   </div>
 
-  <Section id="quori" title="Quori" aria-label="Quori">
+  <Section
+    id="quori"
+    title="Quori"
+    aria-label="Quori"
+    image={quoriImage}
+    className="bg-accent-base/5 rounded-lg border border-accent-one/20"
+  >
     <div class="max-w-4xl mx-auto">
-      <div
-        class="prose prose-citrus max-w-none px-4 pt-5 bg-accent-base/5 rounded-lg border border-accent-one/20"
-      >
+      <div class="prose prose-citrus max-w-none px-4">
         <p class="font-bold text-accent-two mb-3">What is Quori?</p>
         <p class="text-md mb-3">
           Quori is a not-for-profit open-source, modular, social robot platform
