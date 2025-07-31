@@ -17,6 +17,9 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
@@ -33,9 +36,11 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: rossjrw/pr-preview-action@v1
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          source-dir: ./dist/
-          preview-branch: gh-pages
-          action: deploy
+          path: ./dist/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
