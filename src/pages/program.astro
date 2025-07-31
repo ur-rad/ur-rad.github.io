@@ -1,0 +1,110 @@
+---
+import PageLayout from "@/layouts/Base.astro";
+import Section from "@/components/Section.astro";
+import ContactCard from "@/components/ContactCard.astro";
+
+const meta = {
+  description:
+    "Program - UR-RAD 2025 AAAI Fall Symposium on Unifying Representations for Robot Application Development",
+  title: "Program",
+};
+---
+
+<PageLayout meta={meta}>
+  <h1 class="title">Program</h1>
+
+  <Section id="event-details">
+    <div class="max-w-4xl mx-auto">
+      <div class="p-4 sm:p-6 bg-accent-base/5 rounded-lg">
+        <h2 class="mt-0 mb-4 text-lg sm:text-xl">Event Details</h2>
+        <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
+          <div>
+            <p><strong>Date:</strong> November 6-8, 2025</p>
+            <p>
+              <strong>Location:</strong> Westin Arlington Gateway, Arlington, VA,
+              USA
+            </p>
+          </div>
+          <div>
+            <p><strong>Event:</strong> AAAI Fall Symposium</p>
+            <p><strong>Format:</strong> In-person</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    id="symposium-format"
+    title="Symposium Format"
+    subtitle="The symposium will be made up of paper presentations, keynote talks, panels, and breakout discussions."
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2">
+        <div class="p-3 sm:p-4 border border-special-lighter rounded-lg">
+          <h3 class="text-base sm:text-lg font-semibold mb-2">
+            Paper Presentations
+          </h3>
+          <p class="text-xs sm:text-sm">
+            Accepted papers will be presented during dedicated sessions,
+            allowing authors to share their research and engage with the
+            community.
+          </p>
+        </div>
+
+        <div class="p-3 sm:p-4 border border-special-lighter rounded-lg">
+          <h3 class="text-base sm:text-lg font-semibold mb-2">Keynote Talks</h3>
+          <p class="text-xs sm:text-sm">
+            Distinguished speakers from academia and industry will present their
+            insights on robot application development.
+          </p>
+        </div>
+
+        <div class="p-3 sm:p-4 border border-special-lighter rounded-lg">
+          <h3 class="text-base sm:text-lg font-semibold mb-2">
+            Panel Discussions
+          </h3>
+          <p class="text-xs sm:text-sm">
+            Interactive panels will explore key challenges and opportunities in
+            unifying representations for robotics.
+          </p>
+        </div>
+
+        <div class="p-3 sm:p-4 border border-special-lighter rounded-lg">
+          <h3 class="text-base sm:text-lg font-semibold mb-2">
+            Breakout Sessions
+          </h3>
+          <p class="text-xs sm:text-sm">
+            Focused discussions on specific topics will encourage collaboration
+            and networking among participants.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="schedule" title="Schedule">
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none text-center italic">
+        Detailed schedule will be published closer to the symposium date.
+      </div>
+    </div>
+  </Section>
+
+  <Section id="registration" title="Registration">
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none">
+        <p>
+          Registration will be handled through the main <a
+            href="https://aaai.org/conference/fall-symposia/fss25/"
+            class="citrus-link">AAAI Fall Symposium Series website</a
+          >. Please check the AAAI website for registration dates and details.
+        </p>
+
+        <div class="mt-8">
+          <ContactCard message="Questions about the program?" />
+        </div>
+      </div>
+    </div>
+  </Section>
+</PageLayout>

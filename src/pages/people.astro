@@ -1,0 +1,221 @@
+---
+import PageLayout from "@/layouts/Base.astro";
+import SpeakerCard from "@/components/SpeakerCard.astro";
+import OrganizerCard from "@/components/OrganizerCard.astro";
+import Section from "@/components/Section.astro";
+import ContactCard from "@/components/ContactCard.astro";
+
+// Import speaker photos
+import cindyBethelPhoto from "@/assets/images/speakers/cindy-bethel.jpg";
+import jeremyMarvelPhoto from "@/assets/images/speakers/jeremy-marvel.jpg";
+import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
+
+// Import organizer photos
+import ruchenWenPhoto from "@/assets/images/organizers/ruchen-wen.jpg";
+import davidPorfirioPhoto from "@/assets/images/organizers/david-porfirio.jpg";
+import saadEbeleidyPhoto from "@/assets/images/organizers/saad-elbeleidy.jpg";
+import lauraHiattPhoto from "@/assets/images/organizers/laura-hiatt.jpg";
+import rossMeadPhoto from "@/assets/images/organizers/ross-mead.jpg";
+import andrewSchoenPhoto from "@/assets/images/organizers/andrew-schoen.jpg";
+import willieWilsonPhoto from "@/assets/images/organizers/willie-wilson.jpg";
+import lauraStegnerPhoto from "@/assets/images/organizers/laura-stegner.jpg";
+
+const meta = {
+  description:
+    "People - UR-RAD 2025 AAAI Fall Symposium on Unifying Representations for Robot Application Development",
+  title: "People",
+};
+---
+
+<PageLayout meta={meta}>
+  <h1 class="title mb-6">People</h1>
+
+  <Section id="about">
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <p class="text-lg mb-8">
+          Meet the keynote speakers and organizing committee bringing together
+          the UR-RAD 2025 symposium on unifying representations for robot
+          application development.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Speakers Section -->
+  <Section
+    id="keynote-speakers"
+    title="Keynote Speakers"
+    subtitle="We are excited to announce our keynote speakers for UR-RAD 2025"
+  >
+    <div class="max-w-6xl mx-auto">
+      <div
+        class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8"
+      >
+        <SpeakerCard
+          photo={cindyBethelPhoto}
+          name="Cindy Bethel"
+          title="Program Director"
+          affiliation="National Science Foundation & Mississippi State University"
+        />
+        <SpeakerCard
+          photo={jeremyMarvelPhoto}
+          name="Jeremy Marvel"
+          title="Computer Scientist"
+          affiliation="National Institute of Standards and Technology"
+        />
+        <SpeakerCard
+          photo={zhiTanPhoto}
+          name="Zhi Tan"
+          title="Assistant Professor"
+          affiliation="Northeastern University, Khoury College of Computer Sciences"
+        />
+        <div
+          class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg flex flex-col justify-center"
+        >
+          <h3 class="text-lg sm:text-xl font-semibold mb-2">
+            Additional Speaker
+          </h3>
+          <p class="text-sm sm:text-base text-accent-two">
+            To be announced soon!
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    id="previous-speakers"
+    title="Previous UR-RAD Speakers"
+    subtitle="Distinguished speakers from past symposiums in the robotics and AI communities"
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <h3 class="text-base sm:text-lg font-semibold mt-6 mb-3">
+          UR-RAD 2024 Speakers
+        </h3>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Cynthia Matuszek, University of Maryland, Baltimore County</li>
+          <li>Siddharth Srivastava, Arizona State University</li>
+          <li>Jamie Macbeth, Smith College</li>
+          <li>Brittany Johnson-Matthews, George Mason University</li>
+        </ul>
+
+        <h3 class="text-base sm:text-lg font-semibold mt-6 mb-3">
+          UR-RAD 2023 Speakers
+        </h3>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Dana Nau</li>
+          <li>Matthias Scheutz</li>
+          <li>Stefanie Tellex</li>
+          <li>Chien-Ming Huang</li>
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Mentors Section -->
+  <Section
+    id="mentors"
+    title="Mentors"
+    subtitle="Experienced researchers providing guidance and mentorship for the symposium"
+  >
+    <div class="max-w-6xl mx-auto">
+      <div
+        class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8"
+      >
+        <div class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg">
+          <h3 class="text-lg sm:text-xl font-semibold mb-2">
+            Cynthia Matuszek
+          </h3>
+          <p class="text-sm sm:text-base text-accent-two">
+            University of Maryland, Baltimore County
+          </p>
+        </div>
+        <div class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg">
+          <h3 class="text-lg sm:text-xl font-semibold mb-2">
+            Matthias Scheutz
+          </h3>
+          <p class="text-sm sm:text-base text-accent-two">Tufts University</p>
+        </div>
+        <div class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg">
+          <h3 class="text-lg sm:text-xl font-semibold mb-2">Nick DePalma</h3>
+          <p class="text-sm sm:text-base text-accent-two">Stack AV</p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Organizers Section -->
+  <Section
+    id="organizing-committee"
+    title="Organizing Committee"
+    subtitle="Meet the researchers organizing UR-RAD 2025"
+  >
+    <div class="max-w-6xl mx-auto">
+      <div
+        class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8"
+      >
+        <OrganizerCard
+          photo={ruchenWenPhoto}
+          name="Ruchen Wen"
+          affiliation="Colgate University"
+        />
+        <OrganizerCard
+          photo={davidPorfirioPhoto}
+          name="David Porfirio"
+          affiliation="George Mason University"
+        />
+        <OrganizerCard
+          photo={saadEbeleidyPhoto}
+          name="Saad Elbeleidy"
+          affiliation="Peerbots"
+        />
+        <OrganizerCard
+          photo={lauraHiattPhoto}
+          name="Laura M. Hiatt"
+          affiliation="Naval Research Laboratory"
+        />
+        <OrganizerCard
+          photo={rossMeadPhoto}
+          name="Ross Mead"
+          affiliation="Semio"
+        />
+        <OrganizerCard
+          photo={andrewSchoenPhoto}
+          name="Andrew Schoen"
+          affiliation="Semio"
+        />
+        <OrganizerCard
+          photo={willieWilsonPhoto}
+          name="Willie Wilson"
+          affiliation="Franklin & Marshall College"
+        />
+        <OrganizerCard
+          photo={lauraStegnerPhoto}
+          name="Laura Stegner"
+          affiliation="George Washington University"
+        />
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    id="get-involved"
+    title="Get Involved"
+    subtitle="Interested in contributing to the organization of future UR-RAD symposiums?"
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <p class="mb-4">
+          We welcome volunteers and collaborators who share our vision for
+          advancing robot application development.
+        </p>
+
+        <div class="mt-8">
+          <ContactCard message="Contact the organizing committee" />
+        </div>
+      </div>
+    </div>
+  </Section>
+</PageLayout>

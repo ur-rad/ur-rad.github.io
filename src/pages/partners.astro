@@ -1,0 +1,216 @@
+---
+import PageLayout from "@/layouts/Base.astro";
+import Section from "@/components/Section.astro";
+import { url } from "@/utils/url";
+import ContactCard from "@/components/ContactCard.astro";
+
+const meta = {
+  description:
+    "Partners - UR-RAD 2025 AAAI Fall Symposium on Unifying Representations for Robot Application Development",
+  title: "Partners",
+};
+---
+
+<PageLayout meta={meta}>
+  <h1 class="title mb-6">Partners</h1>
+
+  <div
+    class="text-center mb-8 p-4 sm:p-6 bg-gradient-to-r from-accent-one/10 to-accent-two/10 rounded-lg border border-accent-one/20"
+  >
+    <h2 class="text-xl sm:text-2xl font-semibold">
+      The UR-RAD 2025 symposium is partnering with the Quori Community!
+    </h2>
+    <p>
+      Read below for how you may be eligible for participation support to attend
+      UR-RAD 2025 in-person.
+    </p>
+  </div>
+
+  <Section id="quori-community" title="About" aria-label="About">
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <p class="font-bold text-accent-two mb-3">
+          Who is the Quori Community?
+        </p>
+        <p class="text-md mb-3">
+          Quori is a not-for-profit open-source, modular, social robot platform
+          for the human-robot interaction (HRI) research community.
+        </p>
+        <p class="text-md mb-3">
+          Quori has been in development for 10 years now, with the first 10
+          Quori 1.0 units distributed to 10 collaborative research teams (35
+          labs across 11 universities) across the United States. Quori 1.0 was
+          deployed in a variety of real-world settings, including the
+          Philadelphia Museum of Art, where it autonomously interacted with
+          183,000+ museum visitors in a 6-month live exhibit.
+        </p>
+        <p class="text-md mb-3">
+          We recently received additional funding for the development of Quori
+          2.0, an enhanced redesign to serve as a general-purpose, open platform
+          for the HRI research community. This effort includes the manufacturing
+          and distribution of 50 Quori 2.0 robots to sites around the world.
+          Quori 2.0 is being developed by collaborators from Oregon State
+          University, the University of Pennsylvania, Semio Community, OLogic,
+          and IK Studio.
+        </p>
+        <div class="flex justify-center py-2">
+          <div class="w-[560px] h-[315px] rounded-lg overflow-clip">
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/5ccrm4U4AvA?si=Xrf1DsPzop6IgbPx"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+        <p class="font-bold text-accent-two mt-4 mb-3">
+          Why Partner with UR-RAD?
+        </p>
+        <p class="text-md mb-3">
+          At UR-RAD 2025, we are looking for feedback from the HRI community to
+          help make the Quori platform even better!
+        </p><p class="text-md mb-3">
+          We seek to gather the existing US-based Quori 1.0 community, and
+          expand it globally in a Quori 2.0 community that includes HRI
+          researchers and practitioners from academia, industry, and the public
+          sector.
+        </p><p class="text-md mb-3">
+          The new Quori website/platform is currently in development, and
+          conversations at the UR-RAD symposium will help guide its contents.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="participant-support" title="Participant Suport">
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <p class="mb-4">
+          <span class="text-bold text-accent-one"
+            >Select UR-RAD contributions relevant to the Quori community will be
+            eligible for sponsored participation support to attend UR-RAD 2025
+            in-person!</span
+          >
+          Specifically, Quori-related papers should be clearly relevant to one or
+          more of the topics below <span class="underline">and</span> must include
+          at <span class="italic">least</span> a section that details the technical
+          applicability of the contribution to open-source social robot platforms,
+          including, but not limited to, Quori. If interested and relevant, please
+          email us at urrad.symposium@gmail.com after the paper is submitted, simply
+          stating that you would like for your contribution (paper title and ID)
+          to be considered for Quori travel support.
+        </p>
+
+        <p class="mb-3">
+          To be considered for an award, submissions should be submitted by
+          either of the two submission deadlines (see <a
+            href={url("call-for-papers/")}
+            class="citrus-link">Call For Papers</a
+          >).
+        </p>
+
+        <p class="mb-3">
+          Of particular relevance to the Quori community, UR-RAD emphasizes how
+          human-robot interactions can be captured as computational artifacts,
+          or representations. For social robots like Quori, this includes social
+          behavior representations, multi-layered authoring architectures,
+          end-user programming tools, and more. Specifically, the Quori
+          community is interested in topics and representations of speech-based
+          behaviors including linguistics (speech recognition, text-to-speech,
+          syntax of language, etc.) and vocalics (volume, pitch, rate, etc.), as
+          well as body language-based behaviors, including proxemics (social
+          spacing), haptics (touch), oculesics (eye gaze), kinesics (face, hand,
+          and body gestures), deixis (spatial referencing), and chronemics
+          (turn-taking and back-channeling). Thinking critically about these
+          representations is essential to shaping Quori and the next generation
+          of social robot platforms.
+        </p>
+        <p class="mb-8">
+          Many of UR-RAD’s topics of interest are deeply aligned with the Quori
+          community. We welcome paper submissions (long, short, or
+          abstract-only) on Quori-related topics including, but not limited to:
+        </p>
+
+        <ul
+          class="list-disc list-outside space-y-2 sm:grid grid-cols-1 gap-x-4 lg:gap-x-8"
+        >
+          <li>
+            <span class="font-bold text-accent-one"
+              >Representations for social behavior:</span
+            > How might human-robot interactions be represented for open platforms
+            like the Quori robot?
+          </li>
+          <li>
+            <span class="font-bold text-accent-one"
+              >Surveys or reflective analyses:</span
+            > What trends or insights from past social robotics work (including the
+            social behaviors listed above) might shape the design of hardware, software,
+            aesthetic, character, behaviors, etc.?
+          </li>
+          <li>
+            <span class="font-bold text-accent-one"
+              >Standardized representations:</span
+            > What formalizations could support reusability and generalization between
+            deployments of different models of social robots?
+          </li>
+          <li>
+            <span class="font-bold text-accent-one">Stakeholders:</span> Who are
+            the intended users and developers of social robots like Quori, and how
+            do their needs shape design of representations for application development?
+          </li>
+          <li>
+            <span class="font-bold text-accent-one"
+              >End-user development and learning:</span
+            > In the advent of technology like large language models (LLMs) and foundation
+            models, what robot behaviors should be manually authored vs. autonomously
+            learned? What are the implications of these decisions for how various
+            types of users and developers interact with them?
+          </li>
+          <li>
+            <span class="font-bold text-accent-one">Physical form factor:</span>
+            How does a robot's physical embodiment shape or constrain underlying
+            representations?
+          </li>
+          <li>
+            <span class="font-bold text-accent-one"
+              >Software infrastructure:</span
+            > What existing and novel software systems can support robots like Quori
+            for autonomous or teleoperated human-robot interactions?
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <Section id="details" title="Details">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose prose-citrus max-w-none px-4">
+          <div class="mb-4">
+            <ContactCard
+              message="If you intend to submit a paper related to Quori"
+            >
+              <div class="text-center text-sm">
+                <p class="mb-3">
+                  Use the subject line, <span class="font-bold text-accent-one"
+                    >[UR-RAD] [Quori] Intent to Submit</span
+                  >,<br /> and include the following in the body of the message:
+                </p>
+                <ul class="list-disc list-outside inline-block text-left">
+                  <li>Tentative title</li>
+                  <li>Tentative author list</li>
+                  <li>Tentative keywords</li>
+                </ul>
+                <p class="mt-3">
+                  This step is optional, but will aid in our planning for
+                  reviewers.<br /> Note that at least one author from each paper
+                  will be expected to review 2-3 UR-RAD papers themselves.
+                </p>
+              </div>
+            </ContactCard>
+          </div>
+        </div>
+      </div>
+    </Section>
+  </Section></PageLayout
+>

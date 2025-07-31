@@ -1,0 +1,308 @@
+---
+import PageLayout from "@/layouts/Base.astro";
+import SpeakerCard from "@/components/SpeakerCard.astro";
+import Section from "@/components/Section.astro";
+import ContactCard from "@/components/ContactCard.astro";
+import { url } from "@/utils/url";
+
+// Import speaker photos
+import cindyBethelPhoto from "@/assets/images/speakers/cindy-bethel.jpg";
+import jeremyMarvelPhoto from "@/assets/images/speakers/jeremy-marvel.jpg";
+import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
+---
+
+<PageLayout meta={{ title: "Home" }}>
+  <!-- Hero section -->
+  <!-- Background blur -->
+  <div
+    class="absolute top-0 left-1/2 md:top-[-15%] -ml-[50vw] min-h-screen w-screen pointer-events-none blur-3xl opacity-50 overflow-x-hidden"
+  >
+    <div
+      class="absolute top-[10%] right-[-40%] w-[65%] h-full bg-gradient-to-b from-purple-300 via-blue-300 to-transparent rounded-full opacity-30 dark:opacity-10"
+    >
+    </div>
+    <div
+      class="absolute top-[10%] left-[-40%] w-[65%] h-full bg-gradient-to-b from-blue-300 via-pink-300 to-transparent rounded-full opacity-30 dark:opacity-10"
+    >
+    </div>
+    <div
+      class="absolute top-[-20%] left-[-50%] w-[85%] h-full bg-gradient-to-b from-indigo-300 via-orange-300 to-transparent rounded-full opacity-60 dark:opacity-10"
+    >
+    </div>
+    <div
+      class="absolute top-[-20%] right-[-50%] w-[85%] h-full bg-gradient-to-b from-orange-300 via-indigo-300 to-transparent rounded-full opacity-60 dark:opacity-10"
+    >
+    </div>
+  </div>
+  <section
+    class="max-w-4xl mx-auto px-4 relative flex items-center justify-center min-h-[50vh]"
+  >
+    <div class="w-full text-center">
+      <span
+        class="title text-3xl sm:text-4xl bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent"
+      >
+        UR-RAD 2025
+      </span>
+      <h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mt-4 mb-2 px-2">
+        The 3rd AAAI Fall Symposium on Unifying Representations for Robot
+        Application Development
+      </h2>
+      <p class="text-base sm:text-lg mb-2 px-2">
+        Westin Arlington Gateway, Arlington, VA, USA
+      </p>
+      <p class="text-base sm:text-lg mb-6 px-2">November 6-8, 2025</p>
+
+      <div class="max-w-3xl mx-auto text-left mb-8 px-4">
+        <h3 class="text-lg sm:text-xl font-semibold mb-4 text-center">
+          About UR-RAD
+        </h3>
+        <div class="prose prose-citrus max-w-none text-left sm:text-justify">
+          <p>
+            Behind any robot task or interaction is a representation that should
+            (a) enable sufficient contextualization; (b) support any existing
+            predefined, learned, and/or reusable skills onboard the robot; (c)
+            be verifiable at design time and behave consistently at run-time;
+            and (d) can be tested, executed, and modified for reuse on a variety
+            of different robot morphologies. Capturing the end user's desired
+            task or interaction as a computational artifact (i.e., a
+            representation) has long played a pivotal role in robotics.
+          </p>
+          <br />
+          <p>
+            Many robotic subfields have traditionally employed a variety of
+            different representational techniques, often borrowing from
+            artificial intelligence (AI), to achieve their respective
+            objectives. Examples include variants of LTL, logic, automated
+            planning languages, languages for Belief-Desire-Intention, custom
+            variations of these, and many more than we can list. The problem is
+            that there is a lack of awareness of these representations in the
+            research community, or how these representations can/should be
+            applied.
+          </p>
+          <br />
+          <p>
+            Last year, UR-RAD focused on representation trends in robotics and
+            best practices for adopting existing and new representations. This
+            year, based on community feedback, we are planning on elevating the
+            interaction between junior and senior members of the community.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col sm:flex-row justify-center gap-4 sm:space-x-4 mt-8 px-4"
+      >
+        <a
+          href={url("call-for-papers/")}
+          class="relative flex items-center justify-center h-10 px-4 sm:px-6 rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two"
+        >
+          <span class="text-bg font-semibold">Call for Papers</span>
+        </a>
+        <a
+          href={url("people/")}
+          class="relative flex items-center justify-center h-10 px-4 sm:px-6 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest"
+        >
+          <span
+            class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two"
+          >
+            People
+          </span>
+        </a>
+      </div>
+
+      <div class="mt-8 px-4">
+        <ContactCard />
+      </div>
+    </div>
+  </section>
+
+  <!-- Speakers Preview Section -->
+  <Section
+    id="keynote-speakers"
+    title="Keynote Speakers"
+    subtitle="Learn from leading experts in robotics and AI"
+    aria-label="Keynote Speakers"
+  >
+    <div class="max-w-6xl mx-auto">
+      <div
+        class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8"
+      >
+        <SpeakerCard
+          photo={cindyBethelPhoto}
+          name="Cindy Bethel"
+          title="Program Director"
+          affiliation="National Science Foundation & Mississippi State University"
+        />
+        <SpeakerCard
+          photo={jeremyMarvelPhoto}
+          name="Jeremy Marvel"
+          title="Computer Scientist"
+          affiliation="National Institute of Standards and Technology"
+        />
+        <SpeakerCard
+          photo={zhiTanPhoto}
+          name="Zhi Tan"
+          title="Assistant Professor"
+          affiliation="Northeastern University, Khoury College of Computer Sciences"
+        />
+      </div>
+
+      <div class="text-center">
+        <a
+          href={url("people/")}
+          class="inline-flex items-center justify-center h-10 px-6 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest transition-all"
+        >
+          <span
+            class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two"
+          >
+            View All People
+          </span>
+        </a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Submission Info Section -->
+  <Section
+    id="submission-info"
+    title="Submit Your Research"
+    subtitle="Share your work on unifying representations for robot application development"
+    aria-label="Call for Papers"
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="grid gap-6 md:grid-cols-2 mb-8">
+        <div class="p-4 sm:p-6 bg-accent-base/5 rounded-lg">
+          <h3 class="text-lg font-semibold mb-3 text-accent-one">
+            Submission Types
+          </h3>
+          <ul class="space-y-2 text-sm sm:text-base">
+            <li>
+              <strong>Full Papers:</strong> 4-8 pages (archival or non-archival)
+            </li>
+            <li>
+              <strong>Short Papers:</strong> 2-4 pages (archival or non-archival)
+            </li>
+            <li><strong>Abstracts:</strong> 1 page (non-archival only)</li>
+          </ul>
+        </div>
+
+        <div class="p-4 sm:p-6 bg-special-lighter rounded-lg">
+          <h3 class="text-lg font-semibold mb-3 text-accent-two">
+            Important Dates
+          </h3>
+          <ul class="space-y-2 text-sm sm:text-base">
+            <li><strong>Preferred Deadline:</strong> August 7, 2025</li>
+            <li><strong>Late Deadline:</strong> August 22, 2025</li>
+            <li><strong>Symposium:</strong> November 6-8, 2025</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <div
+          class="flex flex-col sm:flex-row justify-center gap-4 sm:space-x-4"
+        >
+          <a
+            href="https://easychair.org/my/conference?conf=fss25"
+            class="inline-flex items-center justify-center h-12 px-6 sm:px-8 text-lg font-semibold rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-surface"
+          >
+            Submit Your Paper
+          </a>
+          <a
+            href={url("call-for-papers/")}
+            class="inline-flex items-center justify-center h-12 px-6 sm:px-8 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest transition-all"
+          >
+            <span
+              class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two"
+            >
+              Full Call for Papers
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Topics of Interest Section -->
+  <Section
+    id="topics-of-interest"
+    title="Topics of Interest"
+    subtitle="Research areas we're excited to explore together"
+    aria-label="Topics of interest"
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none">
+        <ul
+          class="list-disc list-inside space-y-2 sm:grid sm:grid-cols-1 md:grid-cols-2 gap-x-4 lg:gap-x-8"
+        >
+          <li>Representational trends</li>
+          <li>Representations for robot learning</li>
+          <li>AI planning for robotics</li>
+          <li>Formal methods in robotics</li>
+          <li>Natural language as a representation</li>
+          <li>Novel representations & novel representation uses</li>
+          <li>Representations for user interfaces</li>
+          <li>Robot end-user development</li>
+          <li>Robot programming interfaces & paradigms</li>
+          <li>Robot runtime/control environments</li>
+          <li>Opportunities for standardization</li>
+          <li>Frameworks (<em>e.g.</em>, ROS or middleware)</li>
+          <li>Open-source & collaboration initiatives</li>
+          <li>Identifying representation requirements</li>
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Previous Symposia Section -->
+  <Section
+    id="previous-symposia"
+    title="Previous Symposia"
+    subtitle="Explore past UR-RAD symposiums and their contributions to the robotics community"
+    aria-label="Previous symposia"
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+        <!-- UR-RAD 2024 Card -->
+        <a
+          href="https://sites.google.com/view/aaai-ur-rad-24-symposium"
+          class="bg-accent-base/5 rounded-lg p-6 border border-accent-one/20 hover:border-accent-one/40 transition-colors hover:bg-accent-base/10 block"
+        >
+          <div class="text-center mb-4">
+            <h3 class="text-xl font-semibold text-accent-one mb-2">
+              UR-RAD 2024
+            </h3>
+            <div class="text-sm text-accent-two font-medium">2nd Symposium</div>
+          </div>
+          <div class="text-center">
+            <p class="text-sm">
+              Organized as part of the AAAI Fall Symposium series at Westin
+              Arlington Gateway, Arlington, VA, USA
+            </p>
+          </div>
+        </a>
+
+        <!-- UR-RAD 2023 Card -->
+        <a
+          href="https://sites.google.com/view/aaai-ur-rad-23-symposium"
+          class="bg-accent-base/5 rounded-lg p-6 border border-accent-two/20 hover:border-accent-two/40 transition-colors hover:bg-accent-base/10 block"
+        >
+          <div class="text-center mb-4">
+            <h3 class="text-xl font-semibold text-accent-two mb-2">
+              UR-RAD 2023
+            </h3>
+            <div class="text-sm text-accent-two font-medium">
+              Inaugural Symposium
+            </div>
+          </div>
+          <div class="text-center">
+            <p class="text-sm">
+              The inaugural symposium held at Westin Arlington Gateway,
+              Arlington, VA, USA
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </Section>
+</PageLayout>
