@@ -1,7 +1,7 @@
 ---
 import PageLayout from "@/layouts/Base.astro";
 import Section from "@/components/Section.astro";
-import ContactCard from "@/components/ContactCard.astro";
+import { url } from "@/utils/url";
 
 const meta = {
   description:
@@ -13,130 +13,155 @@ const meta = {
 <PageLayout meta={meta}>
   <h1 class="title mb-6">Partners</h1>
 
-  <Section>
+  <div
+    class="text-center mb-8 p-4 sm:p-6 bg-gradient-to-r from-accent-one/10 to-accent-two/10 rounded-lg border border-accent-one/20"
+  >
+    <h2 class="text-xl sm:text-2xl font-semibold">
+      The UR-RAD 2025 symposium is partnering with the Quori Community!
+    </h2>
+  </div>
+
+  <Section id="quori-community" title="About" aria-label="About">
     <div class="max-w-4xl mx-auto">
       <div class="prose prose-citrus max-w-none px-4">
-        <p class="text-lg mb-8">
-          The UR-RAD 2025 symposium is made possible through the support of our
-          partners and sponsors who share our commitment to advancing robot
-          application development and unifying representations in robotics.
+        <p class="font-bold text-accent-two mb-2">
+          Who is the Quori Community?
+        </p>
+        <p class="text-md mb-2">
+          Quori is a not-for-profit open-source, modular, social robot platform
+          for the human-robot interaction (HRI) research community.
+        </p>
+        <p class="text-md mb-2">
+          Quori has been in development for 10 years now, with the first 10
+          Quori 1.0 units distributed to 10 collaborative research teams (35
+          labs across 11 universities) across the United States. Quori 1.0 was
+          deployed in a variety of real-world settings, including the
+          Philadelphia Museum of Art, where it autonomously interacted with
+          183,000+ museum visitors in a 6-month live exhibit.
+        </p>
+        <p class="text-md mb-2">
+          We recently received additional funding for the development of Quori
+          2.0, an enhanced redesign to serve as a general-purpose, open platform
+          for the HRI research community. This effort includes the manufacturing
+          and distribution of 50 Quori 2.0 robots to sites around the world.
+          Quori 2.0 is being developed by collaborators from Oregon State
+          University, the University of Pennsylvania, Semio Community, OLogic,
+          and IK Studio.
+        </p>
+        <div class="flex justify-center py-2">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/5ccrm4U4AvA?si=Xrf1DsPzop6IgbPx"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+        <p class="font-bold text-accent-two mt-4 mb-2">
+          Why Partner with UR-RAD?
+        </p>
+        <p class="text-md mb-2">
+          At UR-RAD 2025, we are looking for feedback from the HRI community to
+          help make the Quori platform even better!
+        </p><p class="text-md mb-2">
+          We seek to gather the existing US-based Quori 1.0 community, and
+          expand it globally in a Quori 2.0 community that includes HRI
+          researchers and practitioners from academia, industry, and the public
+          sector.
+        </p><p class="text-md mb-2">
+          The new Quori website/platform is currently in development, and
+          conversations at the UR-RAD symposium will help guide its contents.
         </p>
       </div>
     </div>
   </Section>
 
-  <Section
-    title="Sponsors"
-    subtitle="Organizations supporting UR-RAD 2025"
-  >
+  <Section id="participant-support" title="Participant Suport">
     <div class="max-w-4xl mx-auto">
       <div class="prose prose-citrus max-w-none px-4">
         <p class="mb-4">
-          We are grateful for the support of organizations that help make this
-          symposium possible. Sponsor information will be updated as partnerships
-          are confirmed.
+          Through the partnership between UR-RAD 2025 and the Quori Community,
+          we are happy to announce that we will be awarding ...
         </p>
 
-        <div class="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
-          <!-- Sponsor logos and information will be added here -->
-          <div class="p-4 border border-special-lighter rounded-lg text-center">
-            <div class="h-24 bg-gray-100 dark:bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
-              <span class="text-sm text-accent-two">Partner Logo</span>
-            </div>
-            <h3 class="font-semibold mb-2">Partner Name</h3>
-            <p class="text-sm text-accent-two">Partner description</p>
-          </div>
-        </div>
+        <p class="mb-8">
+          To be considered for an award, submissions should be submitted by
+          either of the two submission deadlines (see <a
+            href={url("call-for-papers/")}
+            class="citrus-link">Call For Papers</a
+          >). Additionally, we ask that submissions include a paragraph in the
+          submission outlining how the work contributes to one of the following
+          topics and areas of interest (a subset of the UR-RAD 2025 topics):
+        </p>
+
+        <ul
+          class="list-disc list-outside space-y-2 sm:grid grid-cols-1 gap-x-4 lg:gap-x-8"
+        >
+          <li>
+            <span class="font-bold text-accent-one"
+              >Representations for social behavior:</span
+            > How might human-robot interactions be represented for open platforms
+            like the Quori robot? In particular, the Quori community is interested
+            in representations of speech-based behaviors including linguistics (speech
+            recognition, text-to-speech, syntax of language, etc.) and vocalics (volume,
+            pitch, rate, etc.), as well as body language-based behaviors including
+            proxemics (social spacing), haptics (touch), oculesics (eye gaze), kinesics
+            (face, hand, and body gestures), deixis (spatial referencing), and chronemics
+            (turn-taking and back-channeling).
+          </li>
+          <li>
+            <span class="font-bold text-accent-one"
+              >Surveys or reflective analyses:</span
+            > What trends or insights from past social robotics work (including the
+            social behaviors listed above) might shape the design of hardware, software,
+            aesthetic, character, behaviors, etc.?
+          </li>
+          <li>
+            <span class="font-bold text-accent-one"
+              >Standardized representations:</span
+            > What formalizations could support reusability and generalization between
+            deployments of different models of social robots?
+          </li>
+          <li>
+            <span class="font-bold text-accent-one">Stakeholders:</span> Who are
+            the intended users and developers of social robots like Quori, and how
+            do their needs shape design of representations for application development?
+          </li>
+          <li>
+            <span class="font-bold text-accent-one"
+              >End-user development and learning:</span
+            > In the advent of technology like large language models (LLMs) and foundation
+            models, what robot behaviors should be manually authored vs. autonomously
+            learned? What are the implications of these decisions for how various
+            types of users and developers interact with them?
+          </li>
+          <li>
+            <span class="font-bold text-accent-one">Physical form factor:</span>
+            How does a robot's physical embodiment shape or constrain underlying
+            representations?
+          </li>
+          <li>
+            <span class="font-bold text-accent-one"
+              >Software infrastructure:</span
+            > What existing and novel software systems can support robots like Quori
+            for autonomous or teleoperated human-robot interactions?
+          </li>
+        </ul>
       </div>
     </div>
-  </Section>
 
-  <Section
-    title="Academic Partners"
-    subtitle="Universities and research institutions collaborating with UR-RAD"
-  >
-    <div class="max-w-4xl mx-auto">
-      <div class="prose prose-citrus max-w-none px-4">
-        <p class="mb-4">
-          Academic partnerships are essential to the success of UR-RAD, bringing
-          together diverse perspectives from leading research institutions.
-        </p>
+    <Section id="fine-print" title="Fine Print">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose prose-citrus max-w-none px-4">
+          <p class="mb-4">
+            Through the partnership between UR-RAD 2025 and the Quori Community,
+            we are happy to announce that we will be awarding ...
+          </p>
 
-        <div class="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 mb-8">
-          <div class="p-4 border border-special-lighter rounded-lg">
-            <h3 class="text-lg font-semibold mb-3">Research Institutions</h3>
-            <p class="text-sm text-accent-two">
-              Leading universities and research labs contributing to the advancement
-              of robot application development.
-            </p>
-          </div>
-
-          <div class="p-4 border border-special-lighter rounded-lg">
-            <h3 class="text-lg font-semibold mb-3">International Collaborations</h3>
-            <p class="text-sm text-accent-two">
-              Global partnerships fostering international cooperation in robotics
-              research and development.
-            </p>
-          </div>
+          <p>Awardees</p>
         </div>
       </div>
-    </div>
-  </Section>
-
-  <Section
-    title="Industry Partners"
-    subtitle="Companies and organizations advancing robotics applications"
-  >
-    <div class="max-w-4xl mx-auto">
-      <div class="prose prose-citrus max-w-none px-4">
-        <p class="mb-4">
-          Industry partnerships bring real-world perspectives and practical
-          applications to the symposium discussions.
-        </p>
-
-        <div class="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 mb-8">
-          <div class="p-4 border border-special-lighter rounded-lg">
-            <h3 class="text-lg font-semibold mb-3">Technology Companies</h3>
-            <p class="text-sm text-accent-two">
-              Leading technology companies developing cutting-edge robotics
-              solutions and platforms.
-            </p>
-          </div>
-
-          <div class="p-4 border border-special-lighter rounded-lg">
-            <h3 class="text-lg font-semibold mb-3">Robotics Startups</h3>
-            <p class="text-sm text-accent-two">
-              Innovative startups pushing the boundaries of robot application
-              development and deployment.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </Section>
-
-  <Section
-    title="Become a Partner"
-    subtitle="Join us in advancing robot application development"
-  >
-    <div class="max-w-4xl mx-auto">
-      <div class="prose prose-citrus max-w-none px-4">
-        <p class="mb-4">
-          We welcome partnerships with organizations that share our vision for
-          advancing robot application development and unifying representations
-          in robotics.
-        </p>
-
-        <p class="mb-6">
-          Partnership opportunities include sponsorship, academic collaboration,
-          industry partnerships, and more. Contact us to learn how your
-          organization can get involved.
-        </p>
-
-        <div class="mt-8">
-          <ContactCard message="Contact us about partnership opportunities" />
-        </div>
-      </div>
-    </div>
-  </Section>
-</PageLayout>
+    </Section>
+  </Section></PageLayout
+>
