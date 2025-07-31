@@ -1,0 +1,142 @@
+---
+import PageLayout from "@/layouts/Base.astro";
+import Section from "@/components/Section.astro";
+import ContactCard from "@/components/ContactCard.astro";
+
+const meta = {
+  description:
+    "Partners - UR-RAD 2025 AAAI Fall Symposium on Unifying Representations for Robot Application Development",
+  title: "Partners",
+};
+---
+
+<PageLayout meta={meta}>
+  <h1 class="title mb-6">Partners</h1>
+
+  <Section>
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <p class="text-lg mb-8">
+          The UR-RAD 2025 symposium is made possible through the support of our
+          partners and sponsors who share our commitment to advancing robot
+          application development and unifying representations in robotics.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    title="Sponsors"
+    subtitle="Organizations supporting UR-RAD 2025"
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <p class="mb-4">
+          We are grateful for the support of organizations that help make this
+          symposium possible. Sponsor information will be updated as partnerships
+          are confirmed.
+        </p>
+
+        <div class="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
+          <!-- Sponsor logos and information will be added here -->
+          <div class="p-4 border border-special-lighter rounded-lg text-center">
+            <div class="h-24 bg-gray-100 dark:bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
+              <span class="text-sm text-accent-two">Partner Logo</span>
+            </div>
+            <h3 class="font-semibold mb-2">Partner Name</h3>
+            <p class="text-sm text-accent-two">Partner description</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    title="Academic Partners"
+    subtitle="Universities and research institutions collaborating with UR-RAD"
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <p class="mb-4">
+          Academic partnerships are essential to the success of UR-RAD, bringing
+          together diverse perspectives from leading research institutions.
+        </p>
+
+        <div class="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 mb-8">
+          <div class="p-4 border border-special-lighter rounded-lg">
+            <h3 class="text-lg font-semibold mb-3">Research Institutions</h3>
+            <p class="text-sm text-accent-two">
+              Leading universities and research labs contributing to the advancement
+              of robot application development.
+            </p>
+          </div>
+
+          <div class="p-4 border border-special-lighter rounded-lg">
+            <h3 class="text-lg font-semibold mb-3">International Collaborations</h3>
+            <p class="text-sm text-accent-two">
+              Global partnerships fostering international cooperation in robotics
+              research and development.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    title="Industry Partners"
+    subtitle="Companies and organizations advancing robotics applications"
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <p class="mb-4">
+          Industry partnerships bring real-world perspectives and practical
+          applications to the symposium discussions.
+        </p>
+
+        <div class="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 mb-8">
+          <div class="p-4 border border-special-lighter rounded-lg">
+            <h3 class="text-lg font-semibold mb-3">Technology Companies</h3>
+            <p class="text-sm text-accent-two">
+              Leading technology companies developing cutting-edge robotics
+              solutions and platforms.
+            </p>
+          </div>
+
+          <div class="p-4 border border-special-lighter rounded-lg">
+            <h3 class="text-lg font-semibold mb-3">Robotics Startups</h3>
+            <p class="text-sm text-accent-two">
+              Innovative startups pushing the boundaries of robot application
+              development and deployment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section
+    title="Become a Partner"
+    subtitle="Join us in advancing robot application development"
+  >
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-citrus max-w-none px-4">
+        <p class="mb-4">
+          We welcome partnerships with organizations that share our vision for
+          advancing robot application development and unifying representations
+          in robotics.
+        </p>
+
+        <p class="mb-6">
+          Partnership opportunities include sponsorship, academic collaboration,
+          industry partnerships, and more. Contact us to learn how your
+          organization can get involved.
+        </p>
+
+        <div class="mt-8">
+          <ContactCard message="Contact us about partnership opportunities" />
+        </div>
+      </div>
+    </div>
+  </Section>
+</PageLayout>
