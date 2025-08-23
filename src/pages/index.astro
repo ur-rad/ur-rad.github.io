@@ -9,6 +9,7 @@ import { url } from "@/utils/url";
 import cindyBethelPhoto from "@/assets/images/speakers/cindy-bethel.jpg";
 import jeremyMarvelPhoto from "@/assets/images/speakers/jeremy-marvel.jpg";
 import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
+import kenForbusPhoto from "@/assets/images/speakers/ken-forbus.jpg";
 ---
 
 <PageLayout meta={{ title: "Home" }}>
@@ -125,7 +126,7 @@ import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
   >
     <div class="max-w-6xl mx-auto">
       <div
-        class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8"
+        class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 mb-8"
       >
         <SpeakerCard
           photo={cindyBethelPhoto}
@@ -144,6 +145,12 @@ import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
           name="Zhi Tan"
           title="Assistant Professor"
           affiliation="Northeastern University, Khoury College of Computer Sciences"
+        />
+        <SpeakerCard
+          photo={kenForbusPhoto}
+          name="Ken Forbus"
+          title="Professor"
+          affiliation="Northwestern University, Computer Sciences"
         />
       </div>
 

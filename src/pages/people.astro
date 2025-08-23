@@ -9,6 +9,7 @@ import ContactCard from "@/components/ContactCard.astro";
 import cindyBethelPhoto from "@/assets/images/speakers/cindy-bethel.jpg";
 import jeremyMarvelPhoto from "@/assets/images/speakers/jeremy-marvel.jpg";
 import zhiTanPhoto from "@/assets/images/speakers/zhi-tan.jpg";
+import kenForbusPhoto from "@/assets/images/speakers/ken-forbus.jpg";
 
 // Import organizer photos
 import ruchenWenPhoto from "@/assets/images/organizers/ruchen-wen.jpg";
@@ -50,7 +51,7 @@ const meta = {
   >
     <div class="max-w-6xl mx-auto">
       <div
-        class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8"
+        class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 mb-8"
       >
         <SpeakerCard
           photo={cindyBethelPhoto}
@@ -70,16 +71,12 @@ const meta = {
           title="Assistant Professor"
           affiliation="Northeastern University, Khoury College of Computer Sciences"
         />
-        <div
-          class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg flex flex-col justify-center"
-        >
-          <h3 class="text-lg sm:text-xl font-semibold mb-2">
-            Additional Speaker
-          </h3>
-          <p class="text-sm sm:text-base text-accent-two">
-            To be announced soon!
-          </p>
-        </div>
+        <SpeakerCard
+          photo={kenForbusPhoto}
+          name="Ken Forbus"
+          title="Professor"
+          affiliation="Northwestern University, Computer Sciences"
+        />
       </div>
     </div>
   </Section>
