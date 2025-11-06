@@ -160,14 +160,101 @@ export async function GET(context: APIContext) {
     ? (authors.filter(Boolean) as string[])
     : [];
   const formatName = (n: string) => {
-    const parts = n.trim().split(/\s+/);
-    if (parts.length >= 2) {
-      const first = parts[0] ?? "?";
-      const last = parts[parts.length - 1];
-      const initial = first.charAt(0) ? first.charAt(0) + "." : "";
-      return `${last}, ${initial}`;
+    const parts = n.trim().split(/\s+/).filter(Boolean);
+    if (parts.length === 0) return n;
+
+    // Helper to normalize tokens for matching (lowercase, strip common punctuation)
+    const norm = (s: string) => s.toLowerCase().replace(/[.,]/g, "");
+
+    // Common suffixes and generational markers to ignore in last name selection
+    const SUFFIXES = new Set([
+      "jr",
+      "sr",
+      "ii",
+      "iii",
+      "iv",
+      "v",
+      // common degree suffixes that might appear; ignore if present
+      "phd",
+      "md",
+      "dds",
+      "dmd",
+    ]);
+
+    // Common surname particles that should be included with the family name.
+    // We match token-by-token from right to left (so multi-token particles like "de la" are handled as "la" then "de").
+    const PARTICLES = new Set([
+      "de",
+      "del",
+      "della",
+      "di",
+      "da",
+      "dos",
+      "das",
+      "du",
+      "des",
+      "le",
+      "la",
+      "van",
+      "von",
+      "den",
+      "der",
+      "ten",
+      "ter",
+      "van de",
+      "van den",
+      "van der",
+      "von der",
+      "von den",
+      "de la",
+      "de las",
+      "de los",
+      "d'",
+      "d’",
+      "o'",
+      "o’",
+    ]);
+
+    // Remove trailing suffix tokens (e.g., "Jr.", "III", "Ph.D.")
+    let end = parts.length - 1;
+    while (end > 0 && SUFFIXES.has(norm(parts[end]))) {
+      end--;
     }
-    return n;
+
+    if (end === 0) {
+      // Single-token name or only suffixes removed; return as-is
+      const firstInitialMatch = parts[0].match(/[A-Za-z]/);
+      const firstInitial = firstInitialMatch
+        ? firstInitialMatch[0].toUpperCase() + "."
+        : "";
+      return `${parts[0]}, ${firstInitial}`;
+    }
+
+    // Determine last name tokens, including particles immediately preceding the core last token.
+    const lastTokens: string[] = [parts[end]];
+    let i = end - 1;
+
+    // Walk backwards including any particle tokens before the last name.
+    // Because multi-word particles are split into tokens, this simple while includes sequences like "de la" or "van der".
+    while (
+      i >= 1 &&
+      (PARTICLES.has(norm(parts[i])) ||
+        PARTICLES.has(norm(parts[i] + " " + parts[i + 1])))
+    ) {
+      // Always include the current token as part of the last name
+      lastTokens.unshift(parts[i]);
+      i--;
+      // If we just handled a 2-word particle, the next loop iteration will consider the token before it as well.
+    }
+
+    const lastName = lastTokens.join(" ");
+
+    // First initial from the first token's first alphabetic character
+    const firstToken = parts[0];
+    const initialMatch = firstToken.match(/[A-Za-z]/);
+    const initial = initialMatch ? initialMatch[0].toUpperCase() + "." : "";
+
+    return `${lastName}, ${initial}`;
   };
   const f = names.map(formatName);
   let byline = siteConfig.author;

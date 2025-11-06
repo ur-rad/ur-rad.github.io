@@ -58,12 +58,12 @@ function markup() {
       <div style="position: relative; display: flex; flex: 1; padding: 72px;">
         <div style="display:flex; align-items:center; gap:28px; width:100%;">
           <div
-            style="width: 112px; height: 98px; display:flex; align-items:center; justify-content:center;"
+            style="width: 160px; height: 140px; display:flex; align-items:center; justify-content:center;"
           >
             <svg
               viewBox="0 0 797 693"
-              width="112"
-              height="98"
+              width="160"
+              height="140"
               xmlns="http://www.w3.org/2000/svg"
             >
               <g transform="matrix(1,0,0,1,-345,-96.5)">
@@ -105,20 +105,9 @@ function markup() {
                 word-break: break-word;
               "
             >
-              ${siteConfig.title}
+              ${siteConfig.description}
             </div>
             <div style="display:flex; height: 4px;"></div>
-            <div
-              style="
-                display:flex;
-                font-family: 'SF Pro Rounded';
-                font-weight: 500;
-                font-size: 24px;
-                color: #64748b;
-              "
-            >
-              by ${siteConfig.author}
-            </div>
           </div>
         </div>
       </div>
@@ -129,7 +118,7 @@ function markup() {
         <div
           style="display:flex; font-family: 'SF Pro Rounded'; font-weight: 500; font-size: 22px; color: #475569;"
         >
-          Unifying Representations for Robot Application Development
+          AAAI Fall Symposium 2025
         </div>
         <div
           style="display:flex; font-family: 'SF Pro Rounded'; font-weight: 600; font-size: 22px; color: #334155;"
