@@ -9,6 +9,7 @@ import { Resvg } from "@resvg/resvg-js";
 import type { APIContext, InferGetStaticPropsType } from "astro";
 import satori, { type SatoriOptions } from "satori";
 import { html } from "satori-html";
+import { formatBylineWithPrefix, type AuthorLike } from "@/utils/authors";
 
 const ogOptions: SatoriOptions = {
   // debug: true,
@@ -156,118 +157,14 @@ export async function GET(context: APIContext) {
     month: "long",
     weekday: "long",
   });
-  const names = Array.isArray(authors)
-    ? (authors.filter(Boolean) as string[])
-    : [];
-  const formatName = (n: string) => {
-    const parts = n.trim().split(/\s+/).filter(Boolean);
-    if (parts.length === 0) return n;
-
-    // Helper to normalize tokens for matching (lowercase, strip common punctuation)
-    const norm = (s: string) => s.toLowerCase().replace(/[.,]/g, "");
-
-    // Common suffixes and generational markers to ignore in last name selection
-    const SUFFIXES = new Set([
-      "jr",
-      "sr",
-      "ii",
-      "iii",
-      "iv",
-      "v",
-      // common degree suffixes that might appear; ignore if present
-      "phd",
-      "md",
-      "dds",
-      "dmd",
-    ]);
-
-    // Common surname particles that should be included with the family name.
-    // We match token-by-token from right to left (so multi-token particles like "de la" are handled as "la" then "de").
-    const PARTICLES = new Set([
-      "de",
-      "del",
-      "della",
-      "di",
-      "da",
-      "dos",
-      "das",
-      "du",
-      "des",
-      "le",
-      "la",
-      "van",
-      "von",
-      "den",
-      "der",
-      "ten",
-      "ter",
-      "van de",
-      "van den",
-      "van der",
-      "von der",
-      "von den",
-      "de la",
-      "de las",
-      "de los",
-      "d'",
-      "d’",
-      "o'",
-      "o’",
-    ]);
-
-    // Remove trailing suffix tokens (e.g., "Jr.", "III", "Ph.D.")
-    let end = parts.length - 1;
-    while (end > 0 && SUFFIXES.has(norm(parts[end]))) {
-      end--;
-    }
-
-    if (end === 0) {
-      // Single-token name or only suffixes removed; return as-is
-      const firstInitialMatch = parts[0].match(/[A-Za-z]/);
-      const firstInitial = firstInitialMatch
-        ? firstInitialMatch[0].toUpperCase() + "."
-        : "";
-      return `${parts[0]}, ${firstInitial}`;
-    }
-
-    // Determine last name tokens, including particles immediately preceding the core last token.
-    const lastTokens: string[] = [parts[end]];
-    let i = end - 1;
-
-    // Walk backwards including any particle tokens before the last name.
-    // Because multi-word particles are split into tokens, this simple while includes sequences like "de la" or "van der".
-    while (
-      i >= 1 &&
-      (PARTICLES.has(norm(parts[i])) ||
-        PARTICLES.has(norm(parts[i] + " " + parts[i + 1])))
-    ) {
-      // Always include the current token as part of the last name
-      lastTokens.unshift(parts[i]);
-      i--;
-      // If we just handled a 2-word particle, the next loop iteration will consider the token before it as well.
-    }
-
-    const lastName = lastTokens.join(" ");
-
-    // First initial from the first token's first alphabetic character
-    const firstToken = parts[0];
-    const initialMatch = firstToken.match(/[A-Za-z]/);
-    const initial = initialMatch ? initialMatch[0].toUpperCase() + "." : "";
-
-    return `${lastName}, ${initial}`;
-  };
-  const f = names.map(formatName);
-  let byline = siteConfig.author;
-  if (f.length === 1) {
-    byline = f[0] ?? siteConfig.author;
-  } else if (f.length === 2) {
-    byline = `${f[0]} and ${f[1]}`;
-  } else if (f.length === 3) {
-    byline = `${f[0]}, ${f[1]}, and ${f[2]}`;
-  } else if (f.length > 3) {
-    byline = `${f[0]} et al.`;
-  }
-  const svg = await satori(markup(title, postDate, `by ${byline}`), ogOptions);
+  const authorList = (authors ?? []) as unknown as AuthorLike[];
+  const bylineText = formatBylineWithPrefix(authorList, {
+    maxAuthors: 3,
+    conjunction: "and",
+    useOxfordComma: true,
+  });
+  const authorsText = bylineText || `by ${siteConfig.author}`;
+  const svg = await satori(markup(title, postDate, authorsText), ogOptions);
 
   // Проверяем, запрашивает ли пользователь PNG
   if (context.url.pathname.endsWith(".png")) {
@@ -305,9 +202,7 @@ export async function getStaticPaths() {
           props: {
             pubDate: post.data.updatedDate ?? post.data.publishDate,
             title: post.data.title,
-            authors: (post.data.authors ?? []).flatMap(
-              (a: { name?: string }) => (a?.name ? [a.name] : []),
-            ),
+            authors: (post.data.authors ?? []) as AuthorLike[],
           },
         },
         {
@@ -315,9 +210,7 @@ export async function getStaticPaths() {
           props: {
             pubDate: post.data.updatedDate ?? post.data.publishDate,
             title: post.data.title,
-            authors: (post.data.authors ?? []).flatMap(
-              (a: { name?: string }) => (a?.name ? [a.name] : []),
-            ),
+            authors: (post.data.authors ?? []) as AuthorLike[],
           },
         },
       ];
