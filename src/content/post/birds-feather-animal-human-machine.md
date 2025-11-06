@@ -16,7 +16,7 @@ affiliations:
   - "Georgia Institute of Technology"
   - "Tufts University"
 tags: ["sally-anne","agents","conceptual-decomposition"]
-publishDate: "2025-11-06T11:00:00Z"
+publishDate: "2025-11-07T11:00:00Z"
 draft: false
 pdfUrl: "https://drive.google.com/file/d/1cL21sIKUt43dKoaiBBKulp_nZq_CV3P9/view"
 ---

@@ -14,7 +14,7 @@ affiliations:
   - "University of Maryland"
   - "Army Research Lab"
 tags: ["gesture", "virtual reality", "language"]
-publishDate: "2025-11-06T11:00:00Z"
+publishDate: "2025-11-07T11:00:00Z"
 draft: false
 pdfUrl: "https://drive.google.com/file/d/1GEvchCIvUcA2Chep6IcTJ9Qtk3mOI8Uk/view"
 ---
