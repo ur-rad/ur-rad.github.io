@@ -9,6 +9,38 @@ const meta = {
   title: "Program",
 };
 
+const headingMonthMap: Record<string, string> = {
+  january: "01",
+  february: "02",
+  march: "03",
+  april: "04",
+  may: "05",
+  june: "06",
+  july: "07",
+  august: "08",
+  september: "09",
+  october: "10",
+  november: "11",
+  december: "12",
+};
+
+function headingToIsoDate(heading: string, year: number = 2025): string | null {
+  const m = heading.match(
+    /\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2})(?:st|nd|rd|th)?\b/i,
+  );
+  if (!m) return null;
+  const monthPart = m[1];
+  const dayPart = m[2];
+  if (!monthPart || !dayPart) return null;
+  const monthName = monthPart.toLowerCase();
+  const dayNum = Number.parseInt(dayPart, 10);
+  if (!Number.isFinite(dayNum)) return null;
+  const mm = headingMonthMap[monthName];
+  if (!mm) return null;
+  const dd = String(dayNum).padStart(2, "0");
+  return `${year}-${mm}-${dd}`;
+}
+
 const schedule = [
   {
     heading: "DAY 1: November 6th",
@@ -230,7 +262,8 @@ const schedule = [
                 .replace(":", " — ");
               return (
                 <details
-                  open={i === 0}
+                  open
+                  data-date={headingToIsoDate(day.heading) ?? undefined}
                   class="group rounded-lg border border-special-lighter bg-accent-base/5 open:bg-accent-base/10 transition-colors"
                 >
                   <summary class="cursor-pointer list-none p-4 sm:p-5 flex items-center justify-between">
@@ -271,6 +304,43 @@ const schedule = [
           </div>
         )
       }
+      <script>
+        const __initScheduleAccordions = () => {
+          const root = document.getElementById("schedule");
+          if (!root) return;
+          const panels = Array.from(
+            root.querySelectorAll("details[data-date]"),
+          ) as HTMLDetailsElement[];
+          if (!panels.length) return;
+
+          const now = new Date();
+          const yyyy = now.getFullYear();
+          const mm = String(now.getMonth() + 1).padStart(2, "0");
+          const dd = String(now.getDate()).padStart(2, "0");
+          const todayIso = `${yyyy}-${mm}-${dd}`;
+
+          const match = panels.find((p) => p.dataset.date === todayIso) || null;
+
+          if (match) {
+            panels.forEach((p) => {
+              p.open = p === match;
+            });
+          } else {
+            panels.forEach((p) => {
+              p.open = true;
+            });
+          }
+        };
+        if (document.readyState === "loading") {
+          document.addEventListener(
+            "DOMContentLoaded",
+            __initScheduleAccordions,
+          );
+        } else {
+          __initScheduleAccordions();
+        }
+        document.addEventListener("astro:page-load", __initScheduleAccordions);
+      </script>
     </div>
   </Section>
 
