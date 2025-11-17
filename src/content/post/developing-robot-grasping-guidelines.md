@@ -16,4 +16,5 @@ tags: ["COMPARE", "guidelines", "grasping", "manipulation"]
 publishDate: "2025-11-06T11:00:00Z"
 draft: false
 pdfUrl: "https://drive.google.com/file/d/1I4Rif_rikqw6ANX-XRtvyLUwk0TDxpas/view"
+award: "Best Paper Award"
 ---

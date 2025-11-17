@@ -68,8 +68,16 @@ const postSeries = content.data.seriesId
 		data-pagefind-body
 	>
 		{content.data.title}
+		{content.data.award && (
+			<span class="ml-3 inline-flex items-center rounded bg-accent-one/10 text-accent-one px-2 py-0.5 text-sm">
+				<Icon aria-hidden="true" class="h-4 w-4 mr-1" focusable="false" name="solar:cup-bold" />
+				{content.data.award}
+			</span>
+		)}
 	</h1>
 </div>
+
+
 
 {/* Authors */}
 <div class="mx-2 mt-4 mb-2">

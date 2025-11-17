@@ -2,6 +2,11 @@
 import PageLayout from "@/layouts/Base.astro";
 import Section from "@/components/Section.astro";
 import ContactCard from "@/components/ContactCard.astro";
+import { Icon } from "astro-icon/components";
+import { getAllPosts } from "@/data/post";
+
+const posts = await getAllPosts();
+const postMap = Object.fromEntries(posts.map((p) => [p.id, p]));
 
 const meta = {
   description:
@@ -54,15 +59,15 @@ const schedule = [
       { time: "10:30 - 11:00", content: `<strong>Break: Coffee</strong>` },
       {
         time: "11:00 - 12:00",
-        content: `
-<strong>Paper Presentations: Robot Architectures and Control</strong>
-<ul class="mt-2 space-y-3 text-sm sm:text-base">
-  <li><em><a href="/posts/trade-middleware-advanced-robotics" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">The TRADE Middleware for Advanced Robotic Architectures</a></em> – Matthias Scheutz</li>
-  <li><em><a href="/posts/developing-robot-grasping-guidelines" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">Towards Developing Standards and Guidelines for Robot Grasping and Manipulation Pipelines in the COMPARE Ecosystem</a></em> – Huajing Zhao, Brian Flynn, Adam Norton and Holly Yanco</li>
-  <li><em><a href="/posts/limpnet-lightweight-multisensor-navigation-drones" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">LiMPNet: Lightweight Multi-sensor Perception and DRL Navigation for Tiny Drones in Mapless Environments</a></em> – Omer Kurkutlu and Arman Roohi</li>
-  <li><em><a href="/posts/learning-multi-modal-whole-body-control" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">Learning Multi-Modal Whole-Body Control for Real-World Humanoid Robots</a></em> – Pranay Dugar, Aayam Shrestha, Fangzhou Yu, Bart van Marum and Alan Fern</li>
-</ul>
-        `,
+        paperSession: {
+          title: "Paper Presentations: Robot Architectures and Control",
+          items: [
+            { slug: "trade-middleware-advanced-robotics" },
+            { slug: "developing-robot-grasping-guidelines" },
+            { slug: "limpnet-lightweight-multisensor-navigation-drones" },
+            { slug: "learning-multi-modal-whole-body-control" },
+          ],
+        },
       },
       {
         time: "12:00 - 12:30",
@@ -77,15 +82,15 @@ const schedule = [
       { time: "15:30 - 16:00", content: `<strong>Break: Coffee</strong>` },
       {
         time: "16:00 - 17:00",
-        content: `
-<strong>Paper Presentations: Representations</strong>
-<ul class="mt-2 space-y-3 text-sm sm:text-base">
-  <li><em><a href="/posts/statistical-agent-based-model" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">A Statistical Agent-Based Model Of Development And Evaluation</a></em> – Samuel Denard</li>
-  <li><em><a href="/posts/conceptual-decomposition-sally-anne" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">A Conceptual Primitive Decomposition of the Sally-Anne Test</a></em> – Jamie Macbeth, Boming Zhang and Sharmin Badhan</li>
-  <li><em><a href="/posts/latent-hypothesis-exploration" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">Latent Hypothesis-Planned Exploration</a></em> – Maxwell Jacobson and Yexiang Xue</li>
-  <li><em><a href="/posts/plan-owl-automated-pddl" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">PlanOwl: Automated PDDL Files Generation from OWL Ontologies and Visual Language Models</a></em> – Mark Adamik and Paolo Forte</li>
-</ul>
-        `,
+        paperSession: {
+          title: "Paper Presentations: Representations",
+          items: [
+            { slug: "statistical-agent-based-model" },
+            { slug: "conceptual-decomposition-sally-anne" },
+            { slug: "latent-hypothesis-exploration" },
+            { slug: "plan-owl-automated-pddl" },
+          ],
+        },
       },
       {
         time: "17:00 - 17:30",
@@ -110,15 +115,15 @@ const schedule = [
       { time: "10:30 - 11:00", content: `<strong>Break: Coffee</strong>` },
       {
         time: "11:00 - 12:00",
-        content: `
-<strong>Paper Presentations: Social Robotics and Interaction</strong>
-<ul class="mt-2 space-y-3 text-sm sm:text-base">
-  <li><em><a href="/posts/vizij-design-animation-deployment-faces" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">Vizij: Supporting the design, animation, and deployment of rendered robot faces</a></em> – Saad Elbeleidy, Andrew Schoen, Chris Birmingham, Tiago Ribeiro, Victor Paléologue, Douglas Dooley and Ross Mead</li>
-  <li><em><a href="/posts/birds-feather-animal-human-machine" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">Birds of a Different Feather Flock Together: Exploring Opportunities and Challenges in Animal-Human-Machine Teaming</a></em> – Myke C. Cohen, Xiaoyun Yin, David A. Grimm and Reuth Mirsky</li>
-  <li><em><a href="/posts/language-gesture-virtual-reality" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">Language and Gesture in Virtual Reality: Is a Gesture Worth 1000 Words?</a></em> – Padraig Higgins, Cory Hayes, Stephanie Lukin and Cynthia Matuszek</li>
-  <li><em><a href="/posts/multi-modal-robotic-touch" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">Multi-Modal Perception and Behavior Adaptation Models for Human State Understanding and Interaction Improvement in Robotic Touch</a></em> – Huy Quyen Ngo and Rana Soltani Zarrin</li>
-</ul>
-        `,
+        paperSession: {
+          title: "Paper Presentations: Social Robotics and Interaction",
+          items: [
+            { slug: "vizij-design-animation-deployment-faces" },
+            { slug: "birds-feather-animal-human-machine" },
+            { slug: "language-gesture-virtual-reality" },
+            { slug: "multi-modal-robotic-touch" },
+          ],
+        },
       },
       {
         time: "12:00 - 12:30",
@@ -291,10 +296,55 @@ const schedule = [
                         <div class="font-semibold text-accent-base text-xs sm:text-sm">
                           {entry.time}
                         </div>
-                        <div
-                          class="prose prose-citrus max-w-none"
-                          set:html={entry.content}
-                        />
+                        {entry.paperSession ? (
+                          <div class="prose prose-citrus max-w-none">
+                            <strong>{entry.paperSession.title}</strong>
+                            <ul class="mt-2 space-y-3 text-sm sm:text-base">
+                              {entry.paperSession.items.map((it) => {
+                                const p = postMap[it.slug];
+                                if (!p) {
+                                  return (
+                                    <li>
+                                      <em>{it.slug}</em>
+                                    </li>
+                                  );
+                                }
+                                const authorNames = (p.data.authors || [])
+                                  .map((a) => a.name)
+                                  .join(", ");
+                                return (
+                                  <li>
+                                    <em>
+                                      <a
+                                        href={`/posts/${p.id}`}
+                                        class="text-link no-underline hover:underline focus-visible:underline underline-offset-2"
+                                      >
+                                        {p.data.title}
+                                      </a>
+                                    </em>
+                                    {p.data.award && (
+                                      <span class="ml-2 inline-flex items-center rounded bg-accent-one/10 text-accent-one px-2 py-0.5 text-xs">
+                                        <Icon
+                                          aria-hidden="true"
+                                          class="h-3.5 w-3.5 mr-1"
+                                          focusable="false"
+                                          name="solar:cup-bold"
+                                        />
+                                        {p.data.award}
+                                      </span>
+                                    )}{" "}
+                                    – {authorNames}
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
+                        ) : (
+                          <div
+                            class="prose prose-citrus max-w-none"
+                            set:html={entry.content}
+                          />
+                        )}
                       </div>
                     ))}
                   </div>

@@ -22,6 +22,7 @@ const post = defineCollection({
       ),
       affiliations: z.array(z.string()),
       pdfUrl: z.string().optional(),
+      award: z.string().optional(),
       draft: z.boolean().default(false),
       tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
       publishDate: z

@@ -18,4 +18,5 @@ tags: ["humanoids",'controllers',"whole-body","learning"]
 publishDate: "2025-11-06T11:00:00Z"
 draft: false
 pdfUrl: "https://drive.google.com/file/d/1vDoztcDXlCp0P1TAmGp-l9L9mtYQGerF/view"
+award: "Best Paper Runner Up"
 ---

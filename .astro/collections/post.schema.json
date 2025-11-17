@@ -42,6 +42,9 @@
         "pdfUrl": {
           "type": "string"
         },
+        "award": {
+          "type": "string"
+        },
         "draft": {
           "type": "boolean",
           "default": false
