@@ -2,9 +2,9 @@
 import Search from "@/components/Search.astro";
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import YearSwitcher from "@/components/YearSwitcher.astro";
-import { siteConfig, menuLinks } from "@/site.config";
+import { menuLinks } from "@/site.config";
 import { Icon } from "astro-icon/components";
-import { homeUrl, url } from "@/utils/url";
+import { url } from "@/utils/url";
 import {
   type Edition,
   type PageKey,
@@ -80,10 +80,12 @@ const editionLinks = menuLinks.filter(
   <div class="w-full justify-between lg:flex-row lg:items-center">
     <div class="flex items-center gap-x-1 sm:gap-x-2">
       <a
-        aria-label={siteConfig.title}
-        aria-current={Astro.url.pathname === "/" ? "page" : false}
+        aria-label={active.data.title}
+        aria-current={Astro.url.pathname === url(editionPath(active, "home"))
+          ? "page"
+          : false}
         class="group flex h-8 items-center hover:filter-none sm:relative"
-        href={homeUrl()}
+        href={url(editionPath(active, "home"))}
       >
         <!-- Logo -->
         <!--
@@ -93,7 +95,7 @@ const editionLinks = menuLinks.filter(
 					</svg>
 				</div>
 				-->
-        <div title={siteConfig.title}>
+        <div title={active.data.title}>
           <svg
             class="inline-block size-8 fill-current text-accent-base dark:text-accent-two drop-shadow-[0px_2.5px_2.5px_rgba(0,0,0,0.15)]"
           >
@@ -104,7 +106,7 @@ const editionLinks = menuLinks.filter(
         <strong
           class="'max-[320px]:hidden' bg-clip-text text-transparent bg-gradient-to-r from-accent-one to-accent-two hidden md:block z-10 mb-0.5 ms-2 md:text-base lg:text-lg xl:text-xl group-hover:text-accent-one whitespace-nowrap"
         >
-          {siteConfig.title}
+          {active.data.title}
         </strong>
       </a>
       <nav

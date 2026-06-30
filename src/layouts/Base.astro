@@ -23,6 +23,10 @@ const {
 
 // Pagefind filter so search can group results by conference year.
 const pagefindYear = edition ? String(edition.data.year) : undefined;
+
+// Brand/site name reflects the edition being viewed (falls back to the
+// configured default on pages without an edition).
+const siteName = edition?.data.title ?? siteConfig.title;
 ---
 
 <html
@@ -35,6 +39,7 @@ const pagefindYear = edition ? String(edition.data.year) : undefined;
       description={description}
       ogImage={ogImage}
       title={title}
+      siteName={siteName}
     />
   </head>
   <body class="relative m-auto min-h-screen w-full max-w-6xl grow bg-surface">

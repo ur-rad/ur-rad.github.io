@@ -5,12 +5,13 @@ import type { SiteMeta } from "@/types";
 import { url } from "@/utils/url";
 import "@/styles/global.css";
 
-type Props = SiteMeta;
+type Props = SiteMeta & { siteName?: string | undefined };
 
-const { articleDate, description, ogImage, title } = Astro.props;
+const { articleDate, description, ogImage, title, siteName = siteConfig.title } =
+  Astro.props;
 
 const titleSeparator = "•";
-const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`;
+const siteTitle = `${title} ${titleSeparator} ${siteName}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const socialImageURL = new URL(ogImage ? ogImage : "/site-og.png", Astro.url)
   .href;
@@ -50,7 +51,7 @@ const socialImageURL = new URL(ogImage ? ogImage : "/site-og.png", Astro.url)
 <meta content={title} property="og:title" />
 <meta content={description} property="og:description" />
 <meta content={canonicalURL} property="og:url" />
-<meta content={siteConfig.title} property="og:site_name" />
+<meta content={siteName} property="og:site_name" />
 <meta content={siteConfig.ogLocale} property="og:locale" />
 <meta content={socialImageURL} property="og:image" />
 <meta content="1200" property="og:image:width" />
