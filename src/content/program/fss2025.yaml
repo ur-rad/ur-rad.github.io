@@ -1,0 +1,101 @@
+days:
+  - heading: "DAY 1: November 6th"
+    entries:
+      - time: "09:00 - 09:15"
+        content: "Opening Remarks / Announcements"
+      - time: "09:15 - 10:15"
+        content: "<strong>Speaker: Jeremy Marvel</strong>"
+      - time: "10:15 - 10:30"
+        content: "<strong>Discussion</strong>"
+      - time: "10:30 - 11:00"
+        content: "<strong>Break: Coffee</strong>"
+      - time: "11:00 - 12:00"
+        paperSession:
+          title: "Paper Presentations: Robot Architectures and Control"
+          items:
+            - slug: "trade-middleware-advanced-robotics"
+            - slug: "developing-robot-grasping-guidelines"
+            - slug: "limpnet-lightweight-multisensor-navigation-drones"
+            - slug: "learning-multi-modal-whole-body-control"
+      - time: "12:00 - 12:30"
+        content: "<strong>Panel: Speaker + Authors</strong>"
+      - time: "12:30 - 14:00"
+        content: "<strong>Break: Lunch</strong>"
+      - time: "14:00 - 15:00"
+        content: "<strong>Speaker: Zhi Tan</strong>"
+      - time: "15:00 - 15:30"
+        content: "<strong>Breakout Session and Discussion</strong>"
+      - time: "15:30 - 16:00"
+        content: "<strong>Break: Coffee</strong>"
+      - time: "16:00 - 17:00"
+        paperSession:
+          title: "Paper Presentations: Representations"
+          items:
+            - slug: "statistical-agent-based-model"
+            - slug: "conceptual-decomposition-sally-anne"
+            - slug: "latent-hypothesis-exploration"
+            - slug: "plan-owl-automated-pddl"
+      - time: "17:00 - 17:30"
+        content: "<strong>Panel: Speaker + Authors</strong>"
+      - time: "17:30 - 18:00"
+        content: "<strong>Breakout Session and Discussion</strong>"
+      - time: "18:00 -"
+        content: "<strong>Reception</strong>"
+  - heading: "DAY 2: November 7th"
+    entries:
+      - time: "09:00 - 09:15"
+        content: "Opening Remarks"
+      - time: "09:15 - 10:15"
+        content: "<strong>Speaker: Cindy Bethel</strong>"
+      - time: "10:15 - 10:30"
+        content: "<strong>Discussion</strong>"
+      - time: "10:30 - 11:00"
+        content: "<strong>Break: Coffee</strong>"
+      - time: "11:00 - 12:00"
+        paperSession:
+          title: "Paper Presentations: Social Robotics and Interaction"
+          items:
+            - slug: "vizij-design-animation-deployment-faces"
+            - slug: "birds-feather-animal-human-machine"
+            - slug: "language-gesture-virtual-reality"
+            - slug: "multi-modal-robotic-touch"
+      - time: "12:00 - 12:30"
+        content: "<strong>Panel: Speaker + Authors</strong>"
+      - time: "12:30 - 14:00"
+        content: "<strong>Break: Lunch</strong>"
+      - time: "14:00 - 15:00"
+        content: "<strong>Speaker: Ken Forbus</strong>"
+      - time: "15:00 - 15:30"
+        content: "<strong>Breakout Session and Discussion</strong>"
+      - time: "15:30 - 16:00"
+        content: "<strong>Break: Coffee</strong>"
+      - time: "16:00 - 16:45"
+        content: |
+          <strong>Community Presentations: Robot Hardware</strong>
+          <p class="mt-2 text-sm sm:text-base">
+            Hardware presentations by members of the community, relevant to the community as a whole.
+            Currently confirmed: <em><a href="https://quori.org" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">Quori</a>, <a href="https://jibo.media.mit.edu" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">Jibo</a>, <a href="https://scazlab.yale.edu/ommie-robot" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">Ommie</a>, &amp; Hugo by <a href="https://www.peerbots.org" class="text-link no-underline hover:underline focus-visible:underline underline-offset-2">Peerbots</a></em>.
+          </p>
+      - time: "16:45 - 17:30"
+        content: "<strong>Panel: Robot Hardware</strong>"
+      - time: "17:10 - 17:30"
+        content: "<strong>Best Paper Awards</strong>"
+      - time: "17:30 -"
+        content: "<strong>Plenary</strong>"
+  - heading: "DAY 3: November 8"
+    entries:
+      - time: "09:00 - 09:15"
+        content: "Announcements"
+      - time: "09:15 - 10:30"
+        content: |
+          <strong>Synthesis: Unifying Representations for Robot Applications</strong>
+          <p class="mt-2 text-sm sm:text-base">
+            Synthesis of discussions from previous two days regarding: (1) representational cohesion;
+            and (2) technical specifications for robot hardware platforms.
+          </p>
+      - time: "10:30 - 11:00"
+        content: "<strong>Break: Coffee</strong>"
+      - time: "11:00 - 12:00"
+        content: "<strong>Town Hall</strong>"
+      - time: "12:00 - 12:30"
+        content: "<strong>Closing Remarks</strong>"

@@ -1,0 +1,86 @@
+---
+import { render, getEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import ContactCard from "@/components/ContactCard.astro";
+import { type Edition } from "@/data/editions";
+
+interface Props {
+  edition: Edition;
+}
+
+const { edition } = Astro.props;
+const d = edition.data;
+const partner = d.partners[0];
+
+const quoriEntry = await getEntry("pages", `${d.code}/partners`);
+const QuoriBody = quoriEntry ? (await render(quoriEntry)).Content : null;
+
+const supportEntry = await getEntry("pages", `${d.code}/partners-support`);
+const SupportBody = supportEntry ? (await render(supportEntry)).Content : null;
+---
+
+<h1 class="title mb-6">Partners</h1>
+
+{
+  partner && (
+    <div class="text-center mb-8 p-4 sm:p-6 bg-gradient-to-r from-accent-one/10 to-accent-two/10 rounded-lg border border-accent-one/20">
+      <h2 class="text-xl sm:text-2xl font-semibold">
+        The {d.title} symposium has partnered with the {partner.name} Community!
+      </h2>
+      <p>
+        Read below for how you may be eligible for participation support to
+        attend {d.title} in-person.
+      </p>
+    </div>
+  )
+}
+
+<Section
+  id={partner?.name ?? "partner"}
+  title={partner?.name}
+  aria-label={partner?.name}
+  image={partner?.logo}
+  className="bg-accent-base/5 rounded-lg border border-accent-one/20"
+>
+  <div class="max-w-4xl mx-auto">
+    <div class="prose prose-citrus max-w-none px-4">
+      {QuoriBody && <QuoriBody />}
+    </div>
+  </div>
+</Section>
+
+<Section id="participant-support" title="Participant Support">
+  <div class="max-w-4xl mx-auto">
+    <div class="prose prose-citrus max-w-none px-4">
+      {SupportBody && <SupportBody />}
+    </div>
+  </div>
+
+  <Section id="intent-to-submit" title="Intent to Submit">
+    <div class="max-w-4xl mx-auto">
+      <div class="max-w-none px-4">
+        <div class="mb-4">
+          <ContactCard message="If you intend to submit a paper related to Quori">
+            <div class="text-center text-sm">
+              <p class="mb-3">
+                Use the subject line, <span class="font-bold text-accent-one"
+                  >[UR-RAD] [Quori] Intent to Submit</span
+                >,<br /> and include the following in the body of the message:
+              </p>
+              <ul class="list-disc list-outside inline-block text-left">
+                <li>Tentative title</li>
+                <li>Tentative author list</li>
+                <li>Tentative keywords</li>
+              </ul>
+              <p class="mt-3">
+                This step is optional, but will aid in our planning for
+                reviewers.<br /> Note that at least one author from each paper will
+                be expected to review 2-3 UR-RAD papers themselves.
+              </p>
+            </div>
+          </ContactCard>
+        </div>
+      </div>
+    </div>
+  </Section>
+</Section>

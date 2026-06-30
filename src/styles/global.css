@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   /* Content paths */
@@ -109,6 +110,40 @@
       @apply no-underline brightness-110;
     }
   }
+}
+
+/* Theme @tailwindcss/typography (.prose) with the site's color tokens.
+   These tokens already flip with [data-theme], so prose adapts to dark/light
+   without needing the `prose-invert` modifier. Used for rendered markdown:
+   paper bodies and the MDX-authored edition pages (Home/CFP/Partners).
+   NOTE: kept UNLAYERED on purpose — the typography plugin defines its
+   `--tw-prose-*` defaults in a later cascade layer, so a layered override
+   would lose. Unlayered rules beat any @layer. */
+.prose {
+  /* `--color-foreground` is an intentionally muted 60%-opacity token; body
+     copy needs full contrast (the original text inherited the full-opacity
+     page color). `--color-color-900` is the full-opacity foreground. */
+  --tw-prose-body: var(--color-color-900);
+  --tw-prose-headings: var(--color-accent-base);
+  --tw-prose-lead: var(--color-color-900);
+  --tw-prose-links: var(--color-link);
+  --tw-prose-bold: var(--color-color-900);
+  --tw-prose-counters: var(--color-accent-two);
+  --tw-prose-bullets: var(--color-accent-two);
+  --tw-prose-hr: var(--color-special-lighter);
+  --tw-prose-quotes: var(--color-color-900);
+  --tw-prose-quote-borders: var(--color-accent-two);
+  --tw-prose-captions: var(--color-lighter);
+  --tw-prose-code: var(--color-color-900);
+  --tw-prose-pre-code: var(--color-color-900);
+  --tw-prose-pre-bg: var(--color-color-100);
+  --tw-prose-th-borders: var(--color-special-lighter);
+  --tw-prose-td-borders: var(--color-special-lighter);
+}
+
+/* Accent the bold lead-in of list items (e.g. the Quori topics list). */
+.prose-citrus :is(li) > strong:first-child {
+  color: var(--color-accent-one);
 }
 
 @font-face {

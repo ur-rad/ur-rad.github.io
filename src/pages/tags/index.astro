@@ -1,9 +1,9 @@
 ---
 import Badge from "@/components/Badge.astro";
-import { getAllPosts, getUniqueTagsWithCount } from "@/data/post";
+import { getAllPapers, getUniqueTagsWithCount } from "@/data/papers";
 import PageLayout from "@/layouts/Base.astro";
 
-const allPosts = await getAllPosts();
+const allPosts = await getAllPapers();
 const allTags = getUniqueTagsWithCount(allPosts);
 
 const meta = {

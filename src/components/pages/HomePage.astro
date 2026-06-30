@@ -1,0 +1,258 @@
+---
+import { render, getEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import SpeakerCard from "@/components/SpeakerCard.astro";
+import ContactCard from "@/components/ContactCard.astro";
+import { url } from "@/utils/url";
+import { type Edition, editionPath, getEditionPeople } from "@/data/editions";
+
+interface Props {
+  edition: Edition;
+}
+
+const { edition } = Astro.props;
+const d = edition.data;
+
+const keynotes = await getEditionPeople(edition, "keynote");
+
+const aboutEntry = await getEntry("pages", `${d.code}/home`);
+const About = aboutEntry ? (await render(aboutEntry)).Content : null;
+
+const venueLine = [d.venue?.name, d.venue?.city, d.venue?.country]
+  .filter(Boolean)
+  .join(", ");
+---
+
+<!-- Hero section -->
+<div
+  class="absolute top-0 left-1/2 md:top-[-15%] -ml-[50vw] min-h-screen w-screen pointer-events-none blur-3xl opacity-50 overflow-x-hidden"
+>
+  <div
+    class="absolute top-[10%] right-[-40%] w-[65%] h-full bg-gradient-to-b from-purple-300 via-blue-300 to-transparent rounded-full opacity-30 dark:opacity-10"
+  >
+  </div>
+  <div
+    class="absolute top-[10%] left-[-40%] w-[65%] h-full bg-gradient-to-b from-blue-300 via-pink-300 to-transparent rounded-full opacity-30 dark:opacity-10"
+  >
+  </div>
+  <div
+    class="absolute top-[-20%] left-[-50%] w-[85%] h-full bg-gradient-to-b from-indigo-300 via-orange-300 to-transparent rounded-full opacity-60 dark:opacity-10"
+  >
+  </div>
+  <div
+    class="absolute top-[-20%] right-[-50%] w-[85%] h-full bg-gradient-to-b from-orange-300 via-indigo-300 to-transparent rounded-full opacity-60 dark:opacity-10"
+  >
+  </div>
+</div>
+<section
+  class="max-w-4xl mx-auto px-4 relative flex items-center justify-center min-h-[50vh]"
+>
+  <div class="w-full text-center">
+    <span
+      class="title text-3xl sm:text-4xl bg-gradient-to-r from-accent-two/85 via-accent-one/85 to-accent-two/85 dark:from-accent-two dark:via-accent-one dark:to-accent-two bg-clip-text text-transparent"
+    >
+      {d.title}
+    </span>
+    {
+      d.tagline && (
+        <h2 class="text-lg sm:text-xl lg:text-2xl font-semibold mt-4 mb-2 px-2">
+          {d.tagline}
+        </h2>
+      )
+    }
+    {venueLine && <p class="text-base sm:text-lg mb-2 px-2">{venueLine}</p>}
+    <p class="text-base sm:text-lg mb-6 px-2">{d.dates.display}</p>
+
+    <div class="max-w-3xl mx-auto text-left mb-8 px-4">
+      <h3 class="text-lg sm:text-xl font-semibold mb-4 text-center">
+        About UR-RAD
+      </h3>
+      <div class="prose prose-citrus max-w-none text-left sm:text-justify">
+        {About && <About />}
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col sm:flex-row justify-center gap-4 sm:space-x-4 mt-8 px-4"
+    >
+      <a
+        href={url(editionPath(edition, "call-for-papers"))}
+        class="relative flex items-center justify-center h-10 px-4 sm:px-6 rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two"
+      >
+        <span class="text-bg font-semibold">Call for Papers</span>
+      </a>
+      <a
+        href={url(editionPath(edition, "people"))}
+        class="relative flex items-center justify-center h-10 px-4 sm:px-6 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest"
+      >
+        <span
+          class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two"
+        >
+          People
+        </span>
+      </a>
+    </div>
+
+    <div class="mt-8 px-4">
+      <ContactCard />
+    </div>
+  </div>
+</section>
+
+<!-- Keynote Speakers Preview -->
+{
+  keynotes.length > 0 && (
+    <Section
+      id="keynote-speakers"
+      title="Keynote Speakers"
+      subtitle="Learn from leading experts in robotics and AI"
+      aria-label="Keynote Speakers"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 mb-8">
+          {keynotes.map((p) =>
+            p.photo ? (
+              <SpeakerCard
+                photo={p.photo}
+                name={p.name}
+                title={p.title ?? ""}
+                affiliation={p.affiliation ?? ""}
+              />
+            ) : null,
+          )}
+        </div>
+
+        <div class="text-center">
+          <a
+            href={url(editionPath(edition, "people"))}
+            class="inline-flex items-center justify-center h-10 px-6 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest transition-all"
+          >
+            <span class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two">
+              View All People
+            </span>
+          </a>
+        </div>
+      </div>
+    </Section>
+  )
+}
+
+<!-- Submission Info -->
+<Section
+  id="submission-info"
+  title="Submit Your Research"
+  subtitle="Share your work on unifying representations for robot application development"
+  aria-label="Call for Papers"
+>
+  <div class="max-w-4xl mx-auto">
+    <div class="grid gap-6 md:grid-cols-2 mb-8">
+      <div class="p-4 sm:p-6 bg-accent-base/5 rounded-lg">
+        <h3 class="text-lg font-semibold mb-3 text-accent-one">
+          Submission Types
+        </h3>
+        <ul class="space-y-2 text-sm sm:text-base">
+          {
+            d.submissionTypes.map((t) => (
+              <li>
+                <strong>{t.name}:</strong> {t.pages?.replace("*", "")}
+                {t.archival && ` (${t.archival.toLowerCase()})`}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="p-4 sm:p-6 bg-special-lighter rounded-lg">
+        <h3 class="text-lg font-semibold mb-3 text-accent-two">
+          Important Dates
+        </h3>
+        <ul class="space-y-2 text-sm sm:text-base">
+          {
+            d.importantDates.map((dt) => (
+              <li>
+                <strong>{dt.label}:</strong> {dt.date}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <div class="flex flex-col sm:flex-row justify-center gap-4 sm:space-x-4">
+        {
+          d.urls?.submission && (
+            <a
+              href={d.urls.submission}
+              class="inline-flex items-center justify-center h-12 px-6 sm:px-8 text-lg font-semibold rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-surface"
+            >
+              Submit Your Paper
+            </a>
+          )
+        }
+        <a
+          href={url(editionPath(edition, "call-for-papers"))}
+          class="inline-flex items-center justify-center h-12 px-6 sm:px-8 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest transition-all"
+        >
+          <span
+            class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two"
+          >
+            Full Call for Papers
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<!-- Topics of Interest -->
+{
+  d.topics.length > 0 && (
+    <Section
+      id="topics-of-interest"
+      title="Topics of Interest"
+      subtitle="Research areas we're excited to explore together"
+      aria-label="Topics of interest"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div class="max-w-none">
+          <ul class="list-disc list-inside space-y-2 sm:grid sm:grid-cols-1 md:grid-cols-2 gap-x-4 lg:gap-x-8">
+            {d.topics.map((topic) => (
+              <li set:html={topic} />
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Section>
+  )
+}
+
+<!-- Previous Symposia -->
+{
+  d.previousSymposia.length > 0 && (
+    <Section
+      id="previous-symposia"
+      title="Previous Symposia"
+      subtitle="Explore past UR-RAD symposiums and their contributions to the robotics community"
+      aria-label="Previous symposia"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+          {d.previousSymposia.map((s) => (
+            <a
+              href={s.url}
+              class="bg-accent-base/5 rounded-lg p-6 border border-accent-one/20 hover:border-accent-one/40 transition-colors hover:bg-accent-base/10 block"
+            >
+              <div class="text-center mb-4">
+                <h3 class="text-xl font-semibold text-accent-one mb-2">
+                  UR-RAD {s.year}
+                </h3>
+                <div class="text-sm text-accent-two font-medium">{s.label}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </Section>
+  )
+}

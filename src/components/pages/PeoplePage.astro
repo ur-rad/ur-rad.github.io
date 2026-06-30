@@ -1,0 +1,152 @@
+---
+import Section from "@/components/Section.astro";
+import SpeakerCard from "@/components/SpeakerCard.astro";
+import OrganizerCard from "@/components/OrganizerCard.astro";
+import ContactCard from "@/components/ContactCard.astro";
+import { type Edition, getEditionPeople } from "@/data/editions";
+
+interface Props {
+  edition: Edition;
+}
+
+const { edition } = Astro.props;
+const d = edition.data;
+
+const keynotes = await getEditionPeople(edition, "keynote");
+const mentors = await getEditionPeople(edition, "mentor");
+const organizers = await getEditionPeople(edition, "organizer");
+---
+
+<h1 class="title mb-6">People</h1>
+
+<Section id="about">
+  <div class="max-w-4xl mx-auto">
+    <div class="max-w-none px-4">
+      <p class="text-lg mb-8">
+        Meet the keynote speakers and organizing committee bringing together the
+        {d.title} symposium on unifying representations for robot application development.
+      </p>
+    </div>
+  </div>
+</Section>
+
+{
+  keynotes.length > 0 && (
+    <Section
+      id="keynote-speakers"
+      title="Keynote Speakers"
+      subtitle={`We are excited to announce our keynote speakers for ${d.title}`}
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 mb-8">
+          {keynotes.map((p) =>
+            p.photo ? (
+              <SpeakerCard
+                photo={p.photo}
+                name={p.name}
+                title={p.title ?? ""}
+                affiliation={p.affiliation ?? ""}
+              />
+            ) : null,
+          )}
+        </div>
+      </div>
+    </Section>
+  )
+}
+
+{
+  d.previousSpeakers.length > 0 && (
+    <Section
+      id="previous-speakers"
+      title="Previous UR-RAD Speakers"
+      subtitle="Distinguished speakers from past symposiums in the robotics and AI communities"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div class="max-w-none px-4">
+          {d.previousSpeakers.map((group) => (
+            <>
+              <h3 class="text-base sm:text-lg font-semibold mt-6 mb-3">
+                {group.heading}
+              </h3>
+              <ul class="list-disc list-inside space-y-1">
+                {group.names.map((n) => (
+                  <li>{n}</li>
+                ))}
+              </ul>
+            </>
+          ))}
+        </div>
+      </div>
+    </Section>
+  )
+}
+
+{
+  mentors.length > 0 && (
+    <Section
+      id="mentors"
+      title="Mentors"
+      subtitle="Experienced researchers providing guidance and mentorship for the symposium"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+          {mentors.map((p) => (
+            <div class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg">
+              <h3 class="text-lg sm:text-xl font-semibold mb-2">{p.name}</h3>
+              <p class="text-sm sm:text-base text-accent-two">{p.affiliation}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Section>
+  )
+}
+
+{
+  organizers.length > 0 && (
+    <Section
+      id="organizing-committee"
+      title="Organizing Committee"
+      subtitle={`Meet the researchers organizing ${d.title}`}
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+          {organizers.map((p) =>
+            p.photo ? (
+              <OrganizerCard
+                photo={p.photo}
+                name={p.name}
+                affiliation={p.affiliation ?? ""}
+              />
+            ) : (
+              <div class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg">
+                <h3 class="text-lg sm:text-xl font-semibold mb-2">{p.name}</h3>
+                <p class="text-sm sm:text-base text-accent-two">{p.affiliation}</p>
+              </div>
+            ),
+          )}
+        </div>
+      </div>
+    </Section>
+  )
+}
+
+<Section
+  id="get-involved"
+  title="Get Involved"
+  subtitle="Interested in contributing to the organization of future UR-RAD symposiums?"
+>
+  <div class="max-w-4xl mx-auto">
+    <div class="max-w-none px-4">
+      <p class="mb-4">
+        We welcome volunteers and collaborators who share our vision for
+        advancing robot application development.
+      </p>
+
+      <div class="mt-8">
+        <ContactCard message="Contact the organizing committee" />
+      </div>
+    </div>
+  </div>
+</Section>

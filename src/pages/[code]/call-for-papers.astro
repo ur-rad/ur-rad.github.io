@@ -1,0 +1,23 @@
+---
+import PageLayout from "@/layouts/Base.astro";
+import CallForPapersPage from "@/components/pages/CallForPapersPage.astro";
+import { getPastEditions } from "@/data/editions";
+
+export async function getStaticPaths() {
+  const editions = await getPastEditions();
+  return editions.map((edition) => ({
+    params: { code: edition.data.code },
+    props: { edition },
+  }));
+}
+
+const { edition } = Astro.props;
+const meta = {
+  description: `Call for Papers - ${edition.data.title} AAAI Fall Symposium on Unifying Representations for Robot Application Development`,
+  title: `${edition.data.title} · Call for Papers`,
+};
+---
+
+<PageLayout meta={meta} edition={edition} pageKey="call-for-papers">
+  <CallForPapersPage edition={edition} />
+</PageLayout>

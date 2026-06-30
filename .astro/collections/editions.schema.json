@@ -1,0 +1,337 @@
+{
+  "$ref": "#/definitions/editions",
+  "definitions": {
+    "editions": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "year": {
+          "type": "number"
+        },
+        "ordinal": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "current",
+            "past",
+            "upcoming"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "tagline": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "dates": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string"
+            },
+            "end": {
+              "type": "string"
+            },
+            "display": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "start",
+            "end",
+            "display"
+          ],
+          "additionalProperties": false
+        },
+        "venue": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        "urls": {
+          "type": "object",
+          "properties": {
+            "registration": {
+              "type": "string"
+            },
+            "submission": {
+              "type": "string"
+            },
+            "aaai": {
+              "type": "string"
+            },
+            "venue": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "importantDates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "date": {
+                "type": "string"
+              },
+              "struck": {
+                "type": "boolean",
+                "default": false
+              }
+            },
+            "required": [
+              "label",
+              "date"
+            ],
+            "additionalProperties": false
+          },
+          "default": []
+        },
+        "topics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "submissionTypes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "pages": {
+                "type": "string"
+              },
+              "archival": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "accent": {
+                "type": "string",
+                "enum": [
+                  "accent-one",
+                  "accent-two",
+                  "muted"
+                ]
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": false
+          },
+          "default": []
+        },
+        "timeline": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "heading": {
+                "type": "string"
+              },
+              "was": {
+                "type": "string"
+              },
+              "variant": {
+                "type": "string",
+                "enum": [
+                  "special",
+                  "accent-one",
+                  "accent-two",
+                  "final"
+                ],
+                "default": "accent-one"
+              },
+              "lead": {
+                "type": "string"
+              },
+              "bullets": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "strong": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "default": []
+              },
+              "tip": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "heading"
+            ],
+            "additionalProperties": false
+          },
+          "default": []
+        },
+        "previousSymposia": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "year": {
+                "type": "number"
+              },
+              "label": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "year",
+              "label",
+              "url"
+            ],
+            "additionalProperties": false
+          },
+          "default": []
+        },
+        "previousSpeakers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "heading": {
+                "type": "string"
+              },
+              "names": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "heading",
+              "names"
+            ],
+            "additionalProperties": false
+          },
+          "default": []
+        },
+        "people": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "personId": {
+                "type": "string"
+              },
+              "roles": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "keynote",
+                    "mentor",
+                    "organizer"
+                  ]
+                }
+              },
+              "order": {
+                "type": "number"
+              },
+              "affiliation": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "personId",
+              "roles"
+            ],
+            "additionalProperties": false
+          },
+          "default": []
+        },
+        "partners": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "logo": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              },
+              "video": {
+                "type": "string"
+              },
+              "blurb": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": false
+          },
+          "default": []
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "year",
+        "status",
+        "title",
+        "dates"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

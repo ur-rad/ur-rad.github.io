@@ -1,0 +1,23 @@
+---
+import PageLayout from "@/layouts/Base.astro";
+import HomePage from "@/components/pages/HomePage.astro";
+import { getPastEditions } from "@/data/editions";
+
+export async function getStaticPaths() {
+  const editions = await getPastEditions();
+  return editions.map((edition) => ({
+    params: { code: edition.data.code },
+    props: { edition },
+  }));
+}
+
+const { edition } = Astro.props;
+---
+
+<PageLayout
+  meta={{ title: `${edition.data.title} · Home` }}
+  edition={edition}
+  pageKey="home"
+>
+  <HomePage edition={edition} />
+</PageLayout>

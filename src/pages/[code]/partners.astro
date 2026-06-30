@@ -1,0 +1,23 @@
+---
+import PageLayout from "@/layouts/Base.astro";
+import PartnersPage from "@/components/pages/PartnersPage.astro";
+import { getPastEditions } from "@/data/editions";
+
+export async function getStaticPaths() {
+  const editions = await getPastEditions();
+  return editions.map((edition) => ({
+    params: { code: edition.data.code },
+    props: { edition },
+  }));
+}
+
+const { edition } = Astro.props;
+const meta = {
+  description: `Partners - ${edition.data.title} AAAI Fall Symposium on Unifying Representations for Robot Application Development`,
+  title: `${edition.data.title} · Partners`,
+};
+---
+
+<PageLayout meta={meta} edition={edition} pageKey="partners">
+  <PartnersPage edition={edition} />
+</PageLayout>
