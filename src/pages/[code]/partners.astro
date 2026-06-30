@@ -5,10 +5,13 @@ import { getPastEditions } from "@/data/editions";
 
 export async function getStaticPaths() {
   const editions = await getPastEditions();
-  return editions.map((edition) => ({
-    params: { code: edition.data.code },
-    props: { edition },
-  }));
+  // Only generate a Partners page for editions that actually have partners.
+  return editions
+    .filter((edition) => edition.data.partners.length > 0)
+    .map((edition) => ({
+      params: { code: edition.data.code },
+      props: { edition },
+    }));
 }
 
 const { edition } = Astro.props;

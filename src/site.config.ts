@@ -1,5 +1,5 @@
 import type { SiteConfig } from "@/types";
-import type { PageKey } from "@/data/editions";
+import type { Edition, PageKey } from "@/data/editions";
 
 export const siteConfig: SiteConfig = {
   // Used as both a meta property (src/components/BaseHead.astro L:31 + L:49) & the generated satori png (src/pages/og-image/[slug].png.ts)
@@ -27,8 +27,14 @@ export const siteConfig: SiteConfig = {
 // Used to generate links in both the Header & Footer.
 // `key` drives edition-aware links in the Header (current year at root, past
 // years under their code prefix); `path` is the current-edition root path used
-// by the global Footer.
-export const menuLinks: { key: PageKey; path: string; title: string }[] = [
+// by the global Footer. `available` optionally hides the link for editions
+// that don't have the corresponding content (e.g. a year with no partners).
+export const menuLinks: {
+  key: PageKey;
+  path: string;
+  title: string;
+  available?: (edition: Edition) => boolean;
+}[] = [
   {
     key: "home",
     path: "/",
@@ -48,6 +54,7 @@ export const menuLinks: { key: PageKey; path: string; title: string }[] = [
     key: "partners",
     path: "/partners/",
     title: "Partners",
+    available: (edition) => (edition.data.partners?.length ?? 0) > 0,
   },
   {
     key: "program",

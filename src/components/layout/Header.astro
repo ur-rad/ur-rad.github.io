@@ -21,6 +21,11 @@ const { edition: activeEdition, pageKey } = Astro.props;
 // Build nav within the active edition (past years stay prefixed); fall back to
 // the current edition on pages that don't carry one (tags, papers list, 404).
 const active = activeEdition ?? (await getCurrentEdition());
+// Hide links that don't apply to this edition (e.g. Partners for a year with
+// no partners).
+const editionLinks = menuLinks.filter(
+  (link) => !link.available || link.available(active),
+);
 ---
 
 <header
@@ -129,7 +134,7 @@ const active = activeEdition ?? (await getCurrentEdition());
 				-->
 
         {
-          menuLinks.map((link) => {
+          editionLinks.map((link) => {
             const href = url(editionPath(active, link.key));
             return (
               <a
@@ -172,7 +177,7 @@ const active = activeEdition ?? (await getCurrentEdition());
 						id="main-navigation-menu"
 					>
 						{
-							menuLinks.map((link) => (
+							editionLinks.map((link) => (
 								<a
 									aria-current={Astro.url.pathname === link.path ? "page" : false}
 									class="text-accent-two underline-offset-2 hover:underline rounded-lg h-8 gap-x-1 px-2 flex justify-center items-center"
@@ -292,7 +297,7 @@ const active = activeEdition ?? (await getCurrentEdition());
     >
       <!-- Menu -->
       {
-        menuLinks.map((link) => {
+        editionLinks.map((link) => {
           const href = url(editionPath(active, link.key));
           return (
             <a

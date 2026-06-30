@@ -138,47 +138,53 @@ const venueLine = [d.venue?.name, d.venue?.city, d.venue?.country]
 }
 
 <!-- Submission Info -->
-<Section
-  id="submission-info"
-  title="Submit Your Research"
-  subtitle="Share your work on unifying representations for robot application development"
-  aria-label="Call for Papers"
->
-  <div class="max-w-4xl mx-auto">
-    <div class="grid gap-6 md:grid-cols-2 mb-8">
-      <div class="p-4 sm:p-6 bg-accent-base/5 rounded-lg">
-        <h3 class="text-lg font-semibold mb-3 text-accent-one">
-          Submission Types
-        </h3>
-        <ul class="space-y-2 text-sm sm:text-base">
-          {
-            d.submissionTypes.map((t) => (
-              <li>
-                <strong>{t.name}:</strong> {t.pages?.replace("*", "")}
-                {t.archival && ` (${t.archival.toLowerCase()})`}
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+{
+  (d.submissionTypes.length > 0 ||
+    d.importantDates.length > 0 ||
+    d.urls?.submission) && (
+    <Section
+      id="submission-info"
+      title="Submit Your Research"
+      subtitle="Share your work on unifying representations for robot application development"
+      aria-label="Call for Papers"
+    >
+      <div class="max-w-4xl mx-auto">
+        {(d.submissionTypes.length > 0 || d.importantDates.length > 0) && (
+          <div class="grid gap-6 md:grid-cols-2 mb-8">
+            {d.submissionTypes.length > 0 && (
+              <div class="p-4 sm:p-6 bg-accent-base/5 rounded-lg">
+                <h3 class="text-lg font-semibold mb-3 text-accent-one">
+                  Submission Types
+                </h3>
+                <ul class="space-y-2 text-sm sm:text-base">
+                  {d.submissionTypes.map((t) => (
+                    <li>
+                      <strong>{t.name}:</strong> {t.pages?.replace("*", "")}
+                      {t.archival && ` (${t.archival.toLowerCase()})`}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
-      <div class="p-4 sm:p-6 bg-special-lighter rounded-lg">
-        <h3 class="text-lg font-semibold mb-3 text-accent-two">
-          Important Dates
-        </h3>
-        <ul class="space-y-2 text-sm sm:text-base">
-          {
-            d.importantDates.map((dt) => (
-              <li>
-                <strong>{dt.label}:</strong> {dt.date}
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </div>
+            {d.importantDates.length > 0 && (
+              <div class="p-4 sm:p-6 bg-special-lighter rounded-lg">
+                <h3 class="text-lg font-semibold mb-3 text-accent-two">
+                  Important Dates
+                </h3>
+                <ul class="space-y-2 text-sm sm:text-base">
+                  {d.importantDates.map((dt) => (
+                    <li>
+                      <strong>{dt.label}:</strong> {dt.date}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
 
-    <div class="text-center">
+        <div class="text-center">
       <div class="flex flex-col sm:flex-row justify-center gap-4 sm:space-x-4">
         {
           d.urls?.submission && (
@@ -200,10 +206,12 @@ const venueLine = [d.venue?.name, d.venue?.city, d.venue?.country]
             Full Call for Papers
           </span>
         </a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</Section>
+    </Section>
+  )
+}
 
 <!-- Topics of Interest -->
 {

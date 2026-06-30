@@ -4,6 +4,13 @@ import PartnersPage from "@/components/pages/PartnersPage.astro";
 import { getCurrentEdition } from "@/data/editions";
 
 const edition = await getCurrentEdition();
+
+// No Partners page when the current edition has no partners (the nav link is
+// hidden too). Past editions are filtered in src/pages/[code]/partners.astro.
+if (edition.data.partners.length === 0) {
+  return Astro.rewrite("/404");
+}
+
 const meta = {
   description: `Partners - ${edition.data.title} AAAI Fall Symposium on Unifying Representations for Robot Application Development`,
   title: "Partners",
