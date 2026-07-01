@@ -1,5 +1,5 @@
 ---
-edition: "fss2025"
+edition: "fss_2025"
 title: "Using Social Robots and AI to Perform Genetic Risk Assessment for Cancer"
 abstract: "Genetic risk assessment (GRA) and genetic counseling have become integral to optimal patient care for patients with cancer. At present, there is a limited number of qualified healthcare providers who provide this service. To assist professionals in the GRA process, we have combined social robotics and retrieval-augmented generative artificial intelligence (RAG AI) to provide education related to hereditary cancer to be included in GRA sessions for individuals at risk. This GRA application pushes the boundary on previously unavailable chatbots and AI systems by creating a novel and interactive experience enhanced by professionally verified information. In the future, we seek to improve the app as it is and obtain feedback from both GRA professionals and potential end-users that will be used to enhance the system and provide customized risk assessment. Overall, our GRA system takes the next step towards informing patients of their hereditary cancer risk and pertinent care options."
 authors:

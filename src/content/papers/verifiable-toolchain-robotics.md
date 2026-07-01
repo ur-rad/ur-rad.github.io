@@ -1,5 +1,5 @@
 ---
-edition: "fss2025"
+edition: "fss_2025"
 title: "Towards a Verifiable Toolchain for Robotics"
 abstract: "There is a growing need for autonomous robots to complete complex tasks robustly in dynamic and unstructured environments. However, current robot performance is limited to simple tasks in controlled environments. To improve robot autonomy in complex environments, the robot’s deliberation system must be able to synthesise correct plans for a task and generate contingency plans for handling anomalous scenarios that were not expected at design time. The robustness of such a system can be quantified using techniques for formal verification and validation. This paper outlines the progress of EU project CONVINCE (CONtext-aware Verifiable and adaptIve dyNamiC dEliberation), which aims to develop a software toolchain that aids developers in designing, developing, and deploying robot deliberation systems that are fully verified. We describe our modelling approach, each of the toolchain components, and how they interact. We also discuss survey results which demonstrate the demand for a verifiable toolchain among the robotics community."
 authors:

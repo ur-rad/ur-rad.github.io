@@ -1,5 +1,5 @@
 ---
-edition: "fss2025"
+edition: "fss_2025"
 title: "Statewise: A Petri Net-Based Visual Editor for Specifying Robotic Systems"
 abstract: "We present Statewise, a visual editor designed to enable developers to model and simulate complex systems using colored Petri nets in an intuitive, graphical way. Utilizing Statewise, we explore two use cases to demonstrate its capabilities. We also discuss potential enhancements to further extend its applicability in more complex scenarios."
 authors:

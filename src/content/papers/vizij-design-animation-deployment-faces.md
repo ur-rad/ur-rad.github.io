@@ -1,5 +1,5 @@
 ---
-edition: "fss2025"
+edition: "fss_2025"
 title: "Vizij: Supporting the design, animation, and deployment of rendered robot faces"
 abstract: "The lack of a standardized, open-source platform for expressive, rendered robot faces is hindering effective human-robot interaction (HRI). To address this challenge, we present a solution under development, Vizij , an open-source ecosystem of tools that provide a pipeline for building, animating, sharing, and deploying rendered robot faces. Unlike a “blank canvas”, Vizij defines a standardized-yet-modular, user-informed rigging and controller system—including for eye gaze, visemes, and emotional expression—that offers robust communicative capabilities out-of-the-box. In this paper, we present the system requirements, architecture, and modules within Vizij , define preliminary standards for this system and discuss example interfaces and use cases that can be built and supported with this system."
 authors:

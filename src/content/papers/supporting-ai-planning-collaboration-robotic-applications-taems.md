@@ -1,5 +1,5 @@
 ---
-edition: "fss2025"
+edition: "fss_2025"
 title: "Supporting AI Planning and Collaboration for Robotic Applications Using TAEMS"
 abstract: "This paper describes a general approach to integrating higher-level reasoning mechanisms including planning and scheduling methods with lower-level robotic control processes. We adopt a domain-independent task representation language TAEMS to describe the knowledge of tasks, resources, and their interrelationships. This TAEMS representation language serves as the input of the reasoning functions, which generate a schedule of executable methods to be executed by the robot in the physical world. In the execution process of this goal-directed plan, the robot also needs to attend to basic functions. The potential interactions between the plan and these basic functions would lead to interesting challenges that will be discussed. An integrated development platform with a simulator that supports real-world physics is also presented."
 authors:

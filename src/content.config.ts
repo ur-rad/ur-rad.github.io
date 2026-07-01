@@ -14,7 +14,7 @@ const papers = defineCollection({
   loader: glob({ base: "./src/content/papers", pattern: "**/*.{md,mdx}" }),
   schema: ({ image }) =>
     baseSchema.extend({
-      // Conference edition code this paper belongs to (e.g. "fss2025").
+      // Conference edition code this paper belongs to (e.g. "fss_2025").
       // Assigned explicitly — a calendar year may host more than one event.
       edition: z.string(),
       abstract: z.string(),
@@ -55,7 +55,7 @@ const editions = defineCollection({
   loader: glob({ base: "./src/content/editions", pattern: "**/*.{md,mdx}" }),
   schema: ({ image }) =>
    z.object({
-    code: z.string(), // slug/id, e.g. "fss2025" (also the past-year URL prefix)
+    code: z.string(), // slug/id, e.g. "fss_2025" (also the past-year URL prefix)
     year: z.number(),
     ordinal: z.string().optional(), // "3rd"
     status: z.enum(["current", "past", "upcoming"]),
@@ -173,7 +173,7 @@ const people = defineCollection({
 });
 
 // Pages — per-edition "designed page" bodies (MDX block layouts). Entry id is
-// "<code>/<pageKey>" (e.g. "fss2025/call-for-papers").
+// "<code>/<pageKey>" (e.g. "fss_2025/call-for-papers").
 const pages = defineCollection({
   loader: glob({ base: "./src/content/pages", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
