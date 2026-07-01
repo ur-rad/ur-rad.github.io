@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer.astro";
 import { siteConfig } from "@/site.config";
 import type { SiteMeta } from "@/types";
 import type { Edition, PageKey } from "@/data/editions";
+import { getCurrentEdition } from "@/data/editions";
 import "../styles/global.css";
 
 interface Props {
@@ -24,9 +25,11 @@ const {
 // Pagefind filter so search can group results by conference year.
 const pagefindYear = edition ? String(edition.data.year) : undefined;
 
-// Brand/site name reflects the edition being viewed (falls back to the
-// configured default on pages without an edition).
-const siteName = edition?.data.title ?? siteConfig.title;
+// Brand/site name reflects the edition being viewed; pages without an edition
+// (tags, papers list, 404) fall back to the current edition (matching the
+// header wordmark) rather than the static config default.
+const brandEdition = edition ?? (await getCurrentEdition());
+const siteName = brandEdition.data.title;
 
 // Default the social card to the edition's own OG image (paper pages pass
 // their own ogImage; non-edition pages fall back to /site-og.png in BaseHead).

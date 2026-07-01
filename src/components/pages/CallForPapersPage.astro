@@ -119,10 +119,15 @@ const timelineStyle: Record<string, { dot: string; box: string; head: string }> 
       <div class="max-w-6xl mx-auto">
         <div class="max-w-none px-4 mb-8">
           <p class="text-center">
-            We invite the following contributions, formatted using the{" "}
-            <a href="https://aaai.org/authorkit25/" class="citrus-link">
-              AAAI-25 author kit
-            </a>
+            We invite the following contributions
+            {d.urls?.authorKit ? (
+              <>
+                , formatted using the{" "}
+                <a href={d.urls.authorKit} class="citrus-link">
+                  AAAI author kit
+                </a>
+              </>
+            ) : null}
             :
           </p>
         </div>

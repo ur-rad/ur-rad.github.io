@@ -81,6 +81,7 @@ const editions = defineCollection({
         submission: z.string().optional(),
         aaai: z.string().optional(),
         venue: z.string().optional(),
+        authorKit: z.string().optional(),
       })
       .optional(),
     importantDates: z
