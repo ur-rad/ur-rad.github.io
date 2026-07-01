@@ -119,6 +119,8 @@ export default defineConfig({
   base: process.env.PR_PREVIEW_PATH || "/",
   redirects: {
     "/fss_2025/": "/",
+    // Papers moved from /posts/ to /papers/
+    "/posts/[...slug]": "/papers/[...slug]",
   },
   vite: {
     build: {

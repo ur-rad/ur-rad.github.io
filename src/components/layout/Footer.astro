@@ -1,14 +1,19 @@
 ---
 import { menuLinks, siteConfig } from "@/site.config";
 import { url } from "@/utils/url";
+import { getCurrentEdition } from "@/data/editions";
 
 const year = new Date().getFullYear();
+const current = await getCurrentEdition();
 
-// Shortened menu titles for footer
-const shortMenuLinks = menuLinks.map((link) => ({
-  ...link,
-  title: link.title === "Call for Papers" ? "CfP" : link.title,
-}));
+// Shortened menu titles for footer, hiding links that don't apply to the
+// current edition (e.g. Partners when there are none).
+const shortMenuLinks = menuLinks
+  .filter((link) => !link.available || link.available(current))
+  .map((link) => ({
+    ...link,
+    title: link.title === "Call for Papers" ? "CfP" : link.title,
+  }));
 ---
 
 <footer

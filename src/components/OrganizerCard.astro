@@ -9,7 +9,7 @@ export interface Props {
 const { photo, name, affiliation, alt = name } = Astro.props;
 ---
 
-<div class="p-3 sm:p-4 border border-special-lighter rounded-lg text-center">
+<div class="p-3 sm:p-4 border border-color-300 rounded-lg text-center">
   <img
     src={photo.src}
     alt={alt}

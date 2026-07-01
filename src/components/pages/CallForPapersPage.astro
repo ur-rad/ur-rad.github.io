@@ -1,0 +1,278 @@
+---
+import { render, getEntry } from "astro:content";
+import Section from "@/components/Section.astro";
+import ContactCard from "@/components/ContactCard.astro";
+import { url } from "@/utils/url";
+import { type Edition, editionPath } from "@/data/editions";
+
+interface Props {
+  edition: Edition;
+}
+
+const { edition } = Astro.props;
+const d = edition.data;
+
+const introEntry = await getEntry("pages", `${d.code}/call-for-papers`);
+const Intro = introEntry ? (await render(introEntry)).Content : null;
+
+const preferred = d.importantDates.find((dt) =>
+  dt.label.toLowerCase().includes("preferred"),
+)?.date;
+const partner = d.partners[0];
+
+const accentText: Record<string, string> = {
+  "accent-one": "text-accent-one",
+  "accent-two": "text-accent-two",
+  muted: "text-gray-500",
+};
+
+// Submission-type grid: columns (and overall width) track the number of types
+// so 2, 3, ... cards stay balanced instead of leaving an empty column.
+const submissionGrid: Record<number, string> = {
+  1: "md:grid-cols-1 max-w-sm",
+  2: "md:grid-cols-2 max-w-3xl",
+  3: "md:grid-cols-3 max-w-6xl",
+};
+const submissionGridClass =
+  submissionGrid[Math.min(d.submissionTypes.length, 3)] ??
+  "md:grid-cols-3 max-w-6xl";
+
+// Timeline styling per variant: [dot classes, box classes, heading text class]
+const timelineStyle: Record<string, { dot: string; box: string; head: string }> = {
+  special: {
+    dot: "bg-special",
+    box: "bg-special-lighter",
+    head: "",
+  },
+  "accent-one": {
+    dot: "bg-accent-one",
+    box: "bg-accent-base/5",
+    head: "text-accent-one",
+  },
+  "accent-two": {
+    dot: "bg-accent-two",
+    box: "bg-special-lighter",
+    head: "text-accent-two",
+  },
+  final: {
+    dot: "bg-gradient-to-r from-accent-one to-accent-two",
+    box: "bg-gradient-to-r from-accent-one/10 to-accent-two/10 border border-accent-one/20",
+    head: "",
+  },
+};
+---
+
+<h1 class="title">Call for Papers</h1>
+
+<Section id="invite-submission">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="prose prose-citrus max-w-none text-lg mb-6">
+      {Intro && <Intro />}
+    </div>
+
+    {
+      d.urls?.submission && (
+        <div class="text-center mb-8 p-4 sm:p-6 bg-gradient-to-r from-accent-one/10 to-accent-two/10 rounded-lg border border-accent-one/20">
+          <h2 class="text-xl sm:text-2xl font-semibold mb-4">Ready to Submit?</h2>
+          <a
+            href={d.urls.submission}
+            class="inline-flex items-center justify-center h-12 px-6 sm:px-8 text-lg font-semibold rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-surface"
+          >
+            Submit Your Paper
+          </a>
+          {preferred && (
+            <p class="text-sm text-accent-two mt-3">
+              Submissions open now • Preferred deadline: {preferred}
+            </p>
+          )}
+        </div>
+      )
+    }
+
+    <div class="p-4 bg-accent-base/5 rounded-lg border border-accent-one/20 mb-6">
+      <h3 class="text-lg font-semibold mb-2 text-accent-one">Review Process</h3>
+      <p class="mb-0">
+        We follow a double-anonymous review process where both authors and
+        reviewers remain anonymous during the review phase. Please anonymize your
+        work before submitting!
+      </p>
+    </div>
+  </div>
+</Section>
+
+{
+  d.topics.length > 0 && (
+    <Section
+      id="topics-of-interest"
+      title="Topics of Interest"
+      subtitle="Research areas we welcome for submission"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div class="max-w-none px-4">
+          <ul class="list-disc list-inside space-y-2 sm:grid sm:grid-cols-1 md:grid-cols-2 gap-x-4 lg:gap-x-8">
+            {d.topics.map((topic) => (
+              <li set:html={topic} />
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Section>
+  )
+}
+
+{
+  d.submissionTypes.length > 0 && (
+    <Section
+      id="submission-types"
+      title="Submission Types"
+      subtitle="Choose the format that best fits your contribution"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div class="max-w-none px-4 mb-8">
+          <p class="text-center">
+            We invite the following contributions
+            {d.urls?.authorKit ? (
+              <>
+                , formatted using the{" "}
+                <a href={d.urls.authorKit} class="citrus-link">
+                  AAAI author kit
+                </a>
+              </>
+            ) : null}
+            :
+          </p>
+        </div>
+
+        <div class={`grid grid-cols-1 gap-6 px-4 mx-auto ${submissionGridClass}`}>
+          {d.submissionTypes.map((t) => {
+            const accent = accentText[t.accent ?? "accent-one"] ?? "text-accent-one";
+            return (
+              <div class="bg-accent-base/5 rounded-lg p-6 border border-accent-one/20 hover:border-accent-one/40 transition-colors">
+                <div class="text-center mb-4">
+                  <h3 class={`text-xl font-semibold mb-2 ${accent}`}>{t.name}</h3>
+                  {t.pages && (
+                    <div class="text-sm text-accent-two font-medium">{t.pages}</div>
+                  )}
+                  {t.archival && (
+                    <div class="text-xs text-accent-two mt-1">{t.archival}</div>
+                  )}
+                </div>
+                {t.description && (
+                  <div class="text-center">
+                    <p class="text-sm">{t.description}</p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div class="p-4 opacity-50 text-center">
+        * Page limits do not include references.
+      </div>
+    </Section>
+  )
+}
+
+{
+  d.timeline.length > 0 && (
+    <Section
+      id="important-dates"
+      title="Important Dates & Timeline"
+      subtitle="Key deadlines and submission process"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div class="max-w-none px-4">
+          <div class="relative mb-8">
+            <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-special/30 via-accent-two/30 to-accent-one/30" />
+
+            <div class="space-y-6">
+              {d.timeline.map((item) => {
+                const s = timelineStyle[item.variant] ?? timelineStyle["accent-one"]!;
+                return (
+                  <div class="relative pl-12">
+                    <div
+                      class={`absolute left-3 top-0 w-6 h-6 rounded-full border-4 border-surface z-10 ${s.dot}`}
+                    />
+                    <div class={`p-4 rounded-lg ${s.box}`}>
+                      <h3 class={`text-lg font-semibold mb-2 ${s.head}`}>
+                        {item.was && (
+                          <span class="line-through text-accent-base">{item.was}</span>
+                        )}{" "}
+                        <span>{item.heading}</span>
+                      </h3>
+                      {item.lead && <p class="mb-2">{item.lead}</p>}
+                      {item.bullets.length > 0 && (
+                        <ul class="list-disc list-inside space-y-1">
+                          {item.bullets.map((b) => (
+                            <li>
+                              {b.strong && <strong>{b.strong}</strong>}
+                              {b.text}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {item.tip && (
+                        <div class="mt-3 p-3 bg-accent-one/10 rounded text-sm">
+                          <strong>💡 Tip:</strong> {item.tip}
+                        </div>
+                      )}
+                      {item.note && (
+                        <p class="text-xs sm:text-sm text-accent-two mt-2">{item.note}</p>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </Section>
+  )
+}
+
+{
+  partner && (
+    <Section
+      id="partnership-support"
+      title="Partnership & Participation Support"
+      subtitle="Sponsored support available for qualifying submissions"
+    >
+      <div class="max-w-4xl mx-auto">
+        <div class="max-w-none px-4">
+          <div class="p-4 sm:p-6 bg-gradient-to-r from-accent-two/10 to-accent-one/10 rounded-lg border border-special/20 text-center not-prose">
+            <p class="text-lg mb-4">
+              {d.title} is partnering with the <strong>{partner.name} Community</strong>{" "}
+              to provide participation support for qualifying submissions! Select
+              contributors with {partner.name}-relevant research may be eligible for
+              sponsored support to attend the symposium in-person.
+            </p>
+            <a
+              href={url(editionPath(edition, "partners"))}
+              class="inline-flex items-center justify-center h-10 px-6 font-semibold rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-two to-accent-one text-surface"
+            >
+              Learn More About Participant Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </Section>
+  )
+}
+
+{
+  d.urls?.submission && (
+    <div class="text-center mb-8 p-4 bg-accent-base/5 rounded-lg">
+      <a
+        href={d.urls.submission}
+        class="inline-flex items-center justify-center h-10 px-6 font-semibold rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-surface"
+      >
+        Submit Your Paper
+      </a>
+    </div>
+  )
+}
+
+<ContactCard />

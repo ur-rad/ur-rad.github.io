@@ -3,6 +3,7 @@ import SFProRoundedSemibold from "@/assets/fonts/SF-Pro-Rounded-Semibold.latin.b
 import SFProRoundedMedium from "@/assets/fonts/SF-Pro-Rounded-Medium.latin.base.ttf";
 import SFProRoundedRegular from "@/assets/fonts/SF-Pro-Rounded-Regular.latin.base.ttf";
 import { siteConfig } from "@/site.config";
+import { getCurrentEdition } from "@/data/editions";
 import { Resvg } from "@resvg/resvg-js";
 import type { APIContext } from "astro";
 import satori, { type SatoriOptions } from "satori";
@@ -41,7 +42,7 @@ const ogOptions: SatoriOptions = {
   ],
 };
 
-function markup() {
+function markup(tagline: string, footerYear: number) {
   return html`<div
     style="
       position: relative;
@@ -105,7 +106,7 @@ function markup() {
                 word-break: break-word;
               "
             >
-              ${siteConfig.description}
+              ${tagline}
             </div>
             <div style="display:flex; height: 4px;"></div>
           </div>
@@ -118,7 +119,7 @@ function markup() {
         <div
           style="display:flex; font-family: 'SF Pro Rounded'; font-weight: 500; font-size: 22px; color: #475569;"
         >
-          AAAI Fall Symposium 2025
+          AAAI Fall Symposium ${footerYear}
         </div>
         <div
           style="display:flex; font-family: 'SF Pro Rounded'; font-weight: 600; font-size: 22px; color: #334155;"
@@ -131,7 +132,11 @@ function markup() {
 }
 
 export async function GET(_context: APIContext) {
-  const svg = await satori(markup(), ogOptions);
+  const current = await getCurrentEdition();
+  const svg = await satori(
+    markup(current.data.tagline ?? siteConfig.description, current.data.year),
+    ogOptions,
+  );
   const png = new Resvg(svg).render().asPng();
 
   return new Response(png, {

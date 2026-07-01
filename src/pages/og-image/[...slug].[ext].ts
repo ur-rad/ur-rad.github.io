@@ -2,7 +2,8 @@ import SFProRoundedBold from "@/assets/fonts/SF-Pro-Rounded-Bold.latin.base.ttf"
 import SFProRoundedSemibold from "@/assets/fonts/SF-Pro-Rounded-Semibold.latin.base.ttf";
 import SFProRoundedMedium from "@/assets/fonts/SF-Pro-Rounded-Medium.latin.base.ttf";
 import SFProRoundedRegular from "@/assets/fonts/SF-Pro-Rounded-Regular.latin.base.ttf";
-import { getAllPosts } from "@/data/post";
+import { getAllPapers } from "@/data/papers";
+import { getAllEditions } from "@/data/editions";
 import { siteConfig } from "@/site.config";
 import { getFormattedDate } from "@/utils/date";
 import { Resvg } from "@resvg/resvg-js";
@@ -44,7 +45,12 @@ const ogOptions: SatoriOptions = {
   width: 1200,
 };
 
-const markup = (title: string, pubDate: string, authorsText: string) =>
+const markup = (
+  title: string,
+  pubDate: string,
+  authorsText: string,
+  editionTitle: string,
+) =>
   html`<div
     style="
       position: relative;
@@ -128,7 +134,7 @@ const markup = (title: string, pubDate: string, authorsText: string) =>
           <div
             style="font-family:'SF Pro Rounded'; font-weight:600; font-size:20px; color:#334155;"
           >
-            ${siteConfig.title}
+            ${editionTitle}
           </div>
         </div>
       </div>
@@ -152,7 +158,7 @@ const markup = (title: string, pubDate: string, authorsText: string) =>
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 export async function GET(context: APIContext) {
-  const { pubDate, title, authors } = context.props as Props;
+  const { pubDate, title, authors, editionTitle } = context.props as Props;
   const postDate = getFormattedDate(pubDate, {
     month: "long",
     weekday: "long",
@@ -164,7 +170,10 @@ export async function GET(context: APIContext) {
     useOxfordComma: true,
   });
   const authorsText = bylineText || `by ${siteConfig.author}`;
-  const svg = await satori(markup(title, postDate, authorsText), ogOptions);
+  const svg = await satori(
+    markup(title, postDate, authorsText, editionTitle),
+    ogOptions,
+  );
 
   // Проверяем, запрашивает ли пользователь PNG
   if (context.url.pathname.endsWith(".png")) {
@@ -192,27 +201,26 @@ export async function GET(context: APIContext) {
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts();
+  const [posts, editions] = await Promise.all([
+    getAllPapers(),
+    getAllEditions(),
+  ]);
+  const titleByCode = Object.fromEntries(
+    editions.map((e) => [e.data.code, e.data.title]),
+  );
   return posts
     .filter(({ data }) => !data.ogImage)
     .flatMap((post) => {
+      const editionTitle = titleByCode[post.data.edition] ?? siteConfig.title;
+      const shared = {
+        pubDate: post.data.updatedDate ?? post.data.publishDate,
+        title: post.data.title,
+        authors: (post.data.authors ?? []) as AuthorLike[],
+        editionTitle,
+      };
       return [
-        {
-          params: { slug: post.id, ext: "png" },
-          props: {
-            pubDate: post.data.updatedDate ?? post.data.publishDate,
-            title: post.data.title,
-            authors: (post.data.authors ?? []) as AuthorLike[],
-          },
-        },
-        {
-          params: { slug: post.id, ext: "svg" },
-          props: {
-            pubDate: post.data.updatedDate ?? post.data.publishDate,
-            title: post.data.title,
-            authors: (post.data.authors ?? []) as AuthorLike[],
-          },
-        },
+        { params: { slug: post.id, ext: "png" }, props: shared },
+        { params: { slug: post.id, ext: "svg" }, props: shared },
       ];
     });
 }

@@ -1,9 +1,9 @@
-import { getAllPosts } from "@/data/post";
+import { getAllPapers } from "@/data/papers";
 import { siteConfig } from "@/site.config";
 import rss from "@astrojs/rss";
 
 export const GET = async () => {
-	const posts = await getAllPosts();
+	const posts = await getAllPapers();
 
 	return rss({
 		title: siteConfig.title,
