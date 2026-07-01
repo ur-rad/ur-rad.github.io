@@ -57,7 +57,7 @@ function targetHref(edition: Edition) {
               <a
                 href={targetHref(edition)}
                 aria-current={isActive ? "true" : "false"}
-                class="flex items-center justify-between gap-x-2 px-3 py-1.5 text-xs sm:text-sm hover:bg-accent-base/10 aria-[current=true]:font-semibold aria-[current=true]:text-foreground text-accent-two"
+                class="flex items-center justify-between gap-x-2 px-3 py-1.5 text-xs sm:text-sm hover:bg-accent-base/10 text-lighter aria-[current=true]:font-semibold aria-[current=true]:text-accent-two"
               >
                 <span class="whitespace-nowrap">UR-RAD {edition.data.year}</span>
                 {edition.data.status === "current" && (
@@ -81,7 +81,7 @@ function targetHref(edition: Edition) {
               href={ext.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center justify-between gap-x-2 px-3 py-1.5 text-xs sm:text-sm hover:bg-accent-base/10 text-accent-two"
+              class="flex items-center justify-between gap-x-2 px-3 py-1.5 text-xs sm:text-sm hover:bg-accent-base/10 text-lighter"
             >
               <span class="whitespace-nowrap inline-flex items-center gap-x-1.5">
                 {ext.label}
@@ -102,7 +102,7 @@ function targetHref(edition: Edition) {
                   <line x1="10" y1="14" x2="21" y2="3" />
                 </svg>
               </span>
-              <span class="text-[0.65rem] uppercase tracking-wide text-accent-two/70 whitespace-nowrap">
+              <span class="text-[0.65rem] uppercase tracking-wide text-lightest whitespace-nowrap">
                 External
               </span>
             </a>
