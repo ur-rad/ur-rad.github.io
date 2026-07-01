@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { url } from "@/utils/url";
-import { externalSymposia } from "@/site.config";
+import { externalSymposia, menuLinks } from "@/site.config";
 import {
   type Edition,
   type PageKey,
@@ -26,8 +26,19 @@ const activeLabel = active ? active.data.year : "";
 // external past site).
 const show = editions.length > 1 || externalSymposia.length > 0;
 
+// Whether a given page exists for an edition. Mirrors the Header's nav
+// gating so the switcher never links to a page that would 404 (e.g. Partners
+// for a year with no partners).
+function pageAvailable(edition: Edition, key: PageKey): boolean {
+  const link = menuLinks.find((l) => l.key === key);
+  return !link?.available || link.available(edition);
+}
+
+// Link to the same page in the target edition when it exists there, otherwise
+// fall back to that edition's home rather than a dead link.
 function targetHref(edition: Edition) {
-  return url(editionPath(edition, pageKey));
+  const key = pageAvailable(edition, pageKey) ? pageKey : "home";
+  return url(editionPath(edition, key));
 }
 ---
 
