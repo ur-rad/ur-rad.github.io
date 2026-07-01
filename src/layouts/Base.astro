@@ -58,15 +58,17 @@ const resolvedOgImage =
       <!-- Full-width header -->
       <Header edition={edition} pageKey={pageKey} />
 
-      <div class="relative flex min-h-screen w-full flex-1">
-        <!-- Main container for the page content -->
-        <div id="container" class="relative m-auto max-w-4xl grow">
+      <div class="relative flex min-h-screen w-full min-w-0 flex-1">
+        <!-- Main container for the page content. min-w-0 lets these flex/grid
+             items shrink below their content's min-content instead of forcing
+             the page wider than the viewport (mobile horizontal-scroll trap). -->
+        <div id="container" class="relative m-auto min-w-0 max-w-4xl grow">
           <div
-            class="m-auto grid min-h-screen grid-rows-[1fr_auto] px-4 md:px-8 pt-20"
+            class="m-auto grid min-h-screen min-w-0 grid-rows-[1fr_auto] px-4 md:px-8 pt-20"
           >
             <main
               id="main"
-              class="relative flex-grow"
+              class="relative min-w-0 flex-grow"
               data-pagefind-body
               data-pagefind-filter={pagefindYear ? `year:${pagefindYear}` : undefined}
               data-pagefind-meta={pagefindYear ? `year:${pagefindYear}` : undefined}
