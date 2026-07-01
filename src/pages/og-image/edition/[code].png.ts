@@ -2,10 +2,9 @@ import SFProRoundedBold from "@/assets/fonts/SF-Pro-Rounded-Bold.latin.base.ttf"
 import SFProRoundedSemibold from "@/assets/fonts/SF-Pro-Rounded-Semibold.latin.base.ttf";
 import SFProRoundedMedium from "@/assets/fonts/SF-Pro-Rounded-Medium.latin.base.ttf";
 import SFProRoundedRegular from "@/assets/fonts/SF-Pro-Rounded-Regular.latin.base.ttf";
-import { siteConfig } from "@/site.config";
-import { getCurrentEdition } from "@/data/editions";
+import { getAllEditions } from "@/data/editions";
 import { Resvg } from "@resvg/resvg-js";
-import type { APIContext } from "astro";
+import type { APIContext, InferGetStaticPropsType } from "astro";
 import satori, { type SatoriOptions } from "satori";
 import { html } from "satori-html";
 
@@ -15,34 +14,16 @@ const ogOptions: SatoriOptions = {
   width: 1200,
   height: 630,
   fonts: [
-    {
-      data: Buffer.from(SFProRoundedRegular),
-      name: "SF Pro Rounded",
-      style: "normal",
-      weight: 400,
-    },
-    {
-      data: Buffer.from(SFProRoundedMedium),
-      name: "SF Pro Rounded",
-      style: "normal",
-      weight: 500,
-    },
-    {
-      data: Buffer.from(SFProRoundedSemibold),
-      name: "SF Pro Rounded",
-      style: "normal",
-      weight: 600,
-    },
-    {
-      data: Buffer.from(SFProRoundedBold),
-      name: "SF Pro Rounded",
-      style: "normal",
-      weight: 700,
-    },
+    { data: Buffer.from(SFProRoundedRegular), name: "SF Pro Rounded", style: "normal", weight: 400 },
+    { data: Buffer.from(SFProRoundedMedium), name: "SF Pro Rounded", style: "normal", weight: 500 },
+    { data: Buffer.from(SFProRoundedSemibold), name: "SF Pro Rounded", style: "normal", weight: 600 },
+    { data: Buffer.from(SFProRoundedBold), name: "SF Pro Rounded", style: "normal", weight: 700 },
   ],
 };
 
-function markup(tagline: string, footerYear: number) {
+// NOTE: Satori requires every container <div> to have an explicit
+// `display: flex`. This markup mirrors src/pages/site-og.png.ts.
+function markup(title: string, tagline: string, dates: string) {
   return html`<div
     style="
       position: relative;
@@ -57,9 +38,9 @@ function markup(tagline: string, footerYear: number) {
   >
     <div style="display:flex; flex-direction:column; flex:1;">
       <div style="position: relative; display: flex; flex: 1; padding: 72px;">
-        <div style="display:flex; align-items:center; gap:28px; width:100%;">
+        <div style="display:flex; align-items:center; gap:36px; width:100%;">
           <div
-            style="width: 160px; height: 140px; display:flex; align-items:center; justify-content:center;"
+            style="display:flex; width: 160px; height: 140px; align-items:center; justify-content:center;"
           >
             <svg
               viewBox="0 0 797 693"
@@ -84,31 +65,18 @@ function markup(tagline: string, footerYear: number) {
             </svg>
           </div>
 
-          <div
-            style="display:flex; flex-direction:column; flex:1; min-width:0;"
-          >
+          <div style="display:flex; flex-direction:column; flex:1; min-width:0;">
             <div
-              style="display:flex; font-family: 'SF Pro Rounded'; font-weight: 700; font-size: 72px; line-height: 1; color: #0f172a;"
+              style="display:flex; font-family: 'SF Pro Rounded'; font-weight: 700; font-size: 80px; line-height: 1; color: #0f172a;"
             >
-              Unifying Representations for Robot Application Development
+              ${title}
             </div>
-            <div style="display:flex; height: 12px;"></div>
+            <div style="display:flex; height: 18px;"></div>
             <div
-              style="
-                display:flex;
-                font-family: 'SF Pro Rounded';
-                font-weight: 600;
-                font-size: 36px;
-                color: #334155;
-                letter-spacing: 0.5px;
-                max-width: 100%;
-                white-space: normal;
-                word-break: break-word;
-              "
+              style="display:flex; font-family: 'SF Pro Rounded'; font-weight: 600; font-size: 34px; color: #334155; max-width: 100%; white-space: normal; word-break: break-word;"
             >
               ${tagline}
             </div>
-            <div style="display:flex; height: 4px;"></div>
           </div>
         </div>
       </div>
@@ -116,14 +84,10 @@ function markup(tagline: string, footerYear: number) {
       <div
         style="display:flex; align-items:center; justify-content:space-between; padding: 28px 48px; border-top: 1px solid rgba(0,0,0,0.08);"
       >
-        <div
-          style="display:flex; font-family: 'SF Pro Rounded'; font-weight: 500; font-size: 22px; color: #475569;"
-        >
-          AAAI Fall Symposium ${footerYear}
+        <div style="display:flex; font-family: 'SF Pro Rounded'; font-weight: 500; font-size: 24px; color: #475569;">
+          ${dates}
         </div>
-        <div
-          style="display:flex; font-family: 'SF Pro Rounded'; font-weight: 600; font-size: 22px; color: #334155;"
-        >
+        <div style="display:flex; font-family: 'SF Pro Rounded'; font-weight: 600; font-size: 22px; color: #334155;">
           ur-rad.github.io
         </div>
       </div>
@@ -131,14 +95,24 @@ function markup(tagline: string, footerYear: number) {
   </div>`;
 }
 
-export async function GET(_context: APIContext) {
-  const current = await getCurrentEdition();
-  const svg = await satori(
-    markup(current.data.tagline ?? siteConfig.description, current.data.year),
-    ogOptions,
-  );
-  const png = new Resvg(svg).render().asPng();
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
+export async function getStaticPaths() {
+  const editions = await getAllEditions();
+  return editions.map((edition) => ({
+    params: { code: edition.data.code },
+    props: {
+      title: edition.data.title,
+      tagline: edition.data.tagline ?? "",
+      dates: edition.data.dates.display,
+    },
+  }));
+}
+
+export async function GET(context: APIContext) {
+  const { title, tagline, dates } = context.props as Props;
+  const svg = await satori(markup(title, tagline, dates), ogOptions);
+  const png = new Resvg(svg).render().asPng();
   return new Response(png, {
     headers: {
       "Cache-Control": "public, max-age=31536000, immutable",

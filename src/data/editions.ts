@@ -92,9 +92,12 @@ export function getPartners(edition: Edition) {
 	return edition.data.partners ?? [];
 }
 
-/** The program/schedule entry for an edition code, if present. */
+/** The program/schedule entry for an edition code, if present.
+ *  Uses getCollection().find rather than getEntry so a missing schedule
+ *  (e.g. an upcoming edition with no program yet) doesn't log a warning. */
 export async function getSchedule(code: string) {
-	return await getEntry("program", code);
+	const all = await getCollection("program");
+	return all.find((entry) => entry.id === code);
 }
 
 /** "/" for the current edition, "/<code>/" for past editions. */

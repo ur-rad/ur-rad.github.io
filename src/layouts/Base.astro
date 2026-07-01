@@ -27,6 +27,11 @@ const pagefindYear = edition ? String(edition.data.year) : undefined;
 // Brand/site name reflects the edition being viewed (falls back to the
 // configured default on pages without an edition).
 const siteName = edition?.data.title ?? siteConfig.title;
+
+// Default the social card to the edition's own OG image (paper pages pass
+// their own ogImage; non-edition pages fall back to /site-og.png in BaseHead).
+const resolvedOgImage =
+  ogImage ?? (edition ? `/og-image/edition/${edition.data.code}.png` : undefined);
 ---
 
 <html
@@ -37,7 +42,7 @@ const siteName = edition?.data.title ?? siteConfig.title;
     <BaseHead
       articleDate={articleDate}
       description={description}
-      ogImage={ogImage}
+      ogImage={resolvedOgImage}
       title={title}
       siteName={siteName}
     />
