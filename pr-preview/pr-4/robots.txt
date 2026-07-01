@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ur-rad.github.io/pr-preview/pr-4/sitemap-index.xml
