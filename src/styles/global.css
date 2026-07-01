@@ -401,13 +401,6 @@
 
   html {
     letter-spacing: 0.025em;
-    /* Guard against horizontal scroll on mobile: full-bleed backgrounds and
-       the sticky desktop header break out of the centered column with
-       negative margins, which can push past the viewport. Clip the x-axis at
-       the root (clip, not hidden, so it doesn't create a scroll container or
-       break `position: sticky`). Fixed-position full-bleed elements escape
-       this and are instead sized with `inset-x-0`. */
-    overflow-x: clip;
   }
 
   h1 {

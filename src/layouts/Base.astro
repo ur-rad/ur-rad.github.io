@@ -54,47 +54,6 @@ const resolvedOgImage =
     <ThemeProvider />
     <SkipLink />
 
-    <!-- Background
-			TODO: This approach is not optimal and requires improvements.
-  			- Too many absolutely positioned elements can affect performance.
-  		-->
-    <div
-      class="fixed inset-x-0 top-0 min-h-screen pointer-events-none overflow-x-clip blur-2xl"
-    >
-      <div
-        class="absolute top-[-90%] right-[25%] w-[75%] h-full bg-gradient-to-b from-blue-300 via-pink-300 to-transparent rounded-full opacity-40 dark:opacity-5"
-      >
-      </div>
-      <div
-        class="absolute top-[-90%] left-[25%] w-[75%] h-full bg-gradient-to-b from-blue-300 via-pink-300 to-transparent rounded-full opacity-40 dark:opacity-5"
-      >
-      </div>
-      <div
-        class="absolute top-[-85%] right-[25%] w-[55%] h-full bg-gradient-to-b from-purple-300 via-blue-300 to-transparent rounded-full opacity-40 dark:opacity-5"
-      >
-      </div>
-      <div
-        class="absolute top-[-85%] left-[25%] w-[55%] h-full bg-gradient-to-b from-indigo-300 via-orange-300 to-transparent rounded-full opacity-40 dark:opacity-5"
-      >
-      </div>
-      <div
-        class="absolute top-[-75%] left-[-25%] w-[65%] h-full bg-gradient-to-b from-blue-300 via-pink-300 to-transparent rounded-full opacity-30 dark:opacity-5"
-      >
-      </div>
-      <div
-        class="absolute top-[-75%] right-[-25%] w-[65%] h-full bg-gradient-to-b from-purple-300 via-blue-300 to-transparent rounded-full opacity-30 dark:opacity-5"
-      >
-      </div>
-      <div
-        class="absolute top-[-85%] left-[-30%] w-[85%] h-full bg-gradient-to-b from-indigo-300 via-orange-300 to-transparent rounded-full opacity-60 dark:opacity-5"
-      >
-      </div>
-      <div
-        class="absolute top-[-85%] right-[-30%] w-[85%] h-full bg-gradient-to-b from-orange-300 via-indigo-300 to-transparent rounded-full opacity-60 dark:opacity-5"
-      >
-      </div>
-    </div>
-
     <div class="relative flex min-h-screen w-full flex-col">
       <!-- Full-width header -->
       <Header edition={edition} pageKey={pageKey} />
@@ -103,7 +62,7 @@ const resolvedOgImage =
         <!-- Main container for the page content -->
         <div id="container" class="relative m-auto max-w-4xl grow">
           <div
-            class="m-auto grid min-h-screen grid-rows-[1fr_auto] px-4 md:px-8 pt-20 lg:pt-4"
+            class="m-auto grid min-h-screen grid-rows-[1fr_auto] px-4 md:px-8 pt-20"
           >
             <main
               id="main"

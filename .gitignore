@@ -1,3 +1,6 @@
 .DS_Store
 node_modules/**/*
 dist/**/*
+
+# Astro generated content cache (regenerated on build)
+.astro/
