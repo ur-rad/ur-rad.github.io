@@ -30,7 +30,7 @@ const editionLinks = menuLinks.filter(
 
 <header
   id="main-header"
-  class="fixed px-2 sm:px-4 lg:px-8 left-0 z-20 flex items-center lg:sticky top-0 h-16 w-full bg-surface lg:bg-surface/80 lg:backdrop-blur-md lg:max-w-6xl lg:mx-auto"
+  class="fixed px-2 sm:px-4 lg:px-8 left-0 z-20 flex items-center lg:sticky top-0 h-16 w-full bg-surface lg:bg-surface/80 lg:backdrop-blur-md lg:w-screen lg:mx-[calc(50%_-_50vw)]"
 >
   <!-- Background
 			TODO: This approach is not optimal and requires improvements.
@@ -77,7 +77,7 @@ const editionLinks = menuLinks.filter(
   </div>
   </div>
 
-  <div class="w-full justify-between lg:flex-row lg:items-center">
+  <div class="w-full justify-between lg:flex-row lg:items-center lg:max-w-6xl lg:mx-auto">
     <div class="flex items-center gap-x-1 sm:gap-x-2">
       <a
         aria-label={active.data.title}
