@@ -1,5 +1,5 @@
 ---
-edition: "fss2025"
+edition: "fss_2025"
 title: "Towards Developing Standards and Guidelines for Robot Grasping and Manipulation Pipelines in the COMPARE Ecosystem"
 abstract: "The COMPARE Ecosystem aims to improve the compatibility and benchmarking of open-source products for robot manipulation through a series of activities. One such activity is the development of standards and guidelines to specify modularization practices at the component-level for individual modules (e.g., perception, grasp planning, motion planning) and integrations of components that form robot manipulation capabilities at the pipeline-level. This paper briefly reviews our work-in-progress to date to (1) build repositories of open-source products to identify common characteristics ofeach component in the pipeline, (2) investigate existing modular pipelines to glean best practices, and (3) develop new modular pipelines that advance prior work while abiding bythe proposed standards and guidelines."
 authors:

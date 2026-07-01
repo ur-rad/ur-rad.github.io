@@ -118,7 +118,6 @@ export default defineConfig({
   // Add dynamic base path for PR previews
   base: process.env.PR_PREVIEW_PATH || "/",
   redirects: {
-    "/fss_2025/": "/",
     // Papers moved from /posts/ to /papers/
     "/posts/[...slug]": "/papers/[...slug]",
   },

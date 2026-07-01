@@ -1,5 +1,5 @@
 ---
-edition: "fss2025"
+edition: "fss_2025"
 title: "HomeRobot: An Open Source Software Stack for Mobile Manipulation Research"
 abstract: "Reproducibility in robotics research requires capable, shared hardware platforms which can be used for a wide variety of research. We have seen the power of these sorts of shared platforms in more general machine learning research (e.g., PyTorch), where there is a constant and open-sourced development over time to meet the needs of the community To be able to make rapid progress in robotics in the same way, we propose that we need: (1) shared real-world platforms which allow different teams to test and compare methods at low cost; (2) challenging simulations that reflect real-world environments and especially can drive perception and planning research; and (3) low-cost platforms with enough software to get started addressing all of these problems. To this end, we propose HomeRobot, a mobile manipulator software stack with associated benchmark in simulation, which is initially based on the low-cost, human-safe Hello Robot Stretch."
 authors:

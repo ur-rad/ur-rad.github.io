@@ -1,5 +1,5 @@
 ---
-edition: "fss2025"
+edition: "fss_2025"
 title: "Petri Nets for the Iterative Development of Interactive Robotic Systems"
 abstract: "In this position paper, we argue for the use of Petri nets as a modeling language for the iterative development process of interactive robotic systems. Our goal is a representation that can unify various phases of the development process — design, specification, simulation, validation, implementation, and deployment. We focus on how Timed Colored Petri nets (TCPNs), in particular, can provide value for the end-to-end development of interactive systems. We additionally discuss future directions for creating a domain-specific variant of TCPNs tailored specifically for HRI systems development."
 authors:

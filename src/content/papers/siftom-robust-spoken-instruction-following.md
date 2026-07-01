@@ -1,5 +1,5 @@
 ---
-edition: "fss2025"
+edition: "fss_2025"
 title: "SIFToM: Robust Spoken Instruction Following through Theory of Mind"
 abstract: "Spoken language instructions are ubiquitous in agent collaboration. However, in human-robot collaboration, recognition accuracy for human speech is often influenced by various speech and environmental factors, such as background noise, the speaker’s accents, and mispronunciation. When faced with noisy or unfamiliar auditory inputs, humans use context and prior knowledge to disambiguate the stimulus and take pragmatic actions, a process referred to as top-down processing in cognitive science. We present a cognitively inspired model, Speech Instruction Following through Theory of Mind (SIFToM), to enable robots to pragmatically follow human instructions under diverse speech conditions by inferring the human’s goal and joint plan as prior for speech perception and understanding. We test SIFToM in simulated home experiments (VirtualHome 2). Results show that the SIFToM model outperforms state-of-the-art speech and language models, approaching human-level accuracy on challenging speech instruction following tasks. We then demonstrate its ability at the task planning level on a mobile manipulator for breakfast preparation tasks."
 authors:

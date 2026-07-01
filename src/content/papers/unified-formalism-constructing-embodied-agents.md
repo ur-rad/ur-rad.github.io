@@ -1,5 +1,5 @@
 ---
-edition: "fss2025"
+edition: "fss_2025"
 title: "A Unified Formalism for Constructing Embodied Agents"
 abstract: "This paper reviews PUG, a cognitive architecture for embodied agents, with a focus on its formalism for representing expertise. This includes a rule-like notation for encoding concepts that describe states, motives that compute utilities, skills that calculate control values to achieve goals, and processes that predict changes to the environment. In each case, we review the syntax for modular knowledge elements and how the architecture uses them to generate dynamic content. We also discuss how the framework integrates them to produce teleoreactive behavior over time."
 authors:
