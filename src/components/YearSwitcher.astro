@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { url } from "@/utils/url";
+import { externalSymposia } from "@/site.config";
 import {
   type Edition,
   type PageKey,
@@ -21,8 +22,9 @@ const editions = await getAllEditions();
 const active = editions.find((e) => e.data.code === activeCode);
 const activeLabel = active ? active.data.year : "";
 
-// Only meaningful when more than one edition exists.
-const show = editions.length > 1;
+// Show whenever there's somewhere to switch to (another edition or an
+// external past site).
+const show = editions.length > 1 || externalSymposia.length > 0;
 
 function targetHref(edition: Edition) {
   return url(editionPath(edition, pageKey));
@@ -67,6 +69,45 @@ function targetHref(edition: Edition) {
             </li>
           );
         })}
+
+        {externalSymposia.length > 0 && (
+          <li aria-hidden="true">
+            <div class="my-1 border-t border-color-300" />
+          </li>
+        )}
+        {externalSymposia.map((ext) => (
+          <li>
+            <a
+              href={ext.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-between gap-x-2 px-3 py-1.5 text-xs sm:text-sm hover:bg-accent-base/10 text-accent-two"
+            >
+              <span class="whitespace-nowrap inline-flex items-center gap-x-1.5">
+                {ext.label}
+                <svg
+                  viewBox="0 0 24 24"
+                  width="12"
+                  height="12"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="opacity-70 shrink-0"
+                  aria-hidden="true"
+                >
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </span>
+              <span class="text-[0.65rem] uppercase tracking-wide text-accent-two/70 whitespace-nowrap">
+                External
+              </span>
+            </a>
+          </li>
+        ))}
       </ul>
     </details>
   )

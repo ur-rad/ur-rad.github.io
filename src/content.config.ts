@@ -128,9 +128,6 @@ const editions = defineCollection({
         }),
       )
       .default([]),
-    previousSymposia: z
-      .array(z.object({ year: z.number(), label: z.string(), url: z.string() }))
-      .default([]),
     previousSpeakers: z
       .array(z.object({ heading: z.string(), names: z.array(z.string()) }))
       .default([]),

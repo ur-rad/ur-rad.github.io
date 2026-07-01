@@ -62,3 +62,18 @@ export const menuLinks: {
     title: "Program",
   },
 ];
+
+// Past UR-RAD symposia hosted on external sites (pre-migration years). Shown in
+// the year switcher under a subtle "External" label; open in a new tab.
+export const externalSymposia: { year: number; label: string; url: string }[] = [
+  {
+    year: 2024,
+    label: "UR-RAD 2024",
+    url: "https://sites.google.com/view/aaai-ur-rad-24-symposium",
+  },
+  {
+    year: 2023,
+    label: "UR-RAD 2023",
+    url: "https://sites.google.com/view/aaai-ur-rad-23-symposium",
+  },
+];

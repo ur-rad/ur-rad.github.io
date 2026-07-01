@@ -210,30 +210,6 @@
           },
           "default": []
         },
-        "previousSymposia": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "year": {
-                "type": "number"
-              },
-              "label": {
-                "type": "string"
-              },
-              "url": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "year",
-              "label",
-              "url"
-            ],
-            "additionalProperties": false
-          },
-          "default": []
-        },
         "previousSpeakers": {
           "type": "array",
           "items": {

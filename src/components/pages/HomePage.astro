@@ -234,33 +234,4 @@ const venueLine = [d.venue?.name, d.venue?.city, d.venue?.country]
     </Section>
   )
 }
-
-<!-- Previous Symposia -->
-{
-  d.previousSymposia.length > 0 && (
-    <Section
-      id="previous-symposia"
-      title="Previous Symposia"
-      subtitle="Explore past UR-RAD symposiums and their contributions to the robotics community"
-      aria-label="Previous symposia"
-    >
-      <div class="max-w-4xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
-          {d.previousSymposia.map((s) => (
-            <a
-              href={s.url}
-              class="bg-accent-base/5 rounded-lg p-6 border border-accent-one/20 hover:border-accent-one/40 transition-colors hover:bg-accent-base/10 block"
-            >
-              <div class="text-center mb-4">
-                <h3 class="text-xl font-semibold text-accent-one mb-2">
-                  UR-RAD {s.year}
-                </h3>
-                <div class="text-sm text-accent-two font-medium">{s.label}</div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </Section>
-  )
-}
+<!-- Previous symposia now live in the year switcher (external past sites). -->
