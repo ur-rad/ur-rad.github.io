@@ -2,6 +2,7 @@
 import Section from "@/components/Section.astro";
 import ContactCard from "@/components/ContactCard.astro";
 import { Icon } from "astro-icon/components";
+import { url } from "@/utils/url";
 import { type Edition, getSchedule } from "@/data/editions";
 import { getPapersByEdition } from "@/data/papers";
 
@@ -184,7 +185,7 @@ function headingToIsoDate(heading: string, year: number): string | null {
                                 <li>
                                   <em>
                                     <a
-                                      href={`/papers/${p.id}`}
+                                      href={url(`papers/${p.id}/`)}
                                       class="text-link no-underline hover:underline focus-visible:underline underline-offset-2"
                                     >
                                       {p.data.title}

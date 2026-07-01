@@ -96,7 +96,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
               <li>
                 <a
                   aria-label={`View all posts with the tag: ${tag}`}
-                  href={`/tags/${tag}`}
+                  href={url(`tags/${tag}/`)}
                 >
                   <Badge variant="muted" title={tag} />
                 </a>

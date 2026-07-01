@@ -2,6 +2,7 @@
 import Badge from "@/components/Badge.astro";
 import { getAllPapers, getUniqueTagsWithCount } from "@/data/papers";
 import PageLayout from "@/layouts/Base.astro";
+import { url } from "@/utils/url";
 
 const allPosts = await getAllPapers();
 const allTags = getUniqueTagsWithCount(allPosts);
@@ -22,12 +23,12 @@ const meta = {
 					<a
 						class="citrus-link inline-block"
 						data-astro-prefetch
-						href={`/tags/${tag}/`}
+						href={url(`tags/${tag}/`)}
 						title={`View posts with the tag: ${tag}`}
 					>
 						&#35;{tag}
 					</a>
-					<a aria-label={`View all posts with the tag: ${tag}`} href={`/tags/${tag}`}>
+					<a aria-label={`View all posts with the tag: ${tag}`} href={url(`tags/${tag}/`)}>
 						<Badge variant="accent-two" title={tag}>
 							{tag}
 						</Badge>
@@ -44,7 +45,7 @@ const meta = {
 		{
 			allTags.map(([tag, val]) => (
 			<div class="flex items-center gap-x-2">
-				<a aria-label={`View all posts with the tag: ${tag}`} href={`/tags/${tag}`}>
+				<a aria-label={`View all posts with the tag: ${tag}`} href={url(`tags/${tag}/`)}>
 				<Badge variant="muted" title={tag}>
 					<span class="text-xs font-normal">
 						&nbsp;{val} post{val > 1 && "s"}

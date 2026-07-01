@@ -2,7 +2,7 @@
 import { WEBMENTION_PINGBACK, WEBMENTION_URL } from "astro:env/client";
 import { siteConfig } from "@/site.config";
 import type { SiteMeta } from "@/types";
-import { url } from "@/utils/url";
+import { isExternalUrl, url } from "@/utils/url";
 import "@/styles/global.css";
 
 type Props = SiteMeta & { siteName?: string | undefined };
@@ -13,8 +13,14 @@ const { articleDate, description, ogImage, title, siteName = siteConfig.title } 
 const titleSeparator = "•";
 const siteTitle = `${title} ${titleSeparator} ${siteName}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL(ogImage ? ogImage : "/site-og.png", Astro.url)
-  .href;
+// Resolve the OG image to an absolute URL. Internal (root-relative) paths go
+// through url() so they respect BASE_URL (e.g. PR previews under a subpath);
+// external/absolute URLs pass through unchanged.
+const rawSocialImage = ogImage ?? "/site-og.png";
+const socialImageURL = new URL(
+  isExternalUrl(rawSocialImage) ? rawSocialImage : url(rawSocialImage),
+  Astro.url,
+).href;
 ---
 
 <meta charset="utf-8" />
