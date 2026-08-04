@@ -1,4 +1,5 @@
 import { type CollectionEntry, getCollection, getEntry } from "astro:content";
+import { externalSymposia } from "@/site.config";
 
 export type Edition = CollectionEntry<"editions">;
 export type Person = CollectionEntry<"people">;
@@ -90,6 +91,56 @@ export async function getEditionPeople(
 /** Partners declared on the edition. */
 export function getPartners(edition: Edition) {
 	return edition.data.partners ?? [];
+}
+
+/** A "Previous UR-RAD Speakers" group: one heading per past year. */
+export interface SpeakerGroup {
+	heading: string;
+	names: string[];
+}
+
+/** Every prior year's speakers, newest first, aggregated across all of them.
+ *
+ *  Derived rather than re-typed per edition: editions in the repo contribute
+ *  their own keynotes, and pre-migration years come from `externalSymposia`
+ *  in site.config. A new edition therefore inherits the full history for
+ *  free, and last year's keynotes appear without being copied by hand.
+ *
+ *  An edition's own `previousSpeakers` frontmatter still renders, appended
+ *  last — an escape hatch for groups that map to neither an edition nor an
+ *  external year. Both current editions leave it empty. */
+export async function getPreviousSpeakerGroups(
+	edition: Edition,
+): Promise<SpeakerGroup[]> {
+	const year = edition.data.year;
+	const editions = await getAllEditions();
+
+	const fromEditions = await Promise.all(
+		editions
+			.filter((e) => e.data.year < year)
+			.map(async (e) => ({
+				year: e.data.year,
+				heading: `UR-RAD ${e.data.year} Speakers`,
+				names: (await getEditionPeople(e, "keynote")).map((p) =>
+					p.affiliation ? `${p.name}, ${p.affiliation}` : p.name,
+				),
+			})),
+	);
+
+	const fromExternal = externalSymposia
+		.filter((s) => s.year < year)
+		.map((s) => ({
+			year: s.year,
+			heading: `UR-RAD ${s.year} Speakers`,
+			names: s.speakers ?? [],
+		}));
+
+	const derived = [...fromEditions, ...fromExternal]
+		.filter((g) => g.names.length > 0)
+		.sort((a, b) => b.year - a.year)
+		.map(({ heading, names }) => ({ heading, names }));
+
+	return [...derived, ...(edition.data.previousSpeakers ?? [])];
 }
 
 /** The program/schedule entry for an edition code, if present.
