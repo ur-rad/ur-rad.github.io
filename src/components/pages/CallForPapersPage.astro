@@ -15,9 +15,11 @@ const d = edition.data;
 const introEntry = await getEntry("pages", `${d.code}/call-for-papers`);
 const Intro = introEntry ? (await render(introEntry)).Content : null;
 
-const preferred = d.importantDates.find((dt) =>
-  dt.label.toLowerCase().includes("preferred"),
-)?.date;
+// The deadline shown under the submit button. Years with staged rounds label
+// one "preferred"; single-round years just have a submission deadline.
+const deadline =
+  d.importantDates.find((dt) => dt.label.toLowerCase().includes("preferred")) ??
+  d.importantDates.find((dt) => dt.label.toLowerCase().includes("submission"));
 const partner = d.partners[0];
 
 const accentText: Record<string, string> = {
@@ -80,9 +82,9 @@ const timelineStyle: Record<string, { dot: string; box: string; head: string }> 
           >
             Submit Your Paper
           </a>
-          {preferred && (
+          {deadline && (
             <p class="text-sm text-accent-two mt-3">
-              Submissions open now • Preferred deadline: {preferred}
+              Submissions open now • {deadline.label}: {deadline.date}
             </p>
           )}
         </div>
