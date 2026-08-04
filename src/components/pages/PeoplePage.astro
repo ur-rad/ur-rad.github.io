@@ -103,7 +103,7 @@ const previousSpeakers = await getPreviousSpeakerGroups(edition);
 }
 
 {
-  mentors.length > 0 && (
+  mentors.length > 0 ? (
     <Section
       id="mentors"
       title="Mentors"
@@ -120,7 +120,17 @@ const previousSpeakers = await getPreviousSpeakerGroups(edition);
         </div>
       </div>
     </Section>
-  )
+  ) : d.status !== "past" ? (
+    <Section id="mentors" title="Mentors" subtitle="Mentors will be announced">
+      <div class="max-w-4xl mx-auto">
+        <div class="max-w-none px-4 text-center">
+          <p class="text-lg text-lighter italic">
+            Mentors for {d.title} will be announced soon.
+          </p>
+        </div>
+      </div>
+    </Section>
+  ) : null
 }
 
 {
