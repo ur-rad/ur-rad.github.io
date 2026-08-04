@@ -104,11 +104,7 @@ export interface SpeakerGroup {
  *  Derived rather than re-typed per edition: editions in the repo contribute
  *  their own keynotes, and pre-migration years come from `externalSymposia`
  *  in site.config. A new edition therefore inherits the full history for
- *  free, and last year's keynotes appear without being copied by hand.
- *
- *  An edition's own `previousSpeakers` frontmatter still renders, appended
- *  last — an escape hatch for groups that map to neither an edition nor an
- *  external year. Both current editions leave it empty. */
+ *  free, and last year's keynotes appear without being copied by hand. */
 export async function getPreviousSpeakerGroups(
 	edition: Edition,
 ): Promise<SpeakerGroup[]> {
@@ -135,12 +131,10 @@ export async function getPreviousSpeakerGroups(
 			names: s.speakers ?? [],
 		}));
 
-	const derived = [...fromEditions, ...fromExternal]
+	return [...fromEditions, ...fromExternal]
 		.filter((g) => g.names.length > 0)
 		.sort((a, b) => b.year - a.year)
 		.map(({ heading, names }) => ({ heading, names }));
-
-	return [...derived, ...(edition.data.previousSpeakers ?? [])];
 }
 
 /** The program/schedule entry for an edition code, if present.
