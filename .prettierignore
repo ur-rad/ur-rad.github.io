@@ -1,0 +1,8 @@
+# Masthead uses a pattern Astro's compiler accepts but Prettier's JSX parser
+# rejects: an expression returning adjacent elements with no fragment wrapper,
+# e.g. {cond && (<Separator /><span>…</span>)}. Prettier fails with "Adjacent
+# JSX elements must be wrapped in an enclosing tag", so the file cannot be
+# formatted without first wrapping those in <>…</> — a source change, not a
+# reformat. Excluded here so it doesn't block formatting the other 44 files;
+# tracked as a follow-up. The component renders correctly today.
+src/components/blog/Masthead.astro
