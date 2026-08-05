@@ -1,0 +1,7 @@
+---
+name: "John Laird"
+title: "Emeritus Professor"
+affiliation: "University of Michigan, Computer Science and Engineering"
+website: "https://laird.engin.umich.edu"
+photo: "../../assets/images/speakers/john-laird.jpg"
+---

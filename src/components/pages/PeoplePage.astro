@@ -3,7 +3,11 @@ import Section from "@/components/Section.astro";
 import SpeakerCard from "@/components/SpeakerCard.astro";
 import OrganizerCard from "@/components/OrganizerCard.astro";
 import ContactCard from "@/components/ContactCard.astro";
-import { type Edition, getEditionPeople } from "@/data/editions";
+import {
+  type Edition,
+  getEditionPeople,
+  getPreviousSpeakerGroups,
+} from "@/data/editions";
 
 interface Props {
   edition: Edition;
@@ -15,6 +19,7 @@ const d = edition.data;
 const keynotes = await getEditionPeople(edition, "keynote");
 const mentors = await getEditionPeople(edition, "mentor");
 const organizers = await getEditionPeople(edition, "organizer");
+const previousSpeakers = await getPreviousSpeakerGroups(edition);
 ---
 
 <h1 class="title mb-6">People</h1>
@@ -46,6 +51,7 @@ const organizers = await getEditionPeople(edition, "organizer");
                 name={p.name}
                 title={p.title ?? ""}
                 affiliation={p.affiliation ?? ""}
+                website={p.website}
               />
             ) : null,
           )}
@@ -70,7 +76,7 @@ const organizers = await getEditionPeople(edition, "organizer");
 }
 
 {
-  d.previousSpeakers.length > 0 && (
+  previousSpeakers.length > 0 && (
     <Section
       id="previous-speakers"
       title="Previous UR-RAD Speakers"
@@ -78,7 +84,7 @@ const organizers = await getEditionPeople(edition, "organizer");
     >
       <div class="max-w-4xl mx-auto">
         <div class="max-w-none px-4">
-          {d.previousSpeakers.map((group) => (
+          {previousSpeakers.map((group) => (
             <>
               <h3 class="text-base sm:text-lg font-semibold mt-6 mb-3">
                 {group.heading}
@@ -97,7 +103,7 @@ const organizers = await getEditionPeople(edition, "organizer");
 }
 
 {
-  mentors.length > 0 && (
+  mentors.length > 0 ? (
     <Section
       id="mentors"
       title="Mentors"
@@ -114,7 +120,17 @@ const organizers = await getEditionPeople(edition, "organizer");
         </div>
       </div>
     </Section>
-  )
+  ) : d.status !== "past" ? (
+    <Section id="mentors" title="Mentors" subtitle="Mentors will be announced">
+      <div class="max-w-4xl mx-auto">
+        <div class="max-w-none px-4 text-center">
+          <p class="text-lg text-lighter italic">
+            Mentors for {d.title} will be announced soon.
+          </p>
+        </div>
+      </div>
+    </Section>
+  ) : null
 }
 
 {

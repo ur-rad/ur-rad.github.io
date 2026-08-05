@@ -65,15 +65,36 @@ export const menuLinks: {
 
 // Past UR-RAD symposia hosted on external sites (pre-migration years). Shown in
 // the year switcher under a subtle "External" label; open in a new tab.
-export const externalSymposia: { year: number; label: string; url: string }[] = [
+// `speakers` records that year's invited speakers as display strings — these
+// years predate the `people` collection, so there are no records to derive
+// from. Every later edition's "Previous UR-RAD Speakers" list picks them up
+// automatically (see getPreviousSpeakerGroups), so they're written once here.
+export const externalSymposia: {
+  year: number;
+  label: string;
+  url: string;
+  speakers?: string[];
+}[] = [
   {
     year: 2024,
     label: "UR-RAD 2024",
     url: "https://sites.google.com/view/aaai-ur-rad-24-symposium",
+    speakers: [
+      "Cynthia Matuszek, University of Maryland, Baltimore County",
+      "Siddharth Srivastava, Arizona State University",
+      "Jamie Macbeth, Smith College",
+      "Brittany Johnson-Matthews, George Mason University",
+    ],
   },
   {
     year: 2023,
     label: "UR-RAD 2023",
     url: "https://sites.google.com/view/aaai-ur-rad-23-symposium",
+    speakers: [
+      "Dana Nau",
+      "Matthias Scheutz",
+      "Stefanie Tellex",
+      "Chien-Ming Huang",
+    ],
   },
 ];

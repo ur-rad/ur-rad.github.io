@@ -4,10 +4,12 @@ export interface Props {
   name: string;
   title: string;
   affiliation: string;
+  /** Personal/faculty page. When set, the name links to it. */
+  website?: string | undefined;
   alt?: string;
 }
 
-const { photo, name, title, affiliation, alt = name } = Astro.props;
+const { photo, name, title, affiliation, website, alt = name } = Astro.props;
 ---
 
 <div class="p-4 sm:p-6 border border-color-300 rounded-lg text-center">
@@ -16,7 +18,22 @@ const { photo, name, title, affiliation, alt = name } = Astro.props;
     alt={alt}
     class="w-28 h-28 rounded-full mx-auto mb-4 object-cover"
   />
-  <h3 class="text-lg sm:text-xl font-semibold mb-2">{name}</h3>
+  <h3 class="text-lg sm:text-xl font-semibold mb-2">
+    {
+      website ? (
+        <a
+          href={website}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-inherit no-underline hover:underline focus-visible:underline underline-offset-2"
+        >
+          {name}
+        </a>
+      ) : (
+        name
+      )
+    }
+  </h3>
   <p class="text-sm sm:text-base text-accent-two mb-2">{title}</p>
   <p class="text-xs sm:text-sm text-lighter">{affiliation}</p>
 </div>

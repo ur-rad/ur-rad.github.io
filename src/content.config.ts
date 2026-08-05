@@ -128,9 +128,8 @@ const editions = defineCollection({
         }),
       )
       .default([]),
-    previousSpeakers: z
-      .array(z.object({ heading: z.string(), names: z.array(z.string()) }))
-      .default([]),
+    // Previous-year speakers are derived, not declared — see
+    // getPreviousSpeakerGroups in src/data/editions.ts.
     // Per-edition role assignments referencing the `people` collection by id.
     // `roles` is a list: one person may hold several roles in a single year.
     people: z
