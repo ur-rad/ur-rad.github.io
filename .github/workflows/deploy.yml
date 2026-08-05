@@ -8,18 +8,23 @@ on:
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
-# Allow this job to clone the repo and create a page deployment
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+# Serialized against the PR-preview workflow, which commits to the same branch.
+# The deploy action force-pushes, so a concurrent preview run could otherwise be
+# clobbered (or clobber this one) — merging a PR fires both at once. The group
+# name is shared with preview.yml; concurrency groups are repo-wide, so the two
+# workflows queue instead of racing. cancel-in-progress stays false so neither is
+# interrupted mid-push.
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # Committing the built site to gh-pages, which is what Pages serves.
+    # Scoped to the job so any job added later starts with no write access.
+    permissions:
+      contents: write
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
@@ -39,11 +44,20 @@ jobs:
       - name: Generate search index
         run: npm run postbuild
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      # Pages is configured as "Deploy from a branch" → gh-pages, because the
+      # PR-preview workflow needs its previews served from that branch. Under
+      # that setting an upload-pages-artifact/deploy-pages job reports success
+      # but is never served, so the built site has to be committed to the
+      # branch instead.
+      #
+      # pr-preview/ is excluded from the clean step: it belongs to the preview
+      # workflow, and wiping it here would take down every open PR's preview
+      # on each deploy of main.
+      - name: Deploy to the gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: ./dist/
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          folder: dist
+          branch: gh-pages
+          clean: true
+          clean-exclude: |
+            pr-preview/
