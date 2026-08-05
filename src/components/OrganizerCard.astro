@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 export interface Props {
   photo: ImageMetadata;
   name: string;
@@ -10,9 +12,16 @@ const { photo, name, affiliation, alt = name } = Astro.props;
 ---
 
 <div class="p-3 sm:p-4 border border-color-300 rounded-lg text-center">
-  <img
-    src={photo.src}
+  {/* Rendered at w-24 (96px); 192px is 2x for retina. `fit="cover"` centre-crops
+      to a true square so non-square sources (laura-hiatt.jpg is 263x231) are
+      not upscaled on their short side and the width/height attributes stay
+      honest. */}
+  <Image
+    src={photo}
     alt={alt}
+    width={192}
+    height={192}
+    fit="cover"
     class="w-24 h-24 rounded-full mx-auto mb-3 object-cover"
   />
   <h3 class="text-base sm:text-lg font-semibold mb-1">{name}</h3>
