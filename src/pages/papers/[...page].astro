@@ -29,8 +29,9 @@ interface Props {
 const { page, uniqueTags } = Astro.props;
 
 const meta = {
-  description: "Read my collection of posts and the things that interest me",
-  title: "Posts",
+  description:
+    "Papers presented at the UR-RAD symposium series on unifying representations for robot application development",
+  title: "Papers",
 };
 
 const paginationProps = {
@@ -54,7 +55,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 
 <PageLayout meta={meta}>
   <h1 class="title mb-6 flex items-center gap-2">
-    Posts
+    Papers
     <a class="text-accent-two" href={url("rss.xml")} target="_blank">
       <span class="sr-only">RSS feed</span>
       <Icon
@@ -66,7 +67,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
     </a>
   </h1>
   <div class="grid gap-y-8 sm:grid-cols-[1fr_auto] sm:gap-x-8">
-    <section aria-label="Blog post list" class="grow">
+    <section aria-label="Paper list" class="grow">
       {
         descYearKeys.map((yearKey) => (
           <>
@@ -95,7 +96,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
             {uniqueTags.map((tag) => (
               <li>
                 <a
-                  aria-label={`View all posts with the tag: ${tag}`}
+                  aria-label={`View all papers tagged with ${tag}`}
                   href={url(`tags/${tag}/`)}
                 >
                   <Badge variant="muted" title={tag} />

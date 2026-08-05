@@ -1,5 +1,14 @@
 # Multi-Conference Architecture Options for UR-RAD
 
+> **Status: implemented — kept for historical context.** This was a
+> pre-implementation options paper. Option 1 (content collections) was chosen
+> and built; the live structure differs from the sketches below in naming and
+> detail. For how the site actually works today, read
+> [`src/content.config.ts`](src/content.config.ts) (collection schemas),
+> [`src/data/editions.ts`](src/data/editions.ts) (edition resolution), and the
+> "Architecture" section of [`README.md`](README.md). Treat the code as
+> authoritative and this document as a record of the reasoning.
+
 This document outlines various approaches for scaling the UR-RAD website to support multiple conferences, years, and venues while maintaining code reusability and allowing for conference-specific customization.
 
 ## Current Situation

@@ -13,15 +13,21 @@ export const siteConfig: SiteConfig = {
       year: "numeric",
     },
   },
-  // Used as the default description meta property and webmanifest description
+  // Series-level fallback description: the webmanifest and RSS feed are built
+  // from astro.config.ts, which runs before content collections are available
+  // and so cannot be edition-aware. Keep this free of the year and ordinal —
+  // pages with an edition get its `tagline` instead (see layouts/Base.astro).
   description:
-    "The 3rd AAAI Fall Symposium on Unifying Representations for Robot Application Development",
+    "The AAAI Fall Symposium on Unifying Representations for Robot Application Development",
   // HTML lang property, found in src/layouts/Base.astro L:18 & astro.config.ts L:48
   lang: "en-GB",
   // Meta property, found in src/components/BaseHead.astro L:42
   ogLocale: "en_GB",
-  // Used to construct the meta title property found in src/components/BaseHead.astro L:11, and webmanifest name found in astro.config.ts L:42
-  title: "UR-RAD 2025",
+  // Series name, used for the webmanifest name (astro.config.ts) and the RSS
+  // feed title. Per-page titles use the viewed edition's own title instead
+  // (see the `siteName` prop in src/layouts/Base.astro), so this stays
+  // year-agnostic rather than needing a bump every autumn.
+  title: "UR-RAD",
 };
 
 // Used to generate links in both the Header & Footer.
