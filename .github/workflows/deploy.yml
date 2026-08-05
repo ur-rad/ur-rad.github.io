@@ -8,13 +8,23 @@ on:
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
-# Committing the built site to the gh-pages branch, which is what Pages serves.
-permissions:
-  contents: write
+# Serialized against the PR-preview workflow, which commits to the same branch.
+# The deploy action force-pushes, so a concurrent preview run could otherwise be
+# clobbered (or clobber this one) — merging a PR fires both at once. The group
+# name is shared with preview.yml; concurrency groups are repo-wide, so the two
+# workflows queue instead of racing. cancel-in-progress stays false so neither is
+# interrupted mid-push.
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Committing the built site to gh-pages, which is what Pages serves.
+    # Scoped to the job so any job added later starts with no write access.
+    permissions:
+      contents: write
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4

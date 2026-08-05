@@ -8,7 +8,15 @@ on:
       - synchronize
       - closed
 
-concurrency: preview-${{ github.ref }}
+# Shared with deploy.yml: every writer to gh-pages uses one repo-wide group so
+# pushes serialize instead of racing. This is deliberately broader than the old
+# per-PR group (preview-${{ github.ref }}), which only prevented a PR from
+# racing itself — it did not stop a preview and a main deploy, or two different
+# PRs, from pushing to the branch at the same time. Cost is that preview builds
+# now queue rather than run in parallel.
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
 
 # Required permissions for GitHub Pages deployment
 permissions:
