@@ -96,11 +96,6 @@ export const externalSymposia: {
     year: 2023,
     label: "UR-RAD 2023",
     url: "https://sites.google.com/view/aaai-ur-rad-23-symposium",
-    speakers: [
-      "Dana Nau",
-      "Matthias Scheutz",
-      "Stefanie Tellex",
-      "Chien-Ming Huang",
-    ],
+    speakers: ["Dana Nau", "Matthias Scheutz", "Stefanie Tellex", "Chien-Ming Huang"],
   },
 ];

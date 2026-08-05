@@ -45,12 +45,7 @@ const ogOptions: SatoriOptions = {
   width: 1200,
 };
 
-const markup = (
-  title: string,
-  pubDate: string,
-  authorsText: string,
-  editionTitle: string,
-) =>
+const markup = (title: string, pubDate: string, authorsText: string, editionTitle: string) =>
   html`<div
     style="
       position: relative;
@@ -103,20 +98,13 @@ const markup = (
         <div
           style="width: 72px; height: 64px; display:flex; align-items:center; justify-content:center;"
         >
-          <svg
-            viewBox="0 0 797 693"
-            width="72"
-            height="64"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg viewBox="0 0 797 693" width="72" height="64" xmlns="http://www.w3.org/2000/svg">
             <g transform="matrix(1,0,0,1,-345,-96.5)">
               <path
                 d="M756.942,197.15L756.942,474C701.751,474 656.942,518.808 656.942,574C656.942,629.192 701.751,674 756.942,674L756.942,777L495.122,777C443.175,777 401,734.825 401,682.878L401,614L364.755,614C353.852,614 345,605.148 345,594.245L345,436.814C345,425.878 353.878,417 364.814,417L401,417L401,365.122C401,313.175 443.175,271 495.122,271L715.058,271L715.058,197.15C696.492,189.056 683.5,170.533 683.5,149C683.5,120.024 707.024,96.5 736,96.5C764.976,96.5 788.5,120.024 788.5,149C788.5,170.533 775.508,189.056 756.942,197.15ZM559,388C520.918,388 490,418.918 490,457C490,495.082 520.918,526 559,526C597.082,526 628,495.082 628,457C628,418.918 597.082,388 559,388Z"
                 fill="#ad47ff"
               />
-              <g
-                transform="matrix(-1,1.22465e-16,-1.22465e-16,-1,1486.06,1043)"
-              >
+              <g transform="matrix(-1,1.22465e-16,-1.22465e-16,-1,1486.06,1043)">
                 <path
                   d="M401,417L401,348.122C401,296.175 443.175,254 495.122,254L705.058,254L705.058,357C760.249,357 805.058,401.808 805.058,457C805.058,512.192 760.249,557 705.058,557L705.058,760L495.122,760C443.175,760 401,717.825 401,665.878L401,614L364.755,614C353.852,614 345,605.148 345,594.245L345,436.814C345,425.878 353.878,417 364.814,417L401,417ZM552,643C590.082,643 621,612.082 621,574C621,535.918 590.082,505 552,505C513.918,505 483,535.918 483,574C483,612.082 513.918,643 552,643Z"
                   fill="#00d5bd"
@@ -170,10 +158,7 @@ export async function GET(context: APIContext) {
     useOxfordComma: true,
   });
   const authorsText = bylineText || `by ${siteConfig.author}`;
-  const svg = await satori(
-    markup(title, postDate, authorsText, editionTitle),
-    ogOptions,
-  );
+  const svg = await satori(markup(title, postDate, authorsText, editionTitle), ogOptions);
 
   // Проверяем, запрашивает ли пользователь PNG
   if (context.url.pathname.endsWith(".png")) {
@@ -201,13 +186,8 @@ export async function GET(context: APIContext) {
 }
 
 export async function getStaticPaths() {
-  const [posts, editions] = await Promise.all([
-    getAllPapers(),
-    getAllEditions(),
-  ]);
-  const titleByCode = Object.fromEntries(
-    editions.map((e) => [e.data.code, e.data.title]),
-  );
+  const [posts, editions] = await Promise.all([getAllPapers(), getAllEditions()]);
+  const titleByCode = Object.fromEntries(editions.map((e) => [e.data.code, e.data.title]));
   return posts
     .filter(({ data }) => !data.ogImage)
     .flatMap((post) => {

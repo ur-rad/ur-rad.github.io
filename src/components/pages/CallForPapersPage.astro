@@ -36,14 +36,10 @@ const submissionGrid: Record<number, string> = {
   3: "md:grid-cols-3 max-w-6xl",
 };
 const submissionGridClass =
-  submissionGrid[Math.min(d.submissionTypes.length, 3)] ??
-  "md:grid-cols-3 max-w-6xl";
+  submissionGrid[Math.min(d.submissionTypes.length, 3)] ?? "md:grid-cols-3 max-w-6xl";
 
 // Timeline styling per variant: [dot classes, box classes, heading text class]
-const timelineStyle: Record<
-  string,
-  { dot: string; box: string; head: string }
-> = {
+const timelineStyle: Record<string, { dot: string; box: string; head: string }> = {
   special: {
     dot: "bg-special",
     box: "bg-special-lighter",
@@ -78,9 +74,7 @@ const timelineStyle: Record<
     {
       d.urls?.submission && (
         <div class="text-center mb-8 p-4 sm:p-6 bg-gradient-to-r from-accent-one/10 to-accent-two/10 rounded-lg border border-accent-one/20">
-          <h2 class="text-xl sm:text-2xl font-semibold mb-4">
-            Ready to Submit?
-          </h2>
+          <h2 class="text-xl sm:text-2xl font-semibold mb-4">Ready to Submit?</h2>
           <a
             href={d.urls.submission}
             class="inline-flex items-center justify-center h-12 px-6 sm:px-8 text-lg font-semibold rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-surface"
@@ -96,14 +90,11 @@ const timelineStyle: Record<
       )
     }
 
-    <div
-      class="p-4 bg-accent-base/5 rounded-lg border border-accent-one/20 mb-6"
-    >
+    <div class="p-4 bg-accent-base/5 rounded-lg border border-accent-one/20 mb-6">
       <h3 class="text-lg font-semibold mb-2 text-accent-one">Review Process</h3>
       <p class="mb-0">
-        We follow a double-anonymous review process where both authors and
-        reviewers remain anonymous during the review phase. Please anonymize
-        your work before submitting!
+        We follow a double-anonymous review process where both authors and reviewers remain
+        anonymous during the review phase. Please anonymize your work before submitting!
       </p>
     </div>
   </div>
@@ -152,26 +143,15 @@ const timelineStyle: Record<
           </p>
         </div>
 
-        <div
-          class={`grid grid-cols-1 gap-6 px-4 mx-auto ${submissionGridClass}`}
-        >
+        <div class={`grid grid-cols-1 gap-6 px-4 mx-auto ${submissionGridClass}`}>
           {d.submissionTypes.map((t) => {
-            const accent =
-              accentText[t.accent ?? "accent-one"] ?? "text-accent-one";
+            const accent = accentText[t.accent ?? "accent-one"] ?? "text-accent-one";
             return (
               <div class="bg-accent-base/5 rounded-lg p-6 border border-accent-one/20 hover:border-accent-one/40 transition-colors">
                 <div class="text-center mb-4">
-                  <h3 class={`text-xl font-semibold mb-2 ${accent}`}>
-                    {t.name}
-                  </h3>
-                  {t.pages && (
-                    <div class="text-sm text-accent-two font-medium">
-                      {t.pages}
-                    </div>
-                  )}
-                  {t.archival && (
-                    <div class="text-xs text-accent-two mt-1">{t.archival}</div>
-                  )}
+                  <h3 class={`text-xl font-semibold mb-2 ${accent}`}>{t.name}</h3>
+                  {t.pages && <div class="text-sm text-accent-two font-medium">{t.pages}</div>}
+                  {t.archival && <div class="text-xs text-accent-two mt-1">{t.archival}</div>}
                 </div>
                 {t.description && (
                   <div class="text-center">
@@ -184,9 +164,7 @@ const timelineStyle: Record<
         </div>
       </div>
 
-      <div class="p-4 opacity-50 text-center">
-        * Page limits do not include references.
-      </div>
+      <div class="p-4 opacity-50 text-center">* Page limits do not include references.</div>
     </Section>
   )
 }
@@ -205,8 +183,7 @@ const timelineStyle: Record<
 
             <div class="space-y-6">
               {d.timeline.map((item) => {
-                const s =
-                  timelineStyle[item.variant] ?? timelineStyle["accent-one"]!;
+                const s = timelineStyle[item.variant] ?? timelineStyle["accent-one"]!;
                 return (
                   <div class="relative pl-12">
                     <div
@@ -214,11 +191,7 @@ const timelineStyle: Record<
                     />
                     <div class={`p-4 rounded-lg ${s.box}`}>
                       <h3 class={`text-lg font-semibold mb-2 ${s.head}`}>
-                        {item.was && (
-                          <span class="line-through text-accent-base">
-                            {item.was}
-                          </span>
-                        )}{" "}
+                        {item.was && <span class="line-through text-accent-base">{item.was}</span>}{" "}
                         <span>{item.heading}</span>
                       </h3>
                       {item.lead && <p class="mb-2">{item.lead}</p>}
@@ -238,9 +211,7 @@ const timelineStyle: Record<
                         </div>
                       )}
                       {item.note && (
-                        <p class="text-xs sm:text-sm text-accent-two mt-2">
-                          {item.note}
-                        </p>
+                        <p class="text-xs sm:text-sm text-accent-two mt-2">{item.note}</p>
                       )}
                     </div>
                   </div>
@@ -265,11 +236,10 @@ const timelineStyle: Record<
         <div class="max-w-none px-4">
           <div class="p-4 sm:p-6 bg-gradient-to-r from-accent-two/10 to-accent-one/10 rounded-lg border border-special/20 text-center not-prose">
             <p class="text-lg mb-4">
-              {d.title} is partnering with the{" "}
-              <strong>{partner.name} Community</strong> to provide participation
-              support for qualifying submissions! Select contributors with{" "}
-              {partner.name}-relevant research may be eligible for sponsored
-              support to attend the symposium in-person.
+              {d.title} is partnering with the <strong>{partner.name} Community</strong> to provide
+              participation support for qualifying submissions! Select contributors with{" "}
+              {partner.name}-relevant research may be eligible for sponsored support to attend the
+              symposium in-person.
             </p>
             <a
               href={url(editionPath(edition, "partners"))}

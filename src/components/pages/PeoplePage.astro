@@ -3,11 +3,7 @@ import Section from "@/components/Section.astro";
 import SpeakerCard from "@/components/SpeakerCard.astro";
 import OrganizerCard from "@/components/OrganizerCard.astro";
 import ContactCard from "@/components/ContactCard.astro";
-import {
-  type Edition,
-  getEditionPeople,
-  getPreviousSpeakerGroups,
-} from "@/data/editions";
+import { type Edition, getEditionPeople, getPreviousSpeakerGroups } from "@/data/editions";
 
 interface Props {
   edition: Edition;
@@ -86,9 +82,7 @@ const previousSpeakers = await getPreviousSpeakerGroups(edition);
         <div class="max-w-none px-4">
           {previousSpeakers.map((group) => (
             <>
-              <h3 class="text-base sm:text-lg font-semibold mt-6 mb-3">
-                {group.heading}
-              </h3>
+              <h3 class="text-base sm:text-lg font-semibold mt-6 mb-3">{group.heading}</h3>
               <ul class="list-disc list-inside space-y-1">
                 {group.names.map((n) => (
                   <li>{n}</li>
@@ -114,9 +108,7 @@ const previousSpeakers = await getPreviousSpeakerGroups(edition);
           {mentors.map((p) => (
             <div class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg">
               <h3 class="text-lg sm:text-xl font-semibold mb-2">{p.name}</h3>
-              <p class="text-sm sm:text-base text-accent-two">
-                {p.affiliation}
-              </p>
+              <p class="text-sm sm:text-base text-accent-two">{p.affiliation}</p>
             </div>
           ))}
         </div>
@@ -126,9 +118,7 @@ const previousSpeakers = await getPreviousSpeakerGroups(edition);
     <Section id="mentors" title="Mentors" subtitle="Mentors will be announced">
       <div class="max-w-4xl mx-auto">
         <div class="max-w-none px-4 text-center">
-          <p class="text-lg text-lighter italic">
-            Mentors for {d.title} will be announced soon.
-          </p>
+          <p class="text-lg text-lighter italic">Mentors for {d.title} will be announced soon.</p>
         </div>
       </div>
     </Section>
@@ -146,17 +136,11 @@ const previousSpeakers = await getPreviousSpeakerGroups(edition);
         <div class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8">
           {organizers.map((p) =>
             p.photo ? (
-              <OrganizerCard
-                photo={p.photo}
-                name={p.name}
-                affiliation={p.affiliation ?? ""}
-              />
+              <OrganizerCard photo={p.photo} name={p.name} affiliation={p.affiliation ?? ""} />
             ) : (
               <div class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg">
                 <h3 class="text-lg sm:text-xl font-semibold mb-2">{p.name}</h3>
-                <p class="text-sm sm:text-base text-accent-two">
-                  {p.affiliation}
-                </p>
+                <p class="text-sm sm:text-base text-accent-two">{p.affiliation}</p>
               </div>
             ),
           )}
@@ -174,8 +158,8 @@ const previousSpeakers = await getPreviousSpeakerGroups(edition);
   <div class="max-w-4xl mx-auto">
     <div class="max-w-none px-4">
       <p class="mb-4">
-        We welcome volunteers and collaborators who share our vision for
-        advancing robot application development.
+        We welcome volunteers and collaborators who share our vision for advancing robot application
+        development.
       </p>
 
       <div class="mt-8">

@@ -18,21 +18,14 @@ const { activeYear } = Astro.props;
     data-open-modal
     disabled
   >
-    <Icon
-      aria-hidden="true"
-      class="h-6 w-6"
-      focusable="false"
-      name="hugeicons:search-01"
-    />
+    <Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="hugeicons:search-01" />
   </button>
 
   <dialog
     aria-label="search"
     class="h-fit max-h-[90vh] w-full max-w-full md:h-fit bg-[var(--color-surface)] backdrop:backdrop-blur-xl md:my-8 md:min-h-[6.5rem] md:w-5/6 md:max-w-[44rem] md:rounded-lg md:mx-auto overflow-y-auto"
   >
-    <div
-      class="dialog-frame flex flex-col px-4 pt-4 pb-4 md:px-8 md:py-8 gap-4"
-    >
+    <div class="dialog-frame flex flex-col px-4 pt-4 pb-4 md:px-8 md:py-8 gap-4">
       <!-- Header and close button -->
       <div
         class="md:hidden sticky top-0 z-20 flex items-center justify-between bg-[var(--color-surface)]"
@@ -42,12 +35,7 @@ const { activeYear } = Astro.props;
           class="flex size-8 cursor-pointer items-center justify-center rounded-lg bg-color-100 text-[var(--color-foreground)] hover:text-accent-base hover:bg-accent-base/5"
           data-close-modal
         >
-          <Icon
-            aria-hidden="true"
-            class="h-6 w-6"
-            focusable="false"
-            name="hugeicons:cancel-01"
-          />
+          <Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="hugeicons:cancel-01" />
         </button>
       </div>
 
@@ -69,10 +57,7 @@ const { activeYear } = Astro.props;
       </form>
 
       <!-- Results -->
-      <div
-        class="pf-results text-base text-[var(--color-foreground)]"
-        aria-live="polite"
-      >
+      <div class="pf-results text-base text-[var(--color-foreground)]" aria-live="polite">
         <p class="pf-message text-lighter">Type to search across all years.</p>
       </div>
     </div>
@@ -100,12 +85,8 @@ const { activeYear } = Astro.props;
 
     constructor() {
       super();
-      this.openBtn = this.querySelector<HTMLButtonElement>(
-        "button[data-open-modal]",
-      )!;
-      this.closeBtn = this.querySelector<HTMLButtonElement>(
-        "button[data-close-modal]",
-      )!;
+      this.openBtn = this.querySelector<HTMLButtonElement>("button[data-open-modal]")!;
+      this.closeBtn = this.querySelector<HTMLButtonElement>("button[data-close-modal]")!;
       this.dialog = this.querySelector("dialog")!;
       this.dialogFrame = this.querySelector(".dialog-frame")!;
       this.input = this.querySelector<HTMLInputElement>(".pf-input")!;
@@ -116,9 +97,7 @@ const { activeYear } = Astro.props;
       this.openBtn.disabled = false;
       this.closeBtn?.addEventListener("click", this.closeModal);
       this.input.addEventListener("input", this.onInput);
-      this.querySelector("form")?.addEventListener("submit", (e) =>
-        e.preventDefault(),
-      );
+      this.querySelector("form")?.addEventListener("submit", (e) => e.preventDefault());
     }
 
     connectedCallback() {
@@ -146,10 +125,7 @@ const { activeYear } = Astro.props;
 
     private onInput = () => {
       window.clearTimeout(this.debounce);
-      this.debounce = window.setTimeout(
-        () => this.runSearch(this.input.value.trim()),
-        180,
-      );
+      this.debounce = window.setTimeout(() => this.runSearch(this.input.value.trim()), 180);
     };
 
     private async runSearch(query: string) {
@@ -176,16 +152,14 @@ const { activeYear } = Astro.props;
 
     private render(items: PagefindResultData[]) {
       if (!items.length) {
-        this.resultsEl.innerHTML =
-          '<p class="pf-message text-lighter">No results found.</p>';
+        this.resultsEl.innerHTML = '<p class="pf-message text-lighter">No results found.</p>';
         return;
       }
 
       const selected: PagefindResultData[] = [];
       const others: PagefindResultData[] = [];
       for (const item of items) {
-        if (this.activeYear && item.meta?.year === this.activeYear)
-          selected.push(item);
+        if (this.activeYear && item.meta?.year === this.activeYear) selected.push(item);
         else others.push(item);
       }
 

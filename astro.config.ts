@@ -18,10 +18,7 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 
 import rehypePrettyCode from "rehype-pretty-code";
-import {
-  transformerMetaHighlight,
-  transformerNotationDiff,
-} from "@shikijs/transformers";
+import { transformerMetaHighlight, transformerNotationDiff } from "@shikijs/transformers";
 
 import tailwindcss from "@tailwindcss/vite";
 

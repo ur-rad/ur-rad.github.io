@@ -58,12 +58,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
     Papers
     <a class="text-accent-two" href={url("rss.xml")} target="_blank">
       <span class="sr-only">RSS feed</span>
-      <Icon
-        aria-hidden="true"
-        class="h-6 w-6"
-        focusable="false"
-        name="mdi:rss"
-      />
+      <Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="mdi:rss" />
     </a>
   </h1>
   <div class="grid gap-y-8 sm:grid-cols-[1fr_auto] sm:gap-x-8">
@@ -95,10 +90,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
           <ul class="flex flex-wrap gap-2">
             {uniqueTags.map((tag) => (
               <li>
-                <a
-                  aria-label={`View all papers tagged with ${tag}`}
-                  href={url(`tags/${tag}/`)}
-                >
+                <a aria-label={`View all papers tagged with ${tag}`} href={url(`tags/${tag}/`)}>
                   <Badge variant="muted" title={tag} />
                 </a>
               </li>

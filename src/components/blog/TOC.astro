@@ -27,22 +27,13 @@ const toc = generateToc(headings);
         class="absolute top-4 right-4 h-8 w-8 flex items-center justify-center rounded-lg bg-accent-base/5 text-accent-base hover:bg-accent-base/10"
         aria-label="Close TOC"
       >
-        <Icon
-          aria-hidden="true"
-          class="h-6 w-6"
-          focusable="false"
-          name="hugeicons:cancel-01"
-        />
+        <Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="hugeicons:cancel-01" />
       </button>
     </div>
   </div>
   <div class="bg-surface rounded-b-lg">
-    <div
-      class="rounded-b-lg pb-6 bg-color-75 border-b border-l border-r border-special-light"
-    >
-      <div
-        class="max-h-[calc(100vh-11rem)] h-auto overflow-y-auto overflow-hidden px-8"
-      >
+    <div class="rounded-b-lg pb-6 bg-color-75 border-b border-l border-r border-special-light">
+      <div class="max-h-[calc(100vh-11rem)] h-auto overflow-y-auto overflow-hidden px-8">
         <ul class="text-sm font-medium text-text">
           {toc.map((heading) => <TOCHeading heading={heading} />)}
         </ul>
