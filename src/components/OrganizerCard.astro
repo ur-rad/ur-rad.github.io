@@ -12,10 +12,12 @@ const { photo, name, affiliation, alt = name } = Astro.props;
 ---
 
 <div class="p-3 sm:p-4 border border-color-300 rounded-lg text-center">
-  {/* Rendered at w-24 (96px); 192px is 2x for retina. `fit="cover"` centre-crops
+  {
+    /* Rendered at w-24 (96px); 192px is 2x for retina. `fit="cover"` centre-crops
       to a true square so non-square sources (laura-hiatt.jpg is 263x231) are
       not upscaled on their short side and the width/height attributes stay
-      honest. */}
+      honest. */
+  }
   <Image
     src={photo}
     alt={alt}

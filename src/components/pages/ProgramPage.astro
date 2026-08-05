@@ -209,10 +209,7 @@ function headingToIsoDate(heading: string, year: number): string | null {
                           </ul>
                         </div>
                       ) : (
-                        <div
-                          class="max-w-none"
-                          set:html={entry.content}
-                        />
+                        <div class="max-w-none" set:html={entry.content} />
                       )}
                     </div>
                   ))}

@@ -114,7 +114,9 @@ const previousSpeakers = await getPreviousSpeakerGroups(edition);
           {mentors.map((p) => (
             <div class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg">
               <h3 class="text-lg sm:text-xl font-semibold mb-2">{p.name}</h3>
-              <p class="text-sm sm:text-base text-accent-two">{p.affiliation}</p>
+              <p class="text-sm sm:text-base text-accent-two">
+                {p.affiliation}
+              </p>
             </div>
           ))}
         </div>
@@ -152,7 +154,9 @@ const previousSpeakers = await getPreviousSpeakerGroups(edition);
             ) : (
               <div class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg">
                 <h3 class="text-lg sm:text-xl font-semibold mb-2">{p.name}</h3>
-                <p class="text-sm sm:text-base text-accent-two">{p.affiliation}</p>
+                <p class="text-sm sm:text-base text-accent-two">
+                  {p.affiliation}
+                </p>
               </div>
             ),
           )}

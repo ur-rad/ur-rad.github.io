@@ -166,27 +166,23 @@ const venueLine = [d.venue?.name, d.venue?.city, d.venue?.country]
         )}
 
         <div class="text-center">
-      <div class="flex flex-col sm:flex-row justify-center gap-4 sm:space-x-4">
-        {
-          d.urls?.submission && (
+          <div class="flex flex-col sm:flex-row justify-center gap-4 sm:space-x-4">
+            {d.urls?.submission && (
+              <a
+                href={d.urls.submission}
+                class="inline-flex items-center justify-center h-12 px-6 sm:px-8 text-lg font-semibold rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-surface"
+              >
+                Submit Your Paper
+              </a>
+            )}
             <a
-              href={d.urls.submission}
-              class="inline-flex items-center justify-center h-12 px-6 sm:px-8 text-lg font-semibold rounded-lg shadow-lg hover:brightness-110 transition-all bg-gradient-to-r from-accent-one to-accent-two text-surface"
+              href={url(editionPath(edition, "call-for-papers"))}
+              class="inline-flex items-center justify-center h-12 px-6 sm:px-8 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest transition-all"
             >
-              Submit Your Paper
+              <span class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two">
+                Full Call for Papers
+              </span>
             </a>
-          )
-        }
-        <a
-          href={url(editionPath(edition, "call-for-papers"))}
-          class="inline-flex items-center justify-center h-12 px-6 sm:px-8 rounded-lg shadow-lg bg-special-lighter hover:brightness-110 hover:bg-special-lightest transition-all"
-        >
-          <span
-            class="bg-clip-text text-transparent font-semibold bg-gradient-to-r from-accent-one to-accent-two"
-          >
-            Full Call for Papers
-          </span>
-        </a>
           </div>
         </div>
       </div>
