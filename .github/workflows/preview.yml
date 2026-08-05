@@ -18,11 +18,11 @@ concurrency:
   group: gh-pages
   cancel-in-progress: false
 
-# Required permissions for GitHub Pages deployment
+# pr-preview-action commits the build to the gh-pages branch and comments the
+# preview link on the PR. It does not use the Pages deployment API, so
+# pages/id-token are not needed.
 permissions:
   contents: write
-  pages: write
-  id-token: write
   pull-requests: write
 
 jobs:

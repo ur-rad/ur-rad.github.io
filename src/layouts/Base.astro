@@ -17,7 +17,7 @@ interface Props {
 }
 
 const {
-  meta: { articleDate, description = siteConfig.description, ogImage, title },
+  meta: { articleDate, description, ogImage, title },
   edition,
   pageKey,
 } = Astro.props;
@@ -30,6 +30,12 @@ const pagefindYear = edition ? String(edition.data.year) : undefined;
 // header wordmark) rather than the static config default.
 const brandEdition = edition ?? (await getCurrentEdition());
 const siteName = brandEdition.data.title;
+
+// Pages that pass no description (e.g. Home) describe the edition being viewed
+// rather than falling through to the year-agnostic series blurb — otherwise the
+// social-card and search description name the wrong symposium.
+const resolvedDescription =
+  description ?? brandEdition.data.tagline ?? siteConfig.description;
 
 // Default the social card to the edition's own OG image (paper pages pass
 // their own ogImage; non-edition pages fall back to /site-og.png in BaseHead).
@@ -44,7 +50,7 @@ const resolvedOgImage =
   <head>
     <BaseHead
       articleDate={articleDate}
-      description={description}
+      description={resolvedDescription}
       ogImage={resolvedOgImage}
       title={title}
       siteName={siteName}

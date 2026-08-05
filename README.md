@@ -8,10 +8,14 @@ UR-RAD is an annual symposium held as part of the AAAI Fall Symposium Series, fo
 
 ## Current Site
 
-The current live site hosts **UR-RAD 2025**, the 3rd iteration of the symposium:
-- **Date**: November 6-8, 2025
+The live site hosts **UR-RAD 2026**, the 4th iteration of the symposium:
+- **Date**: November 5-7, 2026
 - **Location**: Westin Arlington Gateway, Arlington, VA, USA
 - **Website**: [ur-rad.github.io](https://ur-rad.github.io)
+
+Past editions stay online under their conference code — 2025 is at
+[/fss_2025/](https://ur-rad.github.io/fss_2025/). Pre-migration years (2024,
+2023) are external sites, linked from the year switcher in the header.
 
 ## Quick Start
 
@@ -61,40 +65,70 @@ The site will be available at `http://localhost:4321`
 - 📄 **SEO Optimized** - Meta tags, sitemap, and social sharing
 - 📊 **Performance Focused** - Optimized builds and fast loading
 
-## Current Architecture
+## Architecture
 
-The site is currently built as a single conference website for UR-RAD 2025, with:
-- Static pages for main content (Home, Call for Papers, Speakers, etc.)
-- Component-based architecture for reusable UI elements
-- Asset management for images and media
-- GitHub Pages deployment
+Each year is a content-driven **edition**. There are no per-year page files —
+five generic page engines render any edition from its content entry:
 
-## Future Multi-Conference Architecture
+| Layer | Location |
+| :---- | :------- |
+| Edition data (source of truth) | `src/content/editions/<code>.md` — dates, venue, URLs, topics, submission types, CFP timeline, people roles, partners |
+| Page engines | `src/components/pages/` — `HomePage`, `CallForPapersPage`, `PeoplePage`, `ProgramPage`, `PartnersPage` |
+| Prose bodies | `src/content/pages/<code>/<pageKey>.mdx` |
+| People | `src/content/people/` — stable identity records, referenced by editions with `roles: [keynote/mentor/organizer]` |
+| Schedule | `src/content/program/<code>.yaml` |
+| Papers | `src/content/papers/` — each tagged with its `edition` |
+| Schemas | `src/content.config.ts` — Zod, so a typo fails the build |
+| Edition resolution | `src/data/editions.ts` |
 
-This repository is being designed to support multiple conference years and venues. See `CONFERENCE_ARCHITECTURE.md` for detailed plans on scaling to support:
-- Multiple conference years (e.g., `/fss_2025`, `/icra_2026`)
-- Shared components and layouts
-- Conference-specific content and theming
-- Central hub for all UR-RAD events
+Routing follows an edition's `status`: the one marked `current` is served at the
+site root, and every other edition at `/<code>/`. Promoting a new year is a
+two-field change across two edition files.
+
+Sections hide themselves when their data is empty — an edition with no partners
+gets no Partners page or nav link, and one with no keynotes yet shows an
+"announced soon" note instead. Previous-year speaker lists are derived from past
+editions rather than restated per year.
+
+`CONFERENCE_ARCHITECTURE.md` records the original options paper behind this
+design; the code is authoritative.
+
+## Adding a New Edition
+
+1. Add `src/content/editions/<code>.md` (copy the most recent year and edit)
+2. Add prose bodies under `src/content/pages/<code>/`
+3. Flip the previous edition's `status` to `past` and the new one to `current`
+4. Add any new people to `src/content/people/`, with photos in `src/assets/images/`
 
 ## Deployment
 
-The site is automatically deployed to GitHub Pages when changes are pushed to the main branch. The deployment process:
+The site is automatically deployed when changes are pushed to `main`
+(`.github/workflows/deploy.yml`):
 
-1. GitHub Actions builds the site using `npm run build`
-2. Generated files in `./dist/` are deployed to the `gh-pages` branch
-3. GitHub Pages serves the site from `gh-pages` branch
+1. GitHub Actions builds the site with `npm run build` and indexes it with `npm run postbuild`
+2. `./dist/` is committed to the `gh-pages` branch, excluding `pr-preview/`
+3. GitHub Pages serves that branch (Settings → Pages → "Deploy from a branch")
+
+Pull requests get a preview at `/pr-preview/pr-<n>/` via
+`.github/workflows/preview.yml`. Both workflows write to `gh-pages`, so they
+share one `gh-pages` concurrency group to keep their pushes from racing.
+
+**Note:** because Pages serves a branch rather than an Actions artifact, a
+`deploy-pages` style workflow would report success while never being served.
+Anything that deploys this site has to commit to `gh-pages`.
 
 ## Content Management
 
-### Adding New Pages
-Create new `.astro` files in `src/pages/` directory. Pages automatically become routes based on file structure.
+### Updating an Edition
+- **Dates, venue, topics, submission types, CFP timeline**: that edition's file in `src/content/editions/`
+- **Page prose**: the matching MDX under `src/content/pages/<code>/`
+- **Speakers, mentors, organizers**: add or edit `src/content/people/<slug>.md`, then reference the slug in the edition's `people:` list with the right `roles`. Photos go in `src/assets/images/speakers/` or `.../organizers/`.
+- **Schedule**: `src/content/program/<code>.yaml`
 
-### Updating Site Information
-- **Conference details**: Update `src/site.config.ts`
-- **Navigation**: Modify `menuLinks` in `src/site.config.ts`
-- **Speakers**: Add images to `src/assets/images/speakers/` and update component
-- **Organizers**: Add images to `src/assets/images/organizers/` and update component
+### Updating Site-Wide Settings
+- **Navigation**: `menuLinks` in `src/site.config.ts`
+- **Past external symposia** (pre-migration years, shown in the year switcher): `externalSymposia` in `src/site.config.ts`
+- **Series name and fallback description**: `src/site.config.ts` — keep these year-agnostic; per-page titles and descriptions come from the edition being viewed
 
 ### Styling
 - **Global styles**: `src/styles/global.css`
@@ -127,4 +161,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Note**: This site is based on the [Astro Citrus](https://github.com/artemkutsan/astro-citrus) template by [Artem Kutsan](https://github.com/artemkutsan). Thank you for the excellent foundation!
+**Note**: This site began from the [Astro Citrus](https://github.com/artemkutsan/astro-citrus) template by [Artem Kutsan](https://github.com/artemkutsan). Thank you for the excellent foundation!
