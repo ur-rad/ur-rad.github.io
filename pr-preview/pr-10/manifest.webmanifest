@@ -1,5 +1,5 @@
 {
-  "name": "UR-RAD 2025",
+  "name": "UR-RAD",
   "icons": [
     {
       "src": "icons/apple-touch-icon.png",
@@ -17,7 +17,7 @@
       "type": "image/png"
     }
   ],
-  "description": "The 3rd AAAI Fall Symposium on Unifying Representations for Robot Application Development",
+  "description": "The AAAI Fall Symposium on Unifying Representations for Robot Application Development",
   "lang": "en-GB",
   "start_url": "/",
   "theme_color": "#2bbc8a",
