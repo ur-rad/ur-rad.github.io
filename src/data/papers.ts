@@ -34,11 +34,15 @@ export function getAllTags(papers: CollectionEntry<"papers">[]) {
   return papers.flatMap((paper) => [...paper.data.tags]);
 }
 
-/** returns all unique tags created from papers
+/** returns all unique tags created from papers, sorted alphabetically
  *  Note: This function doesn't filter draft papers, pass it the result of getAllPapers above to do so.
+ *
+ *  Sorted rather than left in collection order: Astro's collection order is not
+ *  stable across content-store rebuilds, so an unsorted list would reorder
+ *  between builds — including between CI deploys, which always build cold.
  *  */
 export function getUniqueTags(papers: CollectionEntry<"papers">[]) {
-  return [...new Set(getAllTags(papers))];
+  return [...new Set(getAllTags(papers))].sort((a, b) => a.localeCompare(b));
 }
 
 /** returns a count of each unique tag - [[tagName, count], ...]
@@ -50,5 +54,8 @@ export function getUniqueTagsWithCount(papers: CollectionEntry<"papers">[]): [st
       (acc, t) => acc.set(t, (acc.get(t) ?? 0) + 1),
       new Map<string, number>(),
     ),
-  ].sort((a, b) => b[1] - a[1]);
+    // Count descending, then alphabetically. The alphabetical tiebreak is load
+    // bearing: without it, equal-count tags fall back to collection order,
+    // which is not stable across content-store rebuilds.
+  ].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 }
