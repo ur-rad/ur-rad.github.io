@@ -182,7 +182,7 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 			<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-6 w-6 text-accent-base" focusable="false" name="solar:tag-line-duotone" />
 			<>
 				{content.data.tags.map((tag) => (
-					<a aria-label={`View all posts with the tag: ${tag}`} href={url(`tags/${tag}/`)}>
+					<a aria-label={`View all papers tagged with ${tag}`} href={url(`tags/${tag}/`)}>
 						<Badge variant="accent-two" title={tag} />
 					</a>
 				))}
