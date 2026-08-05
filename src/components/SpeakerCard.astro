@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 export interface Props {
   photo: ImageMetadata;
   name: string;
@@ -13,9 +15,13 @@ const { photo, name, title, affiliation, website, alt = name } = Astro.props;
 ---
 
 <div class="p-4 sm:p-6 border border-color-300 rounded-lg text-center">
-  <img
-    src={photo.src}
+  {/* Rendered at w-28 (112px), so 224px covers 2x displays. Only `width` is
+      set — height stays proportional to the source, and the circular crop is
+      left to object-cover, which also keeps non-square sources undistorted. */}
+  <Image
+    src={photo}
     alt={alt}
+    width={224}
     class="w-28 h-28 rounded-full mx-auto mb-4 object-cover"
   />
   <h3 class="text-lg sm:text-xl font-semibold mb-2">
