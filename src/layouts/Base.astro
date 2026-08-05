@@ -40,7 +40,8 @@ const resolvedDescription =
 // Default the social card to the edition's own OG image (paper pages pass
 // their own ogImage; non-edition pages fall back to /site-og.png in BaseHead).
 const resolvedOgImage =
-  ogImage ?? (edition ? `/og-image/edition/${edition.data.code}.png` : undefined);
+  ogImage ??
+  (edition ? `/og-image/edition/${edition.data.code}.png` : undefined);
 ---
 
 <html
@@ -76,8 +77,12 @@ const resolvedOgImage =
               id="main"
               class="relative min-w-0 flex-grow"
               data-pagefind-body
-              data-pagefind-filter={pagefindYear ? `year:${pagefindYear}` : undefined}
-              data-pagefind-meta={pagefindYear ? `year:${pagefindYear}` : undefined}
+              data-pagefind-filter={pagefindYear
+                ? `year:${pagefindYear}`
+                : undefined}
+              data-pagefind-meta={pagefindYear
+                ? `year:${pagefindYear}`
+                : undefined}
             >
               <slot />
             </main>

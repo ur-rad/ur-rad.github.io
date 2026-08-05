@@ -3,193 +3,269 @@ import { Image } from "astro:assets";
 import { type CollectionEntry } from "astro:content";
 import FormattedDate from "@/components/FormattedDate.astro";
 import { Icon } from "astro-icon/components";
-import Badge from '@/components/Badge.astro';
+import Badge from "@/components/Badge.astro";
 import Separator from "../Separator.astro";
 import { url } from "@/utils/url";
 
 interface Props {
-	content: CollectionEntry<"papers">;
+  content: CollectionEntry<"papers">;
 }
 
-const {
-	content,
-
-} = Astro.props;
+const { content } = Astro.props;
 
 // console.log("data:", data); // Debug
 // console.log("headings:", content.rendered?.metadata?.headings); // Debug
 // console.log("Post frontmatter:", content.rendered?.metadata?.frontmatter); // Debug
 
 const dateTimeOptions: Intl.DateTimeFormatOptions = {
-	month: "long",
+  month: "long",
 };
+
+// readingTime is injected into frontmatter by the remark-reading-time plugin,
+// so it isn't part of the papers schema and needs asserting. Hoisted out of the
+// template because the previous `@ts-ignore:next-line` only suppressed the
+// error while the expression happened to sit on one line.
+// TODO: add reading time to the collection schema.
+const readingTime = (
+  content.rendered?.metadata?.frontmatter as
+    { readingTime?: string } | undefined
+)?.readingTime;
 ---
 
 <div class="md:sticky md:top-8 md:z-10 flex items-end">
-	{
-		!!(content.rendered?.metadata?.headings as unknown[] | undefined)?.length && (
-			<button
-				id="toggle-toc"
-				class="hidden md:flex h-8 w-8 items-center flex-shrink-0 bg-accent-base/10 justify-center rounded-lg text-accent-base hover:brightness-110"
-				aria-label="Table of Contents"
-			>
-				<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="solar:clipboard-list-bold" />
-			</button>
-		)
-	}
+  {
+    !!(content.rendered?.metadata?.headings as unknown[] | undefined)
+      ?.length && (
+      <button
+        id="toggle-toc"
+        class="hidden md:flex h-8 w-8 items-center flex-shrink-0 bg-accent-base/10 justify-center rounded-lg text-accent-base hover:brightness-110"
+        aria-label="Table of Contents"
+      >
+        <Icon
+          aria-hidden="true"
+          class="h-6 w-6"
+          focusable="false"
+          name="solar:clipboard-list-bold"
+        />
+      </button>
+    )
+  }
 
-	<h1
-		class="title ml-2 md:sticky md:top-4 md:z-20 line-clamp-none break-words md:max-w-[calc(100%-10rem)]"
-		title={content.data.title}
-		data-pagefind-body
-	>
-		{content.data.title}
-		{content.data.award && (
-			<span class="ml-3 inline-flex items-center rounded bg-accent-one/10 text-accent-one px-2 py-0.5 text-sm">
-				<Icon aria-hidden="true" class="h-4 w-4 mr-1" focusable="false" name="solar:cup-bold" />
-				{content.data.award}
-			</span>
-		)}
-	</h1>
+  <h1
+    class="title ml-2 md:sticky md:top-4 md:z-20 line-clamp-none break-words md:max-w-[calc(100%-10rem)]"
+    title={content.data.title}
+    data-pagefind-body
+  >
+    {content.data.title}
+    {
+      content.data.award && (
+        <span class="ml-3 inline-flex items-center rounded bg-accent-one/10 text-accent-one px-2 py-0.5 text-sm">
+          <Icon
+            aria-hidden="true"
+            class="h-4 w-4 mr-1"
+            focusable="false"
+            name="solar:cup-bold"
+          />
+          {content.data.award}
+        </span>
+      )
+    }
+  </h1>
 </div>
-
-
 
 {/* Authors */}
 <div class="mx-2 mt-4 mb-2">
-	{
-		content.data.authors?.length ? (
-			<div class="flex flex-wrap items-center gap-2">
-				<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-5 w-5 text-accent-base" focusable="false" name="hugeicons:user-multiple" />
-				<div class="flex flex-wrap gap-x-2 gap-y-1 text-sm">
-					{content.data.authors.map((author, index) => (
-						<span class="text-text">
-							{author.name}
-							{author.affiliationIndices?.length > 0 && (
-								<sup class="text-xs text-accent-base">
-									{author.affiliationIndices.map(i => i + 1).join('')}
-								</sup>
-							)}
-							{index < content.data.authors.length - 1 && <span class="text-lighter">,</span>}
-						</span>
-					))}
-				</div>
-			</div>
-		) : (
-			<div class="flex items-center gap-2">
-				<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-5 w-5 text-lightest" focusable="false" name="hugeicons:user-multiple" />
-				<span class="text-sm text-lightest">No authors listed</span>
-			</div>
-		)
-	}
+  {
+    content.data.authors?.length ? (
+      <div class="flex flex-wrap items-center gap-2">
+        <Icon
+          aria-hidden="true"
+          class="flex-shrink-0 inline-block h-5 w-5 text-accent-base"
+          focusable="false"
+          name="hugeicons:user-multiple"
+        />
+        <div class="flex flex-wrap gap-x-2 gap-y-1 text-sm">
+          {content.data.authors.map((author, index) => (
+            <span class="text-text">
+              {author.name}
+              {author.affiliationIndices?.length > 0 && (
+                <sup class="text-xs text-accent-base">
+                  {author.affiliationIndices.map((i) => i + 1).join("")}
+                </sup>
+              )}
+              {index < content.data.authors.length - 1 && (
+                <span class="text-lighter">,</span>
+              )}
+            </span>
+          ))}
+        </div>
+      </div>
+    ) : (
+      <div class="flex items-center gap-2">
+        <Icon
+          aria-hidden="true"
+          class="flex-shrink-0 inline-block h-5 w-5 text-lightest"
+          focusable="false"
+          name="hugeicons:user-multiple"
+        />
+        <span class="text-sm text-lightest">No authors listed</span>
+      </div>
+    )
+  }
 
-	{/* Affiliations */}
-	{
-		content.data.affiliations?.length ? (
-			<div class="mt-2 text-sm text-lighter">
-				{content.data.affiliations.map((affiliation, index) => (
-					<div class="flex items-start gap-1">
-						<sup class="text-xs text-accent-base mt-0.5">{index + 1}</sup>
-						<span>{affiliation}</span>
-					</div>
-				))}
-			</div>
-		) : null
-	}
+  {/* Affiliations */}
+  {
+    content.data.affiliations?.length ? (
+      <div class="mt-2 text-sm text-lighter">
+        {content.data.affiliations.map((affiliation, index) => (
+          <div class="flex items-start gap-1">
+            <sup class="text-xs text-accent-base mt-0.5">{index + 1}</sup>
+            <span>{affiliation}</span>
+          </div>
+        ))}
+      </div>
+    ) : null
+  }
 </div>
 
-<div class="flex flex-wrap items-center text-lighter text-sm mt-[1.0625rem] mx-2 mb-2">
-	<span class="flex items-center h-[1.75rem]">
-		<Icon aria-hidden="true" class="flex items-center h-4 w-4 me-1" focusable="false" name="hugeicons:calendar-03" />
-		<FormattedDate date={content.data.publishDate} dateTimeOptions={dateTimeOptions} class="flex flex-shrink-0" />
-	</span>
-	<Separator type="dot" />
-	<span class="flex items-center h-[1.75rem]">
-		<Icon aria-hidden="true" class="items-center inline-block h-4 w-4 me-1" focusable="false" name="hugeicons:book-open-01" />
-		{/* @ts-ignore:next-line. TODO: add reading time to collection schema? */}
-		{content.rendered?.metadata?.frontmatter?.readingTime ? `${content.rendered.metadata.frontmatter.readingTime}` : "Less than one minute read"}
-	</span>
-	{
-		content.data.pdfUrl && (
-			<Separator type="dot" />
-			<span class="flex items-center h-[1.75rem]">
-				<Icon aria-hidden="true" class="items-center inline-block h-4 w-4 me-1" focusable="false" name="solar:download-bold" />
-				<a
-					href={content.data.pdfUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="text-accent-base hover:text-accent-two transition-colors"
-				>
-					PDF
-				</a>
-			</span>
-		)
-	}
-	{
-		content.data.updatedDate && (
-			<Separator type="dot" />
-			<span class="h-[1.75rem] flex items-center flex-shrink-0 rounded-lg bg-accent-two/5 text-accent-two py-1 px-2 text-sm gap-x-1">
-				Updated:<FormattedDate class="flex flex-shrink-0" date={content.data.updatedDate} dateTimeOptions={dateTimeOptions} />
-			</span>
-		)
-	}
+<div
+  class="flex flex-wrap items-center text-lighter text-sm mt-[1.0625rem] mx-2 mb-2"
+>
+  <span class="flex items-center h-[1.75rem]">
+    <Icon
+      aria-hidden="true"
+      class="flex items-center h-4 w-4 me-1"
+      focusable="false"
+      name="hugeicons:calendar-03"
+    />
+    <FormattedDate
+      date={content.data.publishDate}
+      dateTimeOptions={dateTimeOptions}
+      class="flex flex-shrink-0"
+    />
+  </span>
+  <Separator type="dot" />
+  <span class="flex items-center h-[1.75rem]">
+    <Icon
+      aria-hidden="true"
+      class="items-center inline-block h-4 w-4 me-1"
+      focusable="false"
+      name="hugeicons:book-open-01"
+    />
+    {readingTime ? `${readingTime}` : "Less than one minute read"}
+  </span>
+  {
+    content.data.pdfUrl && (
+      <>
+        <Separator type="dot" />
+        <span class="flex items-center h-[1.75rem]">
+          <Icon
+            aria-hidden="true"
+            class="items-center inline-block h-4 w-4 me-1"
+            focusable="false"
+            name="solar:download-bold"
+          />
+          <a
+            href={content.data.pdfUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent-base hover:text-accent-two transition-colors"
+          >
+            PDF
+          </a>
+        </span>
+      </>
+    )
+  }
+  {
+    content.data.updatedDate && (
+      <>
+        <Separator type="dot" />
+        <span class="h-[1.75rem] flex items-center flex-shrink-0 rounded-lg bg-accent-two/5 text-accent-two py-1 px-2 text-sm gap-x-1">
+          Updated:
+          <FormattedDate
+            class="flex flex-shrink-0"
+            date={content.data.updatedDate}
+            dateTimeOptions={dateTimeOptions}
+          />
+        </span>
+      </>
+    )
+  }
 </div>
-
-{content.data.draft ? <span class="text-base text-red-500 ml-2">(Draft)</span> : null}
 
 {
-	content.data.coverImage && (
-		<div class="mb-4 mt-2 overflow-auto rounded-lg">
-			<Image
-				alt={content.data.coverImage.alt}
-				class="object-cover"
-				fetchpriority="high"
-				loading="lazy" // loading="eager"
-				src={content.data.coverImage.src}
-			/>
-		</div>
-	)
+  content.data.draft ? (
+    <span class="text-base text-red-500 ml-2">(Draft)</span>
+  ) : null
+}
+
+{
+  content.data.coverImage && (
+    <div class="mb-4 mt-2 overflow-auto rounded-lg">
+      {/* Switch to loading="eager" if cover images ever sit above the fold. */}
+      <Image
+        alt={content.data.coverImage.alt}
+        class="object-cover"
+        fetchpriority="high"
+        loading="lazy"
+        src={content.data.coverImage.src}
+      />
+    </div>
+  )
 }
 
 {/* Abstract */}
 {
-	content.data.abstract && (
-		<div class="mx-2 mt-4 mb-4">
-			<h2 class="text-lg font-semibold text-accent-base mb-3">Abstract</h2>
-			<p class="prose max-w-none text-text" data-pagefind-body>
-				{content.data.abstract}
-			</p>
-		</div>
-	)
+  content.data.abstract && (
+    <div class="mx-2 mt-4 mb-4">
+      <h2 class="text-lg font-semibold text-accent-base mb-3">Abstract</h2>
+      <p class="prose max-w-none text-text" data-pagefind-body>
+        {content.data.abstract}
+      </p>
+    </div>
+  )
 }
 
 {/* Description (fallback if no abstract) */}
 {
-	!content.data.abstract && content.data.description && (
-		<p
-			class="prose max-w-none text-text mx-2 mt-4"
-			data-pagefind-body
-		>
-			{content.data.description}
-		</p>
-	)
+  !content.data.abstract && content.data.description && (
+    <p class="prose max-w-none text-text mx-2 mt-4" data-pagefind-body>
+      {content.data.description}
+    </p>
+  )
 }
 
 <div class="mt-4 flex flex-wrap items-center gap-2 mx-1">
-	{/* Tags */}
-	{
-		content.data.tags?.length ? (
-			<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-6 w-6 text-accent-base" focusable="false" name="solar:tag-line-duotone" />
-			<>
-				{content.data.tags.map((tag) => (
-					<a aria-label={`View all papers tagged with ${tag}`} href={url(`tags/${tag}/`)}>
-						<Badge variant="accent-two" title={tag} />
-					</a>
-				))}
-			</>
-		) : (
-			<Icon aria-hidden="true" class="flex-shrink-0 inline-block h-6 w-6 text-lightest" focusable="false" name="solar:tag-line-duotone" />
-			<span class="text-sm text-lightest">No tags</span>
-		)
-	}
+  {/* Tags */}
+  {
+    content.data.tags?.length ? (
+      <>
+        <Icon
+          aria-hidden="true"
+          class="flex-shrink-0 inline-block h-6 w-6 text-accent-base"
+          focusable="false"
+          name="solar:tag-line-duotone"
+        />
+        {content.data.tags.map((tag) => (
+          <a
+            aria-label={`View all papers tagged with ${tag}`}
+            href={url(`tags/${tag}/`)}
+          >
+            <Badge variant="accent-two" title={tag} />
+          </a>
+        ))}
+      </>
+    ) : (
+      <>
+        <Icon
+          aria-hidden="true"
+          class="flex-shrink-0 inline-block h-6 w-6 text-lightest"
+          focusable="false"
+          name="solar:tag-line-duotone"
+        />
+        <span class="text-sm text-lightest">No tags</span>
+      </>
+    )
+  }
 </div>

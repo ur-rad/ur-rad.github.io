@@ -4,8 +4,8 @@ import { url } from "@/utils/url";
 import { editionBasePath, getAllEditions } from "@/data/editions";
 
 const meta = {
-	description: "Oops! It looks like this page is lost in space!",
-	title: "Oops! You found a missing page!",
+  description: "Oops! It looks like this page is lost in space!",
+  title: "Oops! You found a missing page!",
 };
 
 // Known edition home paths (current at root, past prefixed), longest first so
@@ -15,26 +15,26 @@ const meta = {
 // switcher's fallback for someone landing via a stale link or bookmark.
 const editions = await getAllEditions();
 const editionHomes = editions
-	.map((e) => url(editionBasePath(e)))
-	.sort((a, b) => b.length - a.length);
+  .map((e) => url(editionBasePath(e)))
+  .sort((a, b) => b.length - a.length);
 const pageSegments = ["call-for-papers/", "people/", "partners/", "program/"];
 ---
 
 <PageLayout meta={meta}>
-	<h1 class="title mb-6">404 | Oops something went wrong</h1>
-	<p class="mb-8">Please use the navigation to find your way back</p>
+  <h1 class="title mb-6">404 | Oops something went wrong</h1>
+  <p class="mb-8">Please use the navigation to find your way back</p>
 </PageLayout>
 
 <script is:inline define:vars={{ editionHomes, pageSegments }}>
-	(() => {
-		const path = window.location.pathname;
-		for (const home of editionHomes) {
-			if (path === home || !path.startsWith(home)) continue;
-			const rest = path.slice(home.length);
-			if (pageSegments.includes(rest)) {
-				window.location.replace(home);
-				return;
-			}
-		}
-	})();
+  (() => {
+    const path = window.location.pathname;
+    for (const home of editionHomes) {
+      if (path === home || !path.startsWith(home)) continue;
+      const rest = path.slice(home.length);
+      if (pageSegments.includes(rest)) {
+        window.location.replace(home);
+        return;
+      }
+    }
+  })();
 </script>
