@@ -27,15 +27,13 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 // error while the expression happened to sit on one line.
 // TODO: add reading time to the collection schema.
 const readingTime = (
-  content.rendered?.metadata?.frontmatter as
-    { readingTime?: string } | undefined
+  content.rendered?.metadata?.frontmatter as { readingTime?: string } | undefined
 )?.readingTime;
 ---
 
 <div class="md:sticky md:top-8 md:z-10 flex items-end">
   {
-    !!(content.rendered?.metadata?.headings as unknown[] | undefined)
-      ?.length && (
+    !!(content.rendered?.metadata?.headings as unknown[] | undefined)?.length && (
       <button
         id="toggle-toc"
         class="hidden md:flex h-8 w-8 items-center flex-shrink-0 bg-accent-base/10 justify-center rounded-lg text-accent-base hover:brightness-110"
@@ -60,12 +58,7 @@ const readingTime = (
     {
       content.data.award && (
         <span class="ml-3 inline-flex items-center rounded bg-accent-one/10 text-accent-one px-2 py-0.5 text-sm">
-          <Icon
-            aria-hidden="true"
-            class="h-4 w-4 mr-1"
-            focusable="false"
-            name="solar:cup-bold"
-          />
+          <Icon aria-hidden="true" class="h-4 w-4 mr-1" focusable="false" name="solar:cup-bold" />
           {content.data.award}
         </span>
       )
@@ -93,9 +86,7 @@ const readingTime = (
                   {author.affiliationIndices.map((i) => i + 1).join("")}
                 </sup>
               )}
-              {index < content.data.authors.length - 1 && (
-                <span class="text-lighter">,</span>
-              )}
+              {index < content.data.authors.length - 1 && <span class="text-lighter">,</span>}
             </span>
           ))}
         </div>
@@ -128,9 +119,7 @@ const readingTime = (
   }
 </div>
 
-<div
-  class="flex flex-wrap items-center text-lighter text-sm mt-[1.0625rem] mx-2 mb-2"
->
+<div class="flex flex-wrap items-center text-lighter text-sm mt-[1.0625rem] mx-2 mb-2">
   <span class="flex items-center h-[1.75rem]">
     <Icon
       aria-hidden="true"
@@ -194,11 +183,7 @@ const readingTime = (
   }
 </div>
 
-{
-  content.data.draft ? (
-    <span class="text-base text-red-500 ml-2">(Draft)</span>
-  ) : null
-}
+{content.data.draft ? <span class="text-base text-red-500 ml-2">(Draft)</span> : null}
 
 {
   content.data.coverImage && (
@@ -248,10 +233,7 @@ const readingTime = (
           name="solar:tag-line-duotone"
         />
         {content.data.tags.map((tag) => (
-          <a
-            aria-label={`View all papers tagged with ${tag}`}
-            href={url(`tags/${tag}/`)}
-          >
+          <a aria-label={`View all papers tagged with ${tag}`} href={url(`tags/${tag}/`)}>
             <Badge variant="accent-two" title={tag} />
           </a>
         ))}

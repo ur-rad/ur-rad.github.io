@@ -5,12 +5,7 @@ import YearSwitcher from "@/components/YearSwitcher.astro";
 import { menuLinks } from "@/site.config";
 import { Icon } from "astro-icon/components";
 import { url } from "@/utils/url";
-import {
-  type Edition,
-  type PageKey,
-  editionPath,
-  getCurrentEdition,
-} from "@/data/editions";
+import { type Edition, type PageKey, editionPath, getCurrentEdition } from "@/data/editions";
 
 interface Props {
   edition?: Edition | undefined;
@@ -23,24 +18,18 @@ const { edition: activeEdition, pageKey } = Astro.props;
 const active = activeEdition ?? (await getCurrentEdition());
 // Hide links that don't apply to this edition (e.g. Partners for a year with
 // no partners).
-const editionLinks = menuLinks.filter(
-  (link) => !link.available || link.available(active),
-);
+const editionLinks = menuLinks.filter((link) => !link.available || link.available(active));
 ---
 
 <header
   id="main-header"
   class="fixed inset-x-0 top-0 z-20 flex items-center h-16 w-full px-2 sm:px-4 lg:px-8 bg-surface lg:bg-surface/80 lg:backdrop-blur-md"
 >
-  <div
-    class="w-full justify-between lg:flex-row lg:items-center lg:max-w-6xl lg:mx-auto"
-  >
+  <div class="w-full justify-between lg:flex-row lg:items-center lg:max-w-6xl lg:mx-auto">
     <div class="flex items-center gap-x-1 sm:gap-x-2">
       <a
         aria-label={active.data.title}
-        aria-current={Astro.url.pathname === url(editionPath(active, "home"))
-          ? "page"
-          : false}
+        aria-current={Astro.url.pathname === url(editionPath(active, "home")) ? "page" : false}
         class="group flex h-8 items-center hover:filter-none sm:relative"
         href={url(editionPath(active, "home"))}
       >
@@ -164,10 +153,7 @@ const editionLinks = menuLinks.filter(
 			-->
 
       <div class="ml-auto w-fit lg:ml-6">
-        <div
-          id="buttons-panel"
-          class="top-4 lg:top-8 flex items-center space-x-1 sm:space-x-2"
-        >
+        <div id="buttons-panel" class="top-4 lg:top-8 flex items-center space-x-1 sm:space-x-2">
           <YearSwitcher activeCode={active.data.code} pageKey={pageKey} />
           <Search activeYear={active.data.year} />
           <ThemeToggle />
@@ -236,20 +222,13 @@ const editionLinks = menuLinks.filter(
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const toggleNavMenuMobileButton = document.getElementById(
-      "toggle-nav-menu-mobile",
-    );
+    const toggleNavMenuMobileButton = document.getElementById("toggle-nav-menu-mobile");
     const openMenuIcon = document.getElementById("open-nav-menu-icon");
     const closeMenuIcon = document.getElementById("close-nav-menu-icon");
     const drawer = document.getElementById("drawer");
 
     // Проверяем существование элементов
-    if (
-      !toggleNavMenuMobileButton ||
-      !openMenuIcon ||
-      !closeMenuIcon ||
-      !drawer
-    ) {
+    if (!toggleNavMenuMobileButton || !openMenuIcon || !closeMenuIcon || !drawer) {
       console.error("One or more required elements are missing in the DOM.");
       return;
     }
@@ -260,8 +239,7 @@ const editionLinks = menuLinks.filter(
       return;
     }
 
-    const isOpen = () =>
-      toggleNavMenuMobileButton.getAttribute("aria-expanded") === "true";
+    const isOpen = () => toggleNavMenuMobileButton.getAttribute("aria-expanded") === "true";
 
     const openMenu = () => {
       drawer.classList.remove("hidden");

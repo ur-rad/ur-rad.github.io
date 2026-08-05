@@ -58,9 +58,8 @@
   --font-sans: "SFProRounded", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "CascadiaCode", ui-serif, Georgia, serif;
   --font-mono:
-    ui-monospace, "Menlo", "Monaco", "Cascadia Code", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+    ui-monospace, "Menlo", "Monaco", "Cascadia Code", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono",
+    "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
   /* Font sizes */
   --font-size-xs: 0.75rem;
@@ -148,8 +147,7 @@
 
 @font-face {
   font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Regular.latin.base.ttf")
-    format("truetype");
+  src: url("../assets/fonts/SF-Pro-Rounded-Regular.latin.base.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   /* font-display: swap; */
@@ -157,8 +155,7 @@
 
 @font-face {
   font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Medium.latin.base.ttf")
-    format("truetype");
+  src: url("../assets/fonts/SF-Pro-Rounded-Medium.latin.base.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   /* font-display: swap; */
@@ -166,8 +163,7 @@
 
 @font-face {
   font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Semibold.latin.base.ttf")
-    format("truetype");
+  src: url("../assets/fonts/SF-Pro-Rounded-Semibold.latin.base.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
   /* font-display: swap; */
@@ -175,8 +171,7 @@
 
 @font-face {
   font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Bold.latin.base.ttf")
-    format("truetype");
+  src: url("../assets/fonts/SF-Pro-Rounded-Bold.latin.base.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   /* font-display: swap; */
@@ -184,8 +179,7 @@
 
 @font-face {
   font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Regular.latin.extend.ttf")
-    format("truetype");
+  src: url("../assets/fonts/SF-Pro-Rounded-Regular.latin.extend.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   /* font-display: swap; */
@@ -193,8 +187,7 @@
 
 @font-face {
   font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Medium.latin.extend.ttf")
-    format("truetype");
+  src: url("../assets/fonts/SF-Pro-Rounded-Medium.latin.extend.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   /* font-display: swap; */
@@ -202,8 +195,7 @@
 
 @font-face {
   font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Semibold.latin.extend.ttf")
-    format("truetype");
+  src: url("../assets/fonts/SF-Pro-Rounded-Semibold.latin.extend.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
   /* font-display: swap; */
@@ -211,8 +203,7 @@
 
 @font-face {
   font-family: "SFProRounded";
-  src: url("../assets/fonts/SF-Pro-Rounded-Bold.latin.extend.ttf")
-    format("truetype");
+  src: url("../assets/fonts/SF-Pro-Rounded-Bold.latin.extend.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   /* font-display: swap; */
@@ -254,9 +245,7 @@
     /* Alternative */ /* --theme-accent-two: 344deg 63% 45%; */
 
     /* Text (foreground, text color-brightness calculated below based on --theme-fg) */
-    --fg-hue: var(
-      --hue
-    ); /* Common color hue for calculating color gradations */
+    --fg-hue: var(--hue); /* Common color hue for calculating color gradations */
     --fg-saturation: var(
       --saturation
     ); /* Common saturation for calculating color gradations with tint, 0% - no tint */
@@ -326,22 +315,16 @@
     /* --theme-accent-base: var(--hue) 97% 71%; */
 
     /* Text (foreground, text color-brightness calculated below based on --theme-fg) */
-    --fg-hue: var(
-      --hue
-    ); /* Common color hue for calculating color gradations */
+    --fg-hue: var(--hue); /* Common color hue for calculating color gradations */
     --fg-saturation: var(
       --saturation
     ); /* Common saturation for calculating color gradations with tint, 0% - no tint */
     --fg-brightness: 92%; /* Brightness for calculating color gradations with tint, 100% - starting from absolutely white */
-    --theme-text: var(
-      --theme-color-500
-    ); /* Text color-brightness adapted to background color */
+    --theme-text: var(--theme-color-500); /* Text color-brightness adapted to background color */
 
     /*** SECONDARY COLORS (External links, neutral accent, quotes) ***/
     --theme-link: 173deg 75% 55%; /* External links color - teal */
-    --theme-accent: var(
-      --theme-color-600
-    ); /* Neutral accent relative to text */
+    --theme-accent: var(--theme-color-600); /* Neutral accent relative to text */
     --theme-quote: 220deg 8% 70%; /* Quotes color - light grey for dark mode */
 
     /*** ADDITIONAL COLORS ***/

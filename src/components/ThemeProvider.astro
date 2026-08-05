@@ -3,8 +3,7 @@
   const lightModePref = window.matchMedia("(prefers-color-scheme: light)");
 
   function getUserPref() {
-    const storedTheme =
-      typeof localStorage !== "undefined" && localStorage.getItem("theme");
+    const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("theme");
     return storedTheme || (lightModePref.matches ? "light" : "dark");
   }
 
@@ -24,12 +23,8 @@
 
     root.setAttribute("data-theme", newTheme);
 
-    const colorThemeMetaTag = document.querySelector(
-      "meta[name='theme-color']",
-    );
-    const bgColor = getComputedStyle(document.body).getPropertyValue(
-      "--theme-bg",
-    );
+    const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
+    const bgColor = getComputedStyle(document.body).getPropertyValue("--theme-bg");
     colorThemeMetaTag.setAttribute("content", `hsl(${bgColor})`);
     if (typeof localStorage !== "undefined") {
       localStorage.setItem("theme", newTheme);
@@ -48,7 +43,5 @@
   });
 
   // listen for prefers-color-scheme change.
-  lightModePref.addEventListener("change", (e) =>
-    setTheme(e.matches ? "light" : "dark"),
-  );
+  lightModePref.addEventListener("change", (e) => setTheme(e.matches ? "light" : "dark"));
 </script>

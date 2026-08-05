@@ -25,10 +25,7 @@ const edition = await getEdition(post.data.edition);
   meta={{ articleDate, description: abstract, ogImage: socialImage, title }}
   edition={edition}
 >
-  <div
-    class="fixed left-0 top-0 z-10 flex h-16 md:h-20 w-full bg-surface overflow-hidden"
-  >
-  </div>
+  <div class="fixed left-0 top-0 z-10 flex h-16 md:h-20 w-full bg-surface overflow-hidden"></div>
 
   <!-- NEEDS IMPROVEMENT!!! -->
   <!-- Menu button instead of the main menu -->
@@ -62,10 +59,7 @@ const edition = await getEdition(post.data.edition);
   <Masthead content={post} />
 
   <div class="mt-6 flex sm:grid-cols-[auto_1fr] md:items-start gap-x-8">
-    <article
-      class="grid flex-grow grid-cols-1 break-words pt-4"
-      data-pagefind-body
-    >
+    <article class="grid flex-grow grid-cols-1 break-words pt-4" data-pagefind-body>
       <div
         class="prose prose-citrus max-w-none flex-grow prose-headings:font-semibold prose-headings:text-accent-base prose-headings:before:text-accent-two sm:prose-headings:before:content-['#'] sm:prose-th:before:content-none"
       >
@@ -105,10 +99,8 @@ const edition = await getEdition(post.data.edition);
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
-            d="M4.5 15.75l7.5-7.5 7.5 7.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
+          <path d="M4.5 15.75l7.5-7.5 7.5 7.5" stroke-linecap="round" stroke-linejoin="round"
+          ></path>
         </svg>
       </span>
     </button>
@@ -240,9 +232,7 @@ const edition = await getEdition(post.data.edition);
 
 <!-- Scroll to top button -->
 <script>
-  const scrollBtn = document.getElementById(
-    "to-top-button",
-  ) as HTMLButtonElement;
+  const scrollBtn = document.getElementById("to-top-button") as HTMLButtonElement;
   const targetHeader = document.querySelector("header") as HTMLElement;
 
   function callback(entries: IntersectionObserverEntry[]) {

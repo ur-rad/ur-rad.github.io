@@ -54,107 +54,103 @@ const papers = defineCollection({
 const editions = defineCollection({
   loader: glob({ base: "./src/content/editions", pattern: "**/*.{md,mdx}" }),
   schema: ({ image }) =>
-   z.object({
-    code: z.string(), // slug/id, e.g. "fss_2025" (also the past-year URL prefix)
-    year: z.number(),
-    ordinal: z.string().optional(), // "3rd"
-    status: z.enum(["current", "past", "upcoming"]),
-    title: z.string(), // "UR-RAD 2025"
-    tagline: z.string().optional(),
-    fullName: z.string().optional(),
-    dates: z.object({
-      start: z.string(),
-      end: z.string(),
-      display: z.string(), // "November 6-8, 2025"
-    }),
-    venue: z
-      .object({
-        name: z.string(),
-        city: z.string().optional(),
-        country: z.string().optional(),
-        url: z.string().optional(),
-      })
-      .optional(),
-    urls: z
-      .object({
-        registration: z.string().optional(),
-        submission: z.string().optional(),
-        aaai: z.string().optional(),
-        venue: z.string().optional(),
-        authorKit: z.string().optional(),
-      })
-      .optional(),
-    importantDates: z
-      .array(
-        z.object({
-          label: z.string(),
-          date: z.string(),
-          struck: z.boolean().default(false),
-        }),
-      )
-      .default([]),
-    // Research areas, shown on Home and Call for Papers.
-    topics: z.array(z.string()).default([]),
-    // Submission formats, shown on Home (brief) and Call for Papers (cards).
-    submissionTypes: z
-      .array(
-        z.object({
+    z.object({
+      code: z.string(), // slug/id, e.g. "fss_2025" (also the past-year URL prefix)
+      year: z.number(),
+      ordinal: z.string().optional(), // "3rd"
+      status: z.enum(["current", "past", "upcoming"]),
+      title: z.string(), // "UR-RAD 2025"
+      tagline: z.string().optional(),
+      fullName: z.string().optional(),
+      dates: z.object({
+        start: z.string(),
+        end: z.string(),
+        display: z.string(), // "November 6-8, 2025"
+      }),
+      venue: z
+        .object({
           name: z.string(),
-          pages: z.string().optional(), // "4-8 pages*"
-          archival: z.string().optional(), // "archival OR non-archival"
-          description: z.string().optional(),
-          accent: z.enum(["accent-one", "accent-two", "muted"]).optional(),
-        }),
-      )
-      .default([]),
-    // Call-for-papers timeline. Each item is a styled milestone; `was` renders
-    // a struck-through previous date next to the current `heading`.
-    timeline: z
-      .array(
-        z.object({
-          heading: z.string(),
-          was: z.string().optional(),
-          variant: z
-            .enum(["special", "accent-one", "accent-two", "final"])
-            .default("accent-one"),
-          lead: z.string().optional(),
-          bullets: z
-            .array(
-              z.object({ strong: z.string().optional(), text: z.string().optional() }),
-            )
-            .default([]),
-          tip: z.string().optional(),
-          note: z.string().optional(),
-        }),
-      )
-      .default([]),
-    // Previous-year speakers are derived, not declared — see
-    // getPreviousSpeakerGroups in src/data/editions.ts.
-    // Per-edition role assignments referencing the `people` collection by id.
-    // `roles` is a list: one person may hold several roles in a single year.
-    people: z
-      .array(
-        z.object({
-          personId: z.string(),
-          roles: z.array(z.enum(["keynote", "mentor", "organizer"])),
-          order: z.number().optional(),
-          affiliation: z.string().optional(), // per-year override
-          title: z.string().optional(), // per-year override
-        }),
-      )
-      .default([]),
-    partners: z
-      .array(
-        z.object({
-          name: z.string(),
-          logo: image().optional(),
+          city: z.string().optional(),
+          country: z.string().optional(),
           url: z.string().optional(),
-          video: z.string().optional(),
-          blurb: z.string().optional(),
-        }),
-      )
-      .default([]),
-  }),
+        })
+        .optional(),
+      urls: z
+        .object({
+          registration: z.string().optional(),
+          submission: z.string().optional(),
+          aaai: z.string().optional(),
+          venue: z.string().optional(),
+          authorKit: z.string().optional(),
+        })
+        .optional(),
+      importantDates: z
+        .array(
+          z.object({
+            label: z.string(),
+            date: z.string(),
+            struck: z.boolean().default(false),
+          }),
+        )
+        .default([]),
+      // Research areas, shown on Home and Call for Papers.
+      topics: z.array(z.string()).default([]),
+      // Submission formats, shown on Home (brief) and Call for Papers (cards).
+      submissionTypes: z
+        .array(
+          z.object({
+            name: z.string(),
+            pages: z.string().optional(), // "4-8 pages*"
+            archival: z.string().optional(), // "archival OR non-archival"
+            description: z.string().optional(),
+            accent: z.enum(["accent-one", "accent-two", "muted"]).optional(),
+          }),
+        )
+        .default([]),
+      // Call-for-papers timeline. Each item is a styled milestone; `was` renders
+      // a struck-through previous date next to the current `heading`.
+      timeline: z
+        .array(
+          z.object({
+            heading: z.string(),
+            was: z.string().optional(),
+            variant: z.enum(["special", "accent-one", "accent-two", "final"]).default("accent-one"),
+            lead: z.string().optional(),
+            bullets: z
+              .array(z.object({ strong: z.string().optional(), text: z.string().optional() }))
+              .default([]),
+            tip: z.string().optional(),
+            note: z.string().optional(),
+          }),
+        )
+        .default([]),
+      // Previous-year speakers are derived, not declared — see
+      // getPreviousSpeakerGroups in src/data/editions.ts.
+      // Per-edition role assignments referencing the `people` collection by id.
+      // `roles` is a list: one person may hold several roles in a single year.
+      people: z
+        .array(
+          z.object({
+            personId: z.string(),
+            roles: z.array(z.enum(["keynote", "mentor", "organizer"])),
+            order: z.number().optional(),
+            affiliation: z.string().optional(), // per-year override
+            title: z.string().optional(), // per-year override
+          }),
+        )
+        .default([]),
+      partners: z
+        .array(
+          z.object({
+            name: z.string(),
+            logo: image().optional(),
+            url: z.string().optional(),
+            video: z.string().optional(),
+            blurb: z.string().optional(),
+          }),
+        )
+        .default([]),
+    }),
 });
 
 // People — stable identity records (no detail routes). Referenced by editions.

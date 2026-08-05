@@ -46,9 +46,7 @@ export interface BylineOptions {
 }
 
 /** Extract "name" strings from AuthorLike[] safely, removing null/undefined/empty values. */
-export function getAuthorNames(
-  authors: AuthorLike[] | null | undefined,
-): string[] {
+export function getAuthorNames(authors: AuthorLike[] | null | undefined): string[] {
   if (!Array.isArray(authors)) return [];
   const names: string[] = [];
   for (const a of authors) {
@@ -87,30 +85,10 @@ export function formatNameLastInitial(name: string): string {
   const norm = (s: string): string => s.toLowerCase().replace(/[.,]/g, "");
 
   // Common honorifics/prefixes to exclude from first token
-  const PREFIXES = new Set<string>([
-    "dr",
-    "prof",
-    "mr",
-    "mrs",
-    "ms",
-    "mx",
-    "sir",
-    "madam",
-  ]);
+  const PREFIXES = new Set<string>(["dr", "prof", "mr", "mrs", "ms", "mx", "sir", "madam"]);
 
   // Common suffixes and generational markers to ignore at the end
-  const SUFFIXES = new Set<string>([
-    "jr",
-    "sr",
-    "ii",
-    "iii",
-    "iv",
-    "v",
-    "phd",
-    "md",
-    "dds",
-    "dmd",
-  ]);
+  const SUFFIXES = new Set<string>(["jr", "sr", "ii", "iii", "iv", "v", "phd", "md", "dds", "dmd"]);
 
   // Common surname particles to include as part of the last name (walked token-by-token)
   const PARTICLES = new Set<string>([
