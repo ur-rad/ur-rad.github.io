@@ -119,18 +119,25 @@ function targetHref(edition: Edition) {
 
 <script>
   // Close the dropdown when clicking outside or pressing Escape.
-  const initYearSwitcher = () => {
-    document.querySelectorAll<HTMLDetailsElement>("details.year-switcher").forEach((el) => {
-      if ((el as any).__ysBound) return;
-      (el as any).__ysBound = true;
-      document.addEventListener("click", (e) => {
-        if (el.open && !el.contains(e.target as Node)) el.open = false;
-      });
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") el.open = false;
-      });
+  //
+  // The two listeners are registered once on document and resolve open
+  // switchers by selector at event time, so they apply to whatever is in the
+  // DOM without needing to be re-bound. The previous version bound a pair of
+  // document listeners per element inside a forEach, guarded by a marker
+  // property on the node; because a client-side navigation supplies fresh
+  // nodes, the marker reset and each navigation added another pair that closed
+  // over detached elements.
+  const closeSwitchers = (shouldClose: (el: HTMLDetailsElement) => boolean) => {
+    document.querySelectorAll<HTMLDetailsElement>("details.year-switcher[open]").forEach((el) => {
+      if (shouldClose(el)) el.open = false;
     });
   };
-  initYearSwitcher();
-  document.addEventListener("astro:page-load", initYearSwitcher);
+
+  document.addEventListener("click", (e) => {
+    closeSwitchers((el) => !el.contains(e.target as Node));
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeSwitchers(() => true);
+  });
 </script>
