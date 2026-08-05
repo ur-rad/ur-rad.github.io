@@ -34,11 +34,26 @@ export function getAllTags(papers: CollectionEntry<"papers">[]) {
   return papers.flatMap((paper) => [...paper.data.tags]);
 }
 
-/** returns all unique tags created from papers
+/** Locale-independent string comparison, used for every tag ordering below.
+ *  Deliberately not `String.prototype.localeCompare`: that depends on the
+ *  runtime's default locale and its ICU data, so it can order differently
+ *  between a contributor's machine and CI — the exact drift these orderings
+ *  exist to prevent. Tags are lowercased by the schema transform, so plain
+ *  code-unit ordering is equivalent to alphabetical for this data.
+ */
+function compareTagNames(a: string, b: string) {
+  return a < b ? -1 : a > b ? 1 : 0;
+}
+
+/** returns all unique tags created from papers, sorted alphabetically
  *  Note: This function doesn't filter draft papers, pass it the result of getAllPapers above to do so.
+ *
+ *  Sorted rather than left in collection order: Astro's collection order is not
+ *  stable across content-store rebuilds, so an unsorted list would reorder
+ *  between builds — including between CI deploys, which always build cold.
  *  */
 export function getUniqueTags(papers: CollectionEntry<"papers">[]) {
-  return [...new Set(getAllTags(papers))];
+  return [...new Set(getAllTags(papers))].sort(compareTagNames);
 }
 
 /** returns a count of each unique tag - [[tagName, count], ...]
@@ -50,5 +65,8 @@ export function getUniqueTagsWithCount(papers: CollectionEntry<"papers">[]): [st
       (acc, t) => acc.set(t, (acc.get(t) ?? 0) + 1),
       new Map<string, number>(),
     ),
-  ].sort((a, b) => b[1] - a[1]);
+    // Count descending, then alphabetically. The alphabetical tiebreak is
+    // load-bearing: without it, equal-count tags fall back to collection order,
+    // which is not stable across content-store rebuilds.
+  ].sort((a, b) => b[1] - a[1] || compareTagNames(a[0], b[0]));
 }
