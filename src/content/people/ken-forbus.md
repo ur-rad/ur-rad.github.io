@@ -1,6 +1,7 @@
 ---
 name: "Ken Forbus"
 title: "Professor"
-affiliation: "Northwestern University, Computer Sciences"
+affiliation: "Northwestern University"
+department: "Computer Sciences"
 photo: "../../assets/images/speakers/ken-forbus.jpg"
 ---

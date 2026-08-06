@@ -135,6 +135,7 @@ const editions = defineCollection({
             roles: z.array(z.enum(["keynote", "mentor", "organizer"])),
             order: z.number().optional(),
             affiliation: z.string().optional(), // per-year override
+            department: z.string().optional(), // per-year override
             title: z.string().optional(), // per-year override
           }),
         )
@@ -160,7 +161,12 @@ const people = defineCollection({
     z.object({
       name: z.string(),
       photo: image().optional(),
+      // Institution only. A comma here belongs to the institution's own name
+      // (e.g. "University of Maryland, Baltimore County"), not a department.
       affiliation: z.string().optional(),
+      // Department or school within the institution, kept separate so callers
+      // can show the institution alone where the joined string is too long.
+      department: z.string().optional(),
       title: z.string().optional(),
       website: z.string().optional(),
       bio: z.string().optional(),

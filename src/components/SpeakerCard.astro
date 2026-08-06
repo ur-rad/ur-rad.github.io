@@ -6,12 +6,17 @@ export interface Props {
   name: string;
   title: string;
   affiliation: string;
+  /** Optional department, appended to the affiliation for display. */
+  department?: string | undefined;
   /** Personal/faculty page. When set, the name links to it. */
   website?: string | undefined;
   alt?: string;
 }
 
-const { photo, name, title, affiliation, website, alt = name } = Astro.props;
+const { photo, name, title, affiliation, department, website, alt = name } = Astro.props;
+
+// Institution and department are stored separately; join them for display.
+const affiliationLine = [affiliation, department].filter(Boolean).join(", ");
 ---
 
 <div class="p-4 sm:p-6 border border-color-300 rounded-lg text-center">
@@ -48,5 +53,5 @@ const { photo, name, title, affiliation, website, alt = name } = Astro.props;
     }
   </h3>
   <p class="text-sm sm:text-base text-accent-two mb-2">{title}</p>
-  <p class="text-xs sm:text-sm text-lighter">{affiliation}</p>
+  <p class="text-xs sm:text-sm text-lighter">{affiliationLine}</p>
 </div>
