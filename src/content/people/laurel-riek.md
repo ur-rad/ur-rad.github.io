@@ -1,7 +1,7 @@
 ---
 name: "Laurel Riek"
-title: "Professor"
-affiliation: "University of California San Diego"
-website: "https://jacobsschool.ucsd.edu/faculty/profile?id=412"
+title: "David R. Miller Professor"
+affiliation: "University of California San Diego, Computer Science and Engineering"
+website: "https://www.laurelriek.org"
 photo: "../../assets/images/speakers/laurel-riek.jpg"
 ---
