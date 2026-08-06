@@ -12,6 +12,7 @@ export interface EditionPerson {
   name: string;
   photo: Person["data"]["photo"] | undefined;
   affiliation: string | undefined;
+  department: string | undefined;
   title: string | undefined;
   website: string | undefined;
   bio: string | undefined;
@@ -56,7 +57,8 @@ export async function getPastEditions(): Promise<Edition[]> {
 }
 
 /** Resolve an edition's `people` assignments against the people collection,
- *  applying per-year affiliation/title overrides. Optionally filter by role. */
+ *  applying per-year affiliation/department/title overrides. Optionally
+ *  filter by role. */
 export async function getEditionPeople(
   edition: Edition,
   role?: "keynote" | "mentor" | "organizer",
@@ -74,6 +76,7 @@ export async function getEditionPeople(
         name: person.data.name,
         photo: person.data.photo,
         affiliation: a.affiliation ?? person.data.affiliation,
+        department: a.department ?? person.data.department,
         title: a.title ?? person.data.title,
         website: person.data.website,
         bio: person.data.bio,

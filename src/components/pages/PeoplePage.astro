@@ -47,6 +47,7 @@ const previousSpeakers = await getPreviousSpeakerGroups(edition);
                 name={p.name}
                 title={p.title ?? ""}
                 affiliation={p.affiliation ?? ""}
+                department={p.department}
                 website={p.website}
               />
             ) : null,
@@ -136,7 +137,12 @@ const previousSpeakers = await getPreviousSpeakerGroups(edition);
         <div class="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8">
           {organizers.map((p) =>
             p.photo ? (
-              <OrganizerCard photo={p.photo} name={p.name} affiliation={p.affiliation ?? ""} />
+              <OrganizerCard
+                photo={p.photo}
+                name={p.name}
+                affiliation={p.affiliation ?? ""}
+                department={p.department}
+              />
             ) : (
               <div class="text-center p-4 sm:p-6 bg-special-lighter rounded-lg">
                 <h3 class="text-lg sm:text-xl font-semibold mb-2">{p.name}</h3>
