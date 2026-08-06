@@ -14,9 +14,6 @@ export interface Props {
 }
 
 const { photo, name, title, affiliation, department, website, alt = name } = Astro.props;
-
-// Institution and department are stored separately; join them for display.
-const affiliationLine = [affiliation, department].filter(Boolean).join(", ");
 ---
 
 <div class="p-4 sm:p-6 border border-color-300 rounded-lg text-center">
@@ -53,5 +50,6 @@ const affiliationLine = [affiliation, department].filter(Boolean).join(", ");
     }
   </h3>
   <p class="text-sm sm:text-base text-accent-two mb-2">{title}</p>
-  <p class="text-xs sm:text-sm text-lighter">{affiliationLine}</p>
+  <p class="text-xs sm:text-sm text-lighter">{affiliation}</p>
+  {department && <p class="text-xs sm:text-sm text-lighter">{department}</p>}
 </div>
