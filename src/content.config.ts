@@ -25,6 +25,8 @@ const papers = defineCollection({
         }),
       ),
       affiliations: z.array(z.string()),
+      // Either an absolute URL, or a path relative to the site root for PDFs
+      // hosted in `public/` (e.g. "pdfs/fss_2026/<slug>.pdf").
       pdfUrl: z.string().optional(),
       award: z.string().optional(),
       draft: z.boolean().default(false),
