@@ -29,6 +29,12 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
 const readingTime = (
   content.rendered?.metadata?.frontmatter as { readingTime?: string } | undefined
 )?.readingTime;
+
+// Self-hosted PDFs are stored as site-relative paths so they resolve under the
+// deploy base path (PR previews are served from a subdirectory); external URLs
+// pass through untouched.
+const pdfUrl = content.data.pdfUrl;
+const pdfHref = pdfUrl && !/^[a-z][a-z\d+.-]*:/i.test(pdfUrl) ? url(pdfUrl) : pdfUrl;
 ---
 
 <div class="md:sticky md:top-8 md:z-10 flex items-end">
@@ -155,7 +161,7 @@ const readingTime = (
             name="solar:download-bold"
           />
           <a
-            href={content.data.pdfUrl}
+            href={pdfHref}
             target="_blank"
             rel="noopener noreferrer"
             class="text-accent-base hover:text-accent-two transition-colors"
